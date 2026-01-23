@@ -558,4 +558,169 @@ export default {
   LAB_PREVIEW_EMPTY_TITLE: "No preview yet",
   LAB_PREVIEW_EMPTY_DESC: "Enter a prompt and click Generate to see your UI",
   LAB_TRY_IT: "Try it",
+
+  // Recruiting - Landing page
+  LANDING_NAV_JOBS: "Jobs",
+  LANDING_NAV_CV_REVIEW: "CV Review",
+  LANDING_NAV_FIND_JOB: "Find a Job",
+  LANDING_HERO_BADGE: "AI-Powered Recruiting",
+  LANDING_HERO_TITLE: "Find Your Next Opportunity",
+  LANDING_HERO_SUBTITLE:
+    "Connect with top companies and discover jobs that match your skills. Get instant AI feedback on your CV.",
+  LANDING_CTA_BROWSE_JOBS: "Browse Jobs",
+  LANDING_CTA_CV_REVIEW: "Free CV Review",
+  LANDING_CANDIDATES_TITLE: "For Job Seekers",
+  LANDING_CANDIDATES_SUBTITLE: "Everything you need to land your dream job",
+  LANDING_CANDIDATE_FEATURE_1_TITLE: "Smart Job Search",
+  LANDING_CANDIDATE_FEATURE_1_DESC:
+    "Filter jobs by location, industry, and type. Find exactly what you're looking for.",
+  LANDING_CANDIDATE_FEATURE_2_TITLE: "AI CV Review",
+  LANDING_CANDIDATE_FEATURE_2_DESC:
+    "Get instant feedback on your CV with our free AI-powered analysis tool.",
+  LANDING_CANDIDATE_FEATURE_3_TITLE: "Easy Applications",
+  LANDING_CANDIDATE_FEATURE_3_DESC:
+    "Apply in minutes. No account required. Just upload your CV and go.",
+  LANDING_FEATURED_JOBS_TITLE: "Featured Positions",
+  LANDING_FEATURED_JOBS_SUBTITLE: "Explore our latest opportunities",
+  LANDING_VIEW_ALL_JOBS: "View All Jobs",
+  LANDING_CV_REVIEW_TITLE: "Free AI CV Review",
+  LANDING_CV_REVIEW_DESC:
+    "Upload your CV and get instant, actionable feedback powered by AI.",
+  LANDING_CV_REVIEW_CTA: "Try It Now",
+  LANDING_COMPANIES_TITLE: "For Employers",
+  LANDING_COMPANIES_SUBTITLE: "Find the best talent for your team",
+  LANDING_COMPANY_FEATURE_1_TITLE: "Quality Candidates",
+  LANDING_COMPANY_FEATURE_1_DESC:
+    "Access pre-screened candidates who match your requirements.",
+  LANDING_COMPANY_FEATURE_2_TITLE: "AI Screening",
+  LANDING_COMPANY_FEATURE_2_DESC:
+    "Our AI analyzes every application, scoring candidates against your job requirements.",
+  LANDING_COMPANY_FEATURE_3_TITLE: "Streamlined Process",
+  LANDING_COMPANY_FEATURE_3_DESC:
+    "Manage applications, track candidates, and hire faster.",
+  LANDING_CONTACT_US: "Contact Us",
+  LANDING_HOW_IT_WORKS_TITLE: "How It Works",
+  LANDING_STEP_1_TITLE: "Browse Jobs",
+  LANDING_STEP_1_DESC: "Explore open positions filtered by your preferences.",
+  LANDING_STEP_2_TITLE: "Apply Online",
+  LANDING_STEP_2_DESC:
+    "Submit your application with a single click. No account needed.",
+  LANDING_STEP_3_TITLE: "Get Hired",
+  LANDING_STEP_3_DESC:
+    "Our team reviews your application and connects you with the right opportunity.",
+
+  // Recruiting - Jobs
+  JOBS_TITLE: "Open Positions",
+  JOBS_SUBTITLE: "Find your next opportunity",
+  JOBS_EMPTY: "No jobs found matching your criteria.",
+  JOBS_LOADING: "Loading jobs...",
+  JOBS_FILTER_LOCATION: "Location",
+  JOBS_FILTER_TYPE: "Employment Type",
+  JOBS_FILTER_INDUSTRY: "Industry",
+  JOBS_FILTER_CLEAR: "Clear filters",
+  JOBS_FILTER_ALL: "All",
+  JOBS_CARD_LOCATION: "Location",
+  JOBS_CARD_TYPE: "Type",
+  JOBS_CARD_SALARY: "Salary",
+  JOBS_VIEW_DETAILS: "View Details",
+  JOBS_APPLY_NOW: "Apply Now",
+  JOBS_POSTED: "Posted",
+
+  // Recruiting - Job Detail
+  JOB_DETAIL_REQUIREMENTS: "Requirements",
+  JOB_DETAIL_BENEFITS: "Benefits",
+  JOB_DETAIL_ABOUT: "About this role",
+  JOB_DETAIL_BACK: "Back to jobs",
+  JOB_CHATBOT_TITLE: "Questions about this job?",
+  JOB_CHATBOT_PLACEHOLDER: "Ask anything about this position...",
+  JOB_CHATBOT_WELCOME:
+    "Hi! I can answer questions about this position. What would you like to know?",
+
+  // Recruiting - Application
+  APPLICATION_TITLE: "Apply for this position",
+  APPLICATION_SUBTITLE: "Fill out the form below to submit your application",
+  APPLICATION_NAME: "Full Name",
+  APPLICATION_NAME_PLACEHOLDER: "John Doe",
+  APPLICATION_EMAIL: "Email Address",
+  APPLICATION_EMAIL_PLACEHOLDER: "john@example.com",
+  APPLICATION_PHONE: "Phone Number",
+  APPLICATION_PHONE_PLACEHOLDER: "+49 123 456 789",
+  APPLICATION_MESSAGE: "Cover Letter (Optional)",
+  APPLICATION_MESSAGE_PLACEHOLDER:
+    "Tell us why you're interested in this role...",
+  APPLICATION_CV_UPLOAD: "Upload your CV",
+  APPLICATION_CV_FORMATS: "PDF or DOCX, max 10MB",
+  APPLICATION_CV_REQUIRED: "Please upload your CV",
+  APPLICATION_CV_FORMAT_ERROR: "Please upload a PDF or DOCX file",
+  APPLICATION_CV_SIZE_ERROR: "File size must be less than 10MB",
+  APPLICATION_NAME_ERROR: "Please enter your full name (at least 2 characters)",
+  APPLICATION_EMAIL_ERROR: "Please enter a valid email address",
+  APPLICATION_SUBMIT: "Submit Application",
+  APPLICATION_SUBMITTING: "Submitting...",
+  APPLICATION_SUCCESS_TITLE: "Application Submitted!",
+  APPLICATION_SUCCESS_DESC:
+    "Thank you for applying. We'll review your application and get back to you soon.",
+  APPLICATION_BACK_TO_JOBS: "Back to Jobs",
+
+  // Recruiting - CV Review
+  CV_REVIEW_TITLE: "Free CV Review",
+  CV_REVIEW_DESC: "Get instant AI-powered feedback on your CV",
+  CV_REVIEW_UPLOAD: "Upload your CV for analysis",
+  CV_REVIEW_ANALYZING: "Analyzing your CV...",
+  CV_REVIEW_RESULTS: "Your CV Analysis",
+  CV_REVIEW_SCORE: "Overall Score",
+  CV_REVIEW_STRENGTHS: "Strengths",
+  CV_REVIEW_IMPROVEMENTS: "Areas for Improvement",
+  CV_REVIEW_MISSING: "Missing Elements",
+  CV_REVIEW_TRY_ANOTHER: "Analyze another CV",
+
+  // Recruiting - Admin Jobs
+  ADMIN_JOBS_TITLE: "Manage Jobs",
+  ADMIN_JOBS_CREATE: "Create Job",
+  ADMIN_JOBS_EDIT: "Edit Job",
+  ADMIN_JOBS_ACTIVATE: "Activate",
+  ADMIN_JOBS_DEACTIVATE: "Deactivate",
+  ADMIN_JOBS_DELETE: "Delete",
+  ADMIN_JOBS_DELETE_CONFIRM: "Are you sure you want to delete this job?",
+  ADMIN_JOBS_EMPTY: "No jobs yet. Create your first job posting.",
+
+  // Recruiting - Admin Applications
+  ADMIN_APPLICATIONS_TITLE: "Applications",
+  ADMIN_APPLICATIONS_EMPTY: "No applications yet.",
+  ADMIN_APPLICATION_SCORE: "AI Score",
+  ADMIN_APPLICATION_STATUS: "Status",
+  ADMIN_APPLICATION_STATUS_NEW: "New",
+  ADMIN_APPLICATION_STATUS_REVIEWED: "Reviewed",
+  ADMIN_APPLICATION_STATUS_SHORTLISTED: "Shortlisted",
+  ADMIN_APPLICATION_STATUS_REJECTED: "Rejected",
+  ADMIN_APPLICATION_ANALYSIS: "AI Analysis",
+  ADMIN_APPLICATION_SKILLS: "Matched Skills",
+  ADMIN_APPLICATION_GAPS: "Missing Skills",
+  ADMIN_APPLICATION_RED_FLAGS: "Red Flags",
+  ADMIN_APPLICATION_QUESTIONS: "Suggested Interview Questions",
+  ADMIN_APPLICATION_DOWNLOAD_CV: "Download CV",
+
+  // Recruiting - Employment types
+  EMPLOYMENT_TYPE_FULL_TIME: "Full-time",
+  EMPLOYMENT_TYPE_PART_TIME: "Part-time",
+  EMPLOYMENT_TYPE_CONTRACT: "Contract",
+  EMPLOYMENT_TYPE_FREELANCE: "Freelance",
+
+  // Recruiting - Industries
+  INDUSTRY_TECHNOLOGY: "Technology",
+  INDUSTRY_FINANCE: "Finance",
+  INDUSTRY_HEALTHCARE: "Healthcare",
+  INDUSTRY_MARKETING: "Marketing",
+  INDUSTRY_SALES: "Sales",
+  INDUSTRY_ENGINEERING: "Engineering",
+  INDUSTRY_DESIGN: "Design",
+  INDUSTRY_OPERATIONS: "Operations",
+
+  // Recruiting - Locations
+  LOCATION_REMOTE: "Remote",
+  LOCATION_BERLIN: "Berlin",
+  LOCATION_MUNICH: "Munich",
+  LOCATION_HAMBURG: "Hamburg",
+  LOCATION_FRANKFURT: "Frankfurt",
+  LOCATION_HYBRID: "Hybrid",
 };
