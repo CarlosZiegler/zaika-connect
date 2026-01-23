@@ -45,6 +45,20 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Ocean palette (teal/blue-green) */
+  --color-ocean-1: #006466;
+  --color-ocean-2: #065a60;
+  --color-ocean-3: #0b525b;
+  --color-ocean-4: #144552;
+  --color-ocean-5: #1b3a4b;
+
+  /* Depth palette (purple/violet) */
+  --color-depth-1: #212f45;
+  --color-depth-2: #272640;
+  --color-depth-3: #312244;
+  --color-depth-4: #3e1f47;
+  --color-depth-5: #4d194d;
 }
 
 :root {
@@ -165,6 +179,18 @@
       justify-content: center;
       width: 100%;
     }
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-panel {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
