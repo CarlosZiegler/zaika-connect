@@ -321,6 +321,9 @@ export default {
   CHAT_EMPTY_DESC: "Faça uma pergunta ao assistente de IA.",
   CHAT_EMPTY_TITLE: "Iniciar conversa",
   CHAT_PLACEHOLDER: "Digite uma mensagem...",
+  SIDEBAR_ADMIN: "Admin",
+  SIDEBAR_ADMIN_APPLICATIONS: "Candidaturas",
+  SIDEBAR_ADMIN_JOBS: "Vagas",
   SIDEBAR_CHAT: "Chat IA",
   SIDEBAR_OVERVIEW: "Visão Geral",
   SIDEBAR_ORGANIZATION: "Organization",
@@ -393,4 +396,167 @@ export default {
   SETTINGS_DELETE_ACCOUNT_SUCCESS: "Conta excluída com sucesso",
   SETTINGS_DELETE_ACCOUNT_FAILED: "Falha ao excluir conta",
   SETTINGS_DELETE_ACCOUNT_DELETING: "Excluindo conta...",
+
+  // Recruiting - Landing page
+  LANDING_NAV_JOBS: "Vagas",
+  LANDING_NAV_CV_REVIEW: "Avaliacao de CV",
+  LANDING_NAV_FIND_JOB: "Encontrar Vaga",
+  LANDING_HERO_BADGE: "Recrutamento com IA",
+  LANDING_HERO_TITLE: "Encontre Sua Proxima Oportunidade",
+  LANDING_HERO_SUBTITLE:
+    "Conecte-se com as melhores empresas e descubra vagas que combinam com suas habilidades. Receba feedback instantaneo de IA sobre seu curriculo.",
+  LANDING_CTA_BROWSE_JOBS: "Ver Vagas",
+  LANDING_CTA_CV_REVIEW: "Avaliacao de CV Gratis",
+  LANDING_CANDIDATES_TITLE: "Para Candidatos",
+  LANDING_CANDIDATES_SUBTITLE:
+    "Tudo que voce precisa para conquistar seu emprego dos sonhos",
+  LANDING_CANDIDATE_FEATURE_1_TITLE: "Busca Inteligente de Vagas",
+  LANDING_CANDIDATE_FEATURE_1_DESC:
+    "Filtre vagas por localizacao, setor e tipo. Encontre exatamente o que voce procura.",
+  LANDING_CANDIDATE_FEATURE_2_TITLE: "Avaliacao de CV com IA",
+  LANDING_CANDIDATE_FEATURE_2_DESC:
+    "Receba feedback instantaneo sobre seu curriculo com nossa ferramenta gratuita de analise com IA.",
+  LANDING_CANDIDATE_FEATURE_3_TITLE: "Candidaturas Faceis",
+  LANDING_CANDIDATE_FEATURE_3_DESC:
+    "Candidate-se em minutos. Sem necessidade de conta. Basta enviar seu curriculo.",
+  LANDING_FEATURED_JOBS_TITLE: "Vagas em Destaque",
+  LANDING_FEATURED_JOBS_SUBTITLE: "Explore nossas ultimas oportunidades",
+  LANDING_VIEW_ALL_JOBS: "Ver Todas as Vagas",
+  LANDING_CV_REVIEW_TITLE: "Avaliacao de CV Gratis com IA",
+  LANDING_CV_REVIEW_DESC:
+    "Envie seu curriculo e receba feedback instantaneo e acionavel com IA.",
+  LANDING_CV_REVIEW_CTA: "Experimente Agora",
+  LANDING_COMPANIES_TITLE: "Para Empregadores",
+  LANDING_COMPANIES_SUBTITLE: "Encontre os melhores talentos para sua equipe",
+  LANDING_COMPANY_FEATURE_1_TITLE: "Candidatos Qualificados",
+  LANDING_COMPANY_FEATURE_1_DESC:
+    "Acesse candidatos pre-selecionados que correspondem aos seus requisitos.",
+  LANDING_COMPANY_FEATURE_2_TITLE: "Triagem com IA",
+  LANDING_COMPANY_FEATURE_2_DESC:
+    "Nossa IA analisa cada candidatura, pontuando candidatos de acordo com os requisitos da vaga.",
+  LANDING_COMPANY_FEATURE_3_TITLE: "Processo Simplificado",
+  LANDING_COMPANY_FEATURE_3_DESC:
+    "Gerencie candidaturas, acompanhe candidatos e contrate mais rapido.",
+  LANDING_CONTACT_US: "Fale Conosco",
+  LANDING_HOW_IT_WORKS_TITLE: "Como Funciona",
+  LANDING_STEP_1_TITLE: "Navegue pelas Vagas",
+  LANDING_STEP_1_DESC: "Explore vagas abertas filtradas por suas preferencias.",
+  LANDING_STEP_2_TITLE: "Candidate-se Online",
+  LANDING_STEP_2_DESC:
+    "Envie sua candidatura com um unico clique. Sem necessidade de conta.",
+  LANDING_STEP_3_TITLE: "Seja Contratado",
+  LANDING_STEP_3_DESC:
+    "Nossa equipe analisa sua candidatura e conecta voce com a oportunidade certa.",
+
+  // Recruiting - Jobs
+  JOBS_TITLE: "Vagas Abertas",
+  JOBS_SUBTITLE: "Encontre sua proxima oportunidade",
+  JOBS_EMPTY: "Nenhuma vaga encontrada com seus criterios.",
+  JOBS_LOADING: "Carregando vagas...",
+  JOBS_FILTER_LOCATION: "Localizacao",
+  JOBS_FILTER_TYPE: "Tipo de Emprego",
+  JOBS_FILTER_INDUSTRY: "Setor",
+  JOBS_FILTER_CLEAR: "Limpar filtros",
+  JOBS_FILTER_ALL: "Todos",
+  JOBS_CARD_LOCATION: "Localizacao",
+  JOBS_CARD_TYPE: "Tipo",
+  JOBS_CARD_SALARY: "Salario",
+  JOBS_VIEW_DETAILS: "Ver Detalhes",
+  JOBS_APPLY_NOW: "Candidatar-se Agora",
+  JOBS_POSTED: "Publicado",
+
+  // Recruiting - Job Detail
+  JOB_DETAIL_REQUIREMENTS: "Requisitos",
+  JOB_DETAIL_BENEFITS: "Beneficios",
+  JOB_DETAIL_ABOUT: "Sobre esta vaga",
+  JOB_DETAIL_BACK: "Voltar para vagas",
+  JOB_CHATBOT_TITLE: "Duvidas sobre esta vaga?",
+  JOB_CHATBOT_PLACEHOLDER: "Pergunte qualquer coisa sobre esta posicao...",
+  JOB_CHATBOT_WELCOME:
+    "Ola! Posso responder perguntas sobre esta posicao. O que gostaria de saber?",
+
+  // Recruiting - Application
+  APPLICATION_TITLE: "Candidatar-se para esta posicao",
+  APPLICATION_SUBTITLE:
+    "Preencha o formulario abaixo para enviar sua candidatura",
+  APPLICATION_NAME: "Nome Completo",
+  APPLICATION_NAME_PLACEHOLDER: "Joao Silva",
+  APPLICATION_EMAIL: "Endereco de Email",
+  APPLICATION_EMAIL_PLACEHOLDER: "joao@exemplo.com",
+  APPLICATION_PHONE: "Numero de Telefone",
+  APPLICATION_PHONE_PLACEHOLDER: "+55 11 99999-9999",
+  APPLICATION_MESSAGE: "Carta de Apresentacao (Opcional)",
+  APPLICATION_MESSAGE_PLACEHOLDER:
+    "Conte-nos por que voce esta interessado nesta vaga...",
+  APPLICATION_CV_UPLOAD: "Envie seu curriculo",
+  APPLICATION_CV_FORMATS: "PDF ou DOCX, max 10MB",
+  APPLICATION_CV_REQUIRED: "Por favor, envie seu curriculo",
+  APPLICATION_SUBMIT: "Enviar Candidatura",
+  APPLICATION_SUBMITTING: "Enviando...",
+  APPLICATION_SUCCESS_TITLE: "Candidatura Enviada!",
+  APPLICATION_SUCCESS_DESC:
+    "Obrigado por se candidatar. Analisaremos sua candidatura e entraremos em contato em breve.",
+  APPLICATION_BACK_TO_JOBS: "Voltar para Vagas",
+
+  // Recruiting - CV Review
+  CV_REVIEW_TITLE: "Avaliacao de CV Gratis",
+  CV_REVIEW_DESC: "Receba feedback instantaneo com IA sobre seu curriculo",
+  CV_REVIEW_UPLOAD: "Envie seu curriculo para analise",
+  CV_REVIEW_ANALYZING: "Analisando seu curriculo...",
+  CV_REVIEW_RESULTS: "Sua Analise de CV",
+  CV_REVIEW_SCORE: "Pontuacao Geral",
+  CV_REVIEW_STRENGTHS: "Pontos Fortes",
+  CV_REVIEW_IMPROVEMENTS: "Areas para Melhoria",
+  CV_REVIEW_MISSING: "Elementos Faltantes",
+  CV_REVIEW_TRY_ANOTHER: "Analisar outro curriculo",
+
+  // Recruiting - Admin Jobs
+  ADMIN_JOBS_TITLE: "Gerenciar Vagas",
+  ADMIN_JOBS_CREATE: "Criar Vaga",
+  ADMIN_JOBS_EDIT: "Editar Vaga",
+  ADMIN_JOBS_ACTIVATE: "Ativar",
+  ADMIN_JOBS_DEACTIVATE: "Desativar",
+  ADMIN_JOBS_DELETE: "Excluir",
+  ADMIN_JOBS_DELETE_CONFIRM: "Tem certeza de que deseja excluir esta vaga?",
+  ADMIN_JOBS_EMPTY: "Nenhuma vaga ainda. Crie seu primeiro anuncio de emprego.",
+
+  // Recruiting - Admin Applications
+  ADMIN_APPLICATIONS_TITLE: "Candidaturas",
+  ADMIN_APPLICATIONS_EMPTY: "Nenhuma candidatura ainda.",
+  ADMIN_APPLICATION_SCORE: "Pontuacao IA",
+  ADMIN_APPLICATION_STATUS: "Status",
+  ADMIN_APPLICATION_STATUS_NEW: "Nova",
+  ADMIN_APPLICATION_STATUS_REVIEWED: "Analisada",
+  ADMIN_APPLICATION_STATUS_SHORTLISTED: "Pre-selecionada",
+  ADMIN_APPLICATION_STATUS_REJECTED: "Rejeitada",
+  ADMIN_APPLICATION_ANALYSIS: "Analise IA",
+  ADMIN_APPLICATION_SKILLS: "Habilidades Correspondentes",
+  ADMIN_APPLICATION_GAPS: "Habilidades Faltantes",
+  ADMIN_APPLICATION_RED_FLAGS: "Alertas",
+  ADMIN_APPLICATION_QUESTIONS: "Perguntas Sugeridas para Entrevista",
+  ADMIN_APPLICATION_DOWNLOAD_CV: "Baixar CV",
+
+  // Recruiting - Employment types
+  EMPLOYMENT_TYPE_FULL_TIME: "Tempo integral",
+  EMPLOYMENT_TYPE_PART_TIME: "Meio periodo",
+  EMPLOYMENT_TYPE_CONTRACT: "Contrato",
+  EMPLOYMENT_TYPE_FREELANCE: "Freelancer",
+
+  // Recruiting - Industries
+  INDUSTRY_TECHNOLOGY: "Tecnologia",
+  INDUSTRY_FINANCE: "Financas",
+  INDUSTRY_HEALTHCARE: "Saude",
+  INDUSTRY_MARKETING: "Marketing",
+  INDUSTRY_SALES: "Vendas",
+  INDUSTRY_ENGINEERING: "Engenharia",
+  INDUSTRY_DESIGN: "Design",
+  INDUSTRY_OPERATIONS: "Operacoes",
+
+  // Recruiting - Locations
+  LOCATION_REMOTE: "Remoto",
+  LOCATION_BERLIN: "Berlim",
+  LOCATION_MUNICH: "Munique",
+  LOCATION_HAMBURG: "Hamburgo",
+  LOCATION_FRANKFURT: "Frankfurt",
+  LOCATION_HYBRID: "Hibrido",
 };

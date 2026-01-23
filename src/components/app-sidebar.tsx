@@ -2,8 +2,15 @@
 
 import type * as React from "react";
 
+import { useQuery } from "@tanstack/react-query";
 import { ClientOnly } from "@tanstack/react-router";
-import { Beaker, Building2, Home, MessageCircle, Settings } from "lucide-react";
+import {
+  Beaker,
+  Building2,
+  Home,
+  Settings,
+  ShieldCheck,
+} from "lucide-react";
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -23,9 +30,16 @@ import {
   OrganizationSelectSkeleton,
 } from "@/features/organizations/organizations.select";
 import { isOrganizationsEnabled } from "@/lib/flags";
+import { orpc } from "@/orpc/orpc-client";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { t } = useTranslation();
+
+  const { data: adminCheck } = useQuery({
+    ...orpc.admin.check.isAdmin.queryOptions(),
+  });
+
+  const isAdmin = adminCheck?.isAdmin ?? false;
 
   const navItems = [
     {
@@ -61,6 +75,22 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         },
       ],
     },
+    isAdmin
+      ? {
+          title: t("SIDEBAR_ADMIN"),
+          icon: ShieldCheck,
+          children: [
+            {
+              title: t("SIDEBAR_ADMIN_JOBS"),
+              url: "/admin/jobs",
+            },
+            {
+              title: t("SIDEBAR_ADMIN_APPLICATIONS"),
+              url: "/admin/applications",
+            },
+          ],
+        }
+      : null,
     {
       title: t("SETTINGS"),
       icon: Settings,
@@ -84,7 +114,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         },
       ],
     },
-  ].filter((item) => {
+  ].filter((item): item is NonNullable<typeof item> => {
+    if (item === null) return false;
     if (!isOrganizationsEnabled) {
       return item.url !== "/organizations";
     }

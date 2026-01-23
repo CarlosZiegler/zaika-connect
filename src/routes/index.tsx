@@ -285,12 +285,12 @@ function LandingPage() {
                   </p>
                 </CardContent>
                 <div className="flex justify-end gap-2 p-6 pt-0">
-                  <Link to={`/jobs/${job.slug}`}>
+                  <Link params={{ slug: job.slug }} to="/jobs/$slug">
                     <Button type="button" variant="outline">
                       {t("JOBS_VIEW_DETAILS")}
                     </Button>
                   </Link>
-                  <Link to={`/apply/${job.slug}`}>
+                  <Link params={{ jobSlug: job.slug }} to="/apply/$jobSlug">
                     <Button type="button">{t("JOBS_APPLY_NOW")}</Button>
                   </Link>
                 </div>

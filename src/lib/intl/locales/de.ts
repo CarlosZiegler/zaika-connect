@@ -327,6 +327,9 @@ export default {
   CHAT_EMPTY_DESC: "Stellen Sie eine Frage an den KI-Assistenten.",
   CHAT_EMPTY_TITLE: "Gespräch starten",
   CHAT_PLACEHOLDER: "Nachricht eingeben...",
+  SIDEBAR_ADMIN: "Admin",
+  SIDEBAR_ADMIN_APPLICATIONS: "Bewerbungen",
+  SIDEBAR_ADMIN_JOBS: "Stellenanzeigen",
   SIDEBAR_CHAT: "KI-Chat",
   SIDEBAR_OVERVIEW: "Übersicht",
   SIDEBAR_ORGANIZATION: "Organization",
@@ -400,4 +403,170 @@ export default {
   SETTINGS_DELETE_ACCOUNT_SUCCESS: "Konto erfolgreich gelöscht",
   SETTINGS_DELETE_ACCOUNT_FAILED: "Fehler beim Löschen des Kontos",
   SETTINGS_DELETE_ACCOUNT_DELETING: "Konto wird gelöscht...",
+
+  // Recruiting - Landing page
+  LANDING_NAV_JOBS: "Stellen",
+  LANDING_NAV_CV_REVIEW: "Lebenslauf-Check",
+  LANDING_NAV_FIND_JOB: "Job finden",
+  LANDING_HERO_BADGE: "KI-gestütztes Recruiting",
+  LANDING_HERO_TITLE: "Finden Sie Ihre nächste Chance",
+  LANDING_HERO_SUBTITLE:
+    "Verbinden Sie sich mit Top-Unternehmen und entdecken Sie Jobs, die zu Ihren Fähigkeiten passen. Erhalten Sie sofortiges KI-Feedback zu Ihrem Lebenslauf.",
+  LANDING_CTA_BROWSE_JOBS: "Stellen durchsuchen",
+  LANDING_CTA_CV_REVIEW: "Kostenloser Lebenslauf-Check",
+  LANDING_CANDIDATES_TITLE: "Für Jobsuchende",
+  LANDING_CANDIDATES_SUBTITLE: "Alles, was Sie für Ihren Traumjob brauchen",
+  LANDING_CANDIDATE_FEATURE_1_TITLE: "Intelligente Jobsuche",
+  LANDING_CANDIDATE_FEATURE_1_DESC:
+    "Filtern Sie Jobs nach Standort, Branche und Art. Finden Sie genau das, wonach Sie suchen.",
+  LANDING_CANDIDATE_FEATURE_2_TITLE: "KI-Lebenslauf-Check",
+  LANDING_CANDIDATE_FEATURE_2_DESC:
+    "Erhalten Sie sofortiges Feedback zu Ihrem Lebenslauf mit unserem kostenlosen KI-Analysetool.",
+  LANDING_CANDIDATE_FEATURE_3_TITLE: "Einfache Bewerbungen",
+  LANDING_CANDIDATE_FEATURE_3_DESC:
+    "Bewerben Sie sich in wenigen Minuten. Kein Konto erforderlich. Laden Sie einfach Ihren Lebenslauf hoch.",
+  LANDING_FEATURED_JOBS_TITLE: "Ausgewählte Stellen",
+  LANDING_FEATURED_JOBS_SUBTITLE: "Entdecken Sie unsere neuesten Möglichkeiten",
+  LANDING_VIEW_ALL_JOBS: "Alle Stellen anzeigen",
+  LANDING_CV_REVIEW_TITLE: "Kostenloser KI-Lebenslauf-Check",
+  LANDING_CV_REVIEW_DESC:
+    "Laden Sie Ihren Lebenslauf hoch und erhalten Sie sofort umsetzbares Feedback durch KI.",
+  LANDING_CV_REVIEW_CTA: "Jetzt ausprobieren",
+  LANDING_COMPANIES_TITLE: "Für Arbeitgeber",
+  LANDING_COMPANIES_SUBTITLE: "Finden Sie die besten Talente für Ihr Team",
+  LANDING_COMPANY_FEATURE_1_TITLE: "Qualifizierte Kandidaten",
+  LANDING_COMPANY_FEATURE_1_DESC:
+    "Zugang zu vorgeprüften Kandidaten, die Ihren Anforderungen entsprechen.",
+  LANDING_COMPANY_FEATURE_2_TITLE: "KI-Screening",
+  LANDING_COMPANY_FEATURE_2_DESC:
+    "Unsere KI analysiert jede Bewerbung und bewertet Kandidaten anhand Ihrer Stellenanforderungen.",
+  LANDING_COMPANY_FEATURE_3_TITLE: "Optimierter Prozess",
+  LANDING_COMPANY_FEATURE_3_DESC:
+    "Verwalten Sie Bewerbungen, verfolgen Sie Kandidaten und stellen Sie schneller ein.",
+  LANDING_CONTACT_US: "Kontaktieren Sie uns",
+  LANDING_HOW_IT_WORKS_TITLE: "So funktioniert es",
+  LANDING_STEP_1_TITLE: "Stellen durchsuchen",
+  LANDING_STEP_1_DESC:
+    "Erkunden Sie offene Stellen, gefiltert nach Ihren Präferenzen.",
+  LANDING_STEP_2_TITLE: "Online bewerben",
+  LANDING_STEP_2_DESC:
+    "Reichen Sie Ihre Bewerbung mit einem Klick ein. Kein Konto erforderlich.",
+  LANDING_STEP_3_TITLE: "Eingestellt werden",
+  LANDING_STEP_3_DESC:
+    "Unser Team prüft Ihre Bewerbung und verbindet Sie mit der richtigen Möglichkeit.",
+
+  // Recruiting - Jobs
+  JOBS_TITLE: "Offene Stellen",
+  JOBS_SUBTITLE: "Finden Sie Ihre nächste Chance",
+  JOBS_EMPTY: "Keine Stellen gefunden, die Ihren Kriterien entsprechen.",
+  JOBS_LOADING: "Stellen werden geladen...",
+  JOBS_FILTER_LOCATION: "Standort",
+  JOBS_FILTER_TYPE: "Beschäftigungsart",
+  JOBS_FILTER_INDUSTRY: "Branche",
+  JOBS_FILTER_CLEAR: "Filter löschen",
+  JOBS_FILTER_ALL: "Alle",
+  JOBS_CARD_LOCATION: "Standort",
+  JOBS_CARD_TYPE: "Art",
+  JOBS_CARD_SALARY: "Gehalt",
+  JOBS_VIEW_DETAILS: "Details anzeigen",
+  JOBS_APPLY_NOW: "Jetzt bewerben",
+  JOBS_POSTED: "Veröffentlicht",
+
+  // Recruiting - Job Detail
+  JOB_DETAIL_REQUIREMENTS: "Anforderungen",
+  JOB_DETAIL_BENEFITS: "Vorteile",
+  JOB_DETAIL_ABOUT: "Über diese Stelle",
+  JOB_DETAIL_BACK: "Zurück zu Stellen",
+  JOB_CHATBOT_TITLE: "Fragen zu dieser Stelle?",
+  JOB_CHATBOT_PLACEHOLDER: "Fragen Sie alles über diese Position...",
+  JOB_CHATBOT_WELCOME:
+    "Hallo! Ich kann Fragen zu dieser Position beantworten. Was möchten Sie wissen?",
+
+  // Recruiting - Application
+  APPLICATION_TITLE: "Für diese Position bewerben",
+  APPLICATION_SUBTITLE:
+    "Füllen Sie das folgende Formular aus, um Ihre Bewerbung einzureichen",
+  APPLICATION_NAME: "Vollständiger Name",
+  APPLICATION_NAME_PLACEHOLDER: "Max Mustermann",
+  APPLICATION_EMAIL: "E-Mail-Adresse",
+  APPLICATION_EMAIL_PLACEHOLDER: "max@beispiel.de",
+  APPLICATION_PHONE: "Telefonnummer",
+  APPLICATION_PHONE_PLACEHOLDER: "+49 123 456 789",
+  APPLICATION_MESSAGE: "Anschreiben (Optional)",
+  APPLICATION_MESSAGE_PLACEHOLDER:
+    "Erzählen Sie uns, warum Sie an dieser Stelle interessiert sind...",
+  APPLICATION_CV_UPLOAD: "Laden Sie Ihren Lebenslauf hoch",
+  APPLICATION_CV_FORMATS: "PDF oder DOCX, max. 10MB",
+  APPLICATION_CV_REQUIRED: "Bitte laden Sie Ihren Lebenslauf hoch",
+  APPLICATION_SUBMIT: "Bewerbung einreichen",
+  APPLICATION_SUBMITTING: "Wird eingereicht...",
+  APPLICATION_SUCCESS_TITLE: "Bewerbung eingereicht!",
+  APPLICATION_SUCCESS_DESC:
+    "Vielen Dank für Ihre Bewerbung. Wir werden sie prüfen und uns bald bei Ihnen melden.",
+  APPLICATION_BACK_TO_JOBS: "Zurück zu Stellen",
+
+  // Recruiting - CV Review
+  CV_REVIEW_TITLE: "Kostenloser Lebenslauf-Check",
+  CV_REVIEW_DESC:
+    "Erhalten Sie sofortiges KI-gestütztes Feedback zu Ihrem Lebenslauf",
+  CV_REVIEW_UPLOAD: "Laden Sie Ihren Lebenslauf zur Analyse hoch",
+  CV_REVIEW_ANALYZING: "Ihr Lebenslauf wird analysiert...",
+  CV_REVIEW_RESULTS: "Ihre Lebenslauf-Analyse",
+  CV_REVIEW_SCORE: "Gesamtbewertung",
+  CV_REVIEW_STRENGTHS: "Stärken",
+  CV_REVIEW_IMPROVEMENTS: "Verbesserungspotenzial",
+  CV_REVIEW_MISSING: "Fehlende Elemente",
+  CV_REVIEW_TRY_ANOTHER: "Weiteren Lebenslauf analysieren",
+
+  // Recruiting - Admin Jobs
+  ADMIN_JOBS_TITLE: "Stellen verwalten",
+  ADMIN_JOBS_CREATE: "Stelle erstellen",
+  ADMIN_JOBS_EDIT: "Stelle bearbeiten",
+  ADMIN_JOBS_ACTIVATE: "Aktivieren",
+  ADMIN_JOBS_DEACTIVATE: "Deaktivieren",
+  ADMIN_JOBS_DELETE: "Löschen",
+  ADMIN_JOBS_DELETE_CONFIRM:
+    "Sind Sie sicher, dass Sie diese Stelle löschen möchten?",
+  ADMIN_JOBS_EMPTY:
+    "Noch keine Stellen. Erstellen Sie Ihre erste Stellenanzeige.",
+
+  // Recruiting - Admin Applications
+  ADMIN_APPLICATIONS_TITLE: "Bewerbungen",
+  ADMIN_APPLICATIONS_EMPTY: "Noch keine Bewerbungen.",
+  ADMIN_APPLICATION_SCORE: "KI-Bewertung",
+  ADMIN_APPLICATION_STATUS: "Status",
+  ADMIN_APPLICATION_STATUS_NEW: "Neu",
+  ADMIN_APPLICATION_STATUS_REVIEWED: "Geprüft",
+  ADMIN_APPLICATION_STATUS_SHORTLISTED: "Vorauswahl",
+  ADMIN_APPLICATION_STATUS_REJECTED: "Abgelehnt",
+  ADMIN_APPLICATION_ANALYSIS: "KI-Analyse",
+  ADMIN_APPLICATION_SKILLS: "Übereinstimmende Fähigkeiten",
+  ADMIN_APPLICATION_GAPS: "Fehlende Fähigkeiten",
+  ADMIN_APPLICATION_RED_FLAGS: "Warnhinweise",
+  ADMIN_APPLICATION_QUESTIONS: "Vorgeschlagene Interviewfragen",
+  ADMIN_APPLICATION_DOWNLOAD_CV: "Lebenslauf herunterladen",
+
+  // Recruiting - Employment types
+  EMPLOYMENT_TYPE_FULL_TIME: "Vollzeit",
+  EMPLOYMENT_TYPE_PART_TIME: "Teilzeit",
+  EMPLOYMENT_TYPE_CONTRACT: "Befristet",
+  EMPLOYMENT_TYPE_FREELANCE: "Freiberuflich",
+
+  // Recruiting - Industries
+  INDUSTRY_TECHNOLOGY: "Technologie",
+  INDUSTRY_FINANCE: "Finanzen",
+  INDUSTRY_HEALTHCARE: "Gesundheitswesen",
+  INDUSTRY_MARKETING: "Marketing",
+  INDUSTRY_SALES: "Vertrieb",
+  INDUSTRY_ENGINEERING: "Ingenieurwesen",
+  INDUSTRY_DESIGN: "Design",
+  INDUSTRY_OPERATIONS: "Betrieb",
+
+  // Recruiting - Locations
+  LOCATION_REMOTE: "Remote",
+  LOCATION_BERLIN: "Berlin",
+  LOCATION_MUNICH: "München",
+  LOCATION_HAMBURG: "Hamburg",
+  LOCATION_FRANKFURT: "Frankfurt",
+  LOCATION_HYBRID: "Hybrid",
 };
