@@ -1,24 +1,16 @@
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
-  BarChart3,
-  CheckCircle2,
-  HardDrive,
-  Layers,
-  LineChart,
-  Mail,
-  MessageCircle,
-  Sparkles,
+  BriefcaseIcon,
+  FileTextIcon,
+  MapPinIcon,
+  SearchIcon,
+  SparklesIcon,
+  UploadIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,27 +21,24 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Logo } from "@/components/ui/logo";
-import { FeatureSpotlight } from "@/features/landing/landing-feature-spotlight";
+import { Spinner } from "@/components/ui/spinner";
 import { Section } from "@/features/landing/landing-section";
-import { LandingSpotlightCodeTabs } from "@/features/landing/landing-spotlight-code-tabs";
-import { TechStackMarquee } from "@/features/landing/tech-stack-marquee";
-import { TECH_STACK } from "@/features/landing/tech-stack.data";
+import { orpc } from "@/orpc/orpc-client";
 import { DEFAULT_SITE_NAME, SITE_URL, seo } from "@/utils/seo";
 
 export const Route = createFileRoute("/")({
   head: () => {
-    const title = `${DEFAULT_SITE_NAME} - The Ultimate Boilerplate`;
+    const title = `${DEFAULT_SITE_NAME} - Find Your Next Opportunity`;
     const description =
-      "An open-source, production-ready template featuring Authentication, Payments, Database, i18n, and more. Built with Start Kit, React 19, and Tailwind v4.";
+      "Connect with top companies and discover jobs that match your skills. Get instant AI feedback on your CV.";
 
     const { meta, links } = seo({
       title,
       description,
       keywords:
-        "Start Kit, TanStack Start, React, SaaS starter, Better Auth, Drizzle ORM, oRPC, Tailwind, Resend, TanStack AI, AI Elements",
+        "jobs, careers, recruiting, job search, CV review, AI matching, employment",
       url: "/",
       canonicalUrl: "/",
-      image: "/images/landing/hero-bg.png",
     });
 
     const jsonLd = [
@@ -67,7 +56,7 @@ export const Route = createFileRoute("/")({
         url: SITE_URL,
         potentialAction: {
           "@type": "SearchAction",
-          target: `${SITE_URL}/?q={search_term_string}`,
+          target: `${SITE_URL}/jobs?q={search_term_string}`,
           "query-input": "required name=search_term_string",
         },
       },
@@ -87,49 +76,54 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
+type LocationKey =
+  | "LOCATION_REMOTE"
+  | "LOCATION_BERLIN"
+  | "LOCATION_MUNICH"
+  | "LOCATION_HAMBURG"
+  | "LOCATION_FRANKFURT"
+  | "LOCATION_HYBRID";
+
+type EmploymentTypeKey =
+  | "EMPLOYMENT_TYPE_FULL_TIME"
+  | "EMPLOYMENT_TYPE_PART_TIME"
+  | "EMPLOYMENT_TYPE_CONTRACT"
+  | "EMPLOYMENT_TYPE_FREELANCE";
+
+function getLocationKey(location: string): LocationKey {
+  return `LOCATION_${location.toUpperCase()}` as LocationKey;
+}
+
+function getEmploymentTypeKey(type: string): EmploymentTypeKey {
+  return `EMPLOYMENT_TYPE_${type.toUpperCase().replace("-", "_")}` as EmploymentTypeKey;
+}
+
 function LandingPage() {
   const { t } = useTranslation();
 
+  const { data: jobsData, isLoading: jobsLoading } = useQuery({
+    ...orpc.jobs.list.queryOptions({
+      input: {},
+    }),
+  });
+
+  const featuredJobs = jobsData?.jobs.slice(0, 4) ?? [];
+
   const features = [
     {
-      title: t("TEMPLATE_FEATURE_AUTH_TITLE"),
-      description: t("TEMPLATE_FEATURE_AUTH_DESC"),
-      icon: Layers,
+      title: t("LANDING_CANDIDATE_FEATURE_1_TITLE"),
+      description: t("LANDING_CANDIDATE_FEATURE_1_DESC"),
+      icon: SearchIcon,
     },
     {
-      title: t("TEMPLATE_FEATURE_AI_TITLE"),
-      description: t("TEMPLATE_FEATURE_AI_DESC"),
-      icon: Sparkles,
+      title: t("LANDING_CANDIDATE_FEATURE_2_TITLE"),
+      description: t("LANDING_CANDIDATE_FEATURE_2_DESC"),
+      icon: SparklesIcon,
     },
     {
-      title: t("TEMPLATE_FEATURE_DB_TITLE"),
-      description: t("TEMPLATE_FEATURE_DB_DESC"),
-      icon: BarChart3,
-    },
-    {
-      title: t("TEMPLATE_FEATURE_EMAILS_TITLE"),
-      description: t("TEMPLATE_FEATURE_EMAILS_DESC"),
-      icon: Mail,
-    },
-    {
-      title: t("TEMPLATE_FEATURE_PAYMENTS_TITLE"),
-      description: t("TEMPLATE_FEATURE_PAYMENTS_DESC"),
-      icon: LineChart,
-    },
-    {
-      title: t("TEMPLATE_FEATURE_STORAGE_TITLE"),
-      description: t("TEMPLATE_FEATURE_STORAGE_DESC"),
-      icon: HardDrive,
-    },
-    {
-      title: t("TEMPLATE_FEATURE_TESTING_TITLE"),
-      description: t("TEMPLATE_FEATURE_TESTING_DESC"),
-      icon: CheckCircle2,
-    },
-    {
-      title: t("TEMPLATE_FEATURE_I18N_TITLE"),
-      description: t("TEMPLATE_FEATURE_I18N_DESC"),
-      icon: MessageCircle,
+      title: t("LANDING_CANDIDATE_FEATURE_3_TITLE"),
+      description: t("LANDING_CANDIDATE_FEATURE_3_DESC"),
+      icon: UploadIcon,
     },
   ];
 
@@ -142,18 +136,27 @@ function LandingPage() {
             <Link className="flex items-center space-x-2" to="/">
               <Logo className="h-10 w-10 shadow-lg shadow-primary/20" />
               <span className="hidden font-bold text-2xl tracking-tight sm:inline">
-                Start Kit
+                {DEFAULT_SITE_NAME}
               </span>
             </Link>
 
             <div className="flex items-center gap-4">
-              <Button className="hidden sm:inline-flex" variant="ghost">
-                <Link to="/sign-in">{t("SIGN_IN")}</Link>
-              </Button>
+              <Link
+                className="hidden text-muted-foreground hover:text-foreground sm:inline-flex"
+                to="/jobs"
+              >
+                {t("LANDING_NAV_JOBS")}
+              </Link>
+              <Link
+                className="hidden text-muted-foreground hover:text-foreground sm:inline-flex"
+                to="/cv-review"
+              >
+                {t("LANDING_NAV_CV_REVIEW")}
+              </Link>
               <Button className="rounded-full bg-primary px-6 shadow-lg shadow-primary/20 hover:bg-primary/90">
-                <Link className="flex items-center gap-2" to="/sign-up">
-                  {t("GET_STARTED")}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Link className="flex items-center gap-2" to="/jobs">
+                  {t("LANDING_NAV_FIND_JOB")}
+                  <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -164,14 +167,7 @@ function LandingPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32">
         <div className="absolute inset-0 z-0">
-          <img
-            alt="Hero Background"
-            className="h-full w-full object-cover opacity-100 mix-blend-soft-light"
-            height={1080}
-            src="/images/landing/hero-bg.png"
-            width={1920}
-          />
-          <div className="absolute inset-0 bg-linear-to-b from-background via-background/80 to-background" />
+          <div className="absolute inset-0 bg-linear-to-b from-primary/5 via-background to-background" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 text-center">
@@ -179,18 +175,18 @@ function LandingPage() {
             className="mb-8 border-primary/80 bg-primary p-4 font-medium text-primary-foreground text-sm hover:bg-primary/20"
             variant="outline"
           >
-            {t("TEMPLATE_HERO_BADGE")}
+            {t("LANDING_HERO_BADGE")}
           </Badge>
           <h1 className="mb-8 text-balance font-black text-5xl tracking-tighter md:text-7xl lg:text-8xl">
-            {t("TEMPLATE_HERO_TITLE")}
+            {t("LANDING_HERO_TITLE")}
           </h1>
           <p className="mx-auto mb-10 max-w-3xl text-balance font-light text-muted-foreground text-xl md:text-2xl">
-            {t("TEMPLATE_HERO_DESC")}
+            {t("LANDING_HERO_SUBTITLE")}
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button className="h-14 rounded-full bg-primary px-10 font-semibold text-lg shadow-primary/25 shadow-xl transition-all duration-300 hover:shadow-primary/40">
-              <Link className="flex items-center gap-2" to="/sign-up">
-                {t("TEMPLATE_CTA_PRIMARY")}
+              <Link className="flex items-center gap-2" to="/jobs">
+                {t("LANDING_CTA_BROWSE_JOBS")}
                 <ArrowRight className="ml-2 h-6 w-6" />
               </Link>
             </Button>
@@ -198,379 +194,149 @@ function LandingPage() {
               className="h-14 rounded-full border-border/60 px-10 font-medium text-lg transition-all hover:bg-accent/50"
               variant="outline"
             >
-              <a
-                href="https://github.com/CarlosZiegler/start-template"
-                rel="noreferrer"
-                target="_blank"
-              >
-                {t("TEMPLATE_CTA_SECONDARY")}
-              </a>
+              <Link className="flex items-center gap-2" to="/cv-review">
+                <FileTextIcon className="mr-2 h-5 w-5" />
+                {t("LANDING_CTA_CV_REVIEW")}
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Tech Stack Marquee-like section */}
-      <Section className="py-12 md:py-16" variant="subtle">
-        <div className="mb-12 text-center">
-          <h2 className="mb-2 font-bold text-primary text-sm uppercase tracking-widest">
-            {t("TEMPLATE_TECH_STACK_TITLE")}
-          </h2>
-          <p className="text-muted-foreground">
-            {t("TEMPLATE_TECH_STACK_SUBTITLE")}
-          </p>
-        </div>
-        <TechStackMarquee className="opacity-90" items={TECH_STACK} />
-      </Section>
-
-      {/* Feature Spotlights */}
-      <Section>
-        <div className="space-y-32">
-          <FeatureSpotlight
-            description={t("TEMPLATE_SPOTLIGHT_AI_DESC")}
-            title={t("TEMPLATE_SPOTLIGHT_AI_TITLE")}
-            visual={
-              <LandingSpotlightCodeTabs
-                tabs={[
-                  {
-                    value: "backend",
-                    label: "Backend",
-                    language: "ts",
-                    code: `import { chat, toServerSentEventsStream } from "@tanstack/ai";
-import { openaiText } from "@tanstack/ai-openai";
-import { createFileRoute } from "@tanstack/react-router";
-
-export const Route = createFileRoute("/api/chat/")({
-  server: {
-    handlers: {
-      POST: async ({ request }: { request: Request }) => {
-        const { messages, conversationId } = await request.json();
-        const abortController = new AbortController();
-
-        const stream = chat({
-          adapter: openaiText("gpt-5-mini"),
-          messages,
-          conversationId,
-        });
-
-        return new Response(toServerSentEventsStream(stream, abortController), {
-          headers: { "Content-Type": "text/event-stream" },
-        });
-      },
-    },
-  },
-});`,
-                  },
-                  {
-                    value: "frontend",
-                    label: "Frontend",
-                    language: "ts",
-                    code: `import { fetchServerSentEvents, useChat } from "@tanstack/ai-react";
-
-export function ChatPage() {
-  const { messages, sendMessage, isLoading } = useChat({
-    connection: fetchServerSentEvents("/api/chat"),
-  });
-
-  return (
-    <div>
-      <button
-        disabled={isLoading}
-        type="button"
-        onClick={() => sendMessage("Hello!")}
-      >
-        Send
-      </button>
-      <pre>{JSON.stringify(messages, null, 2)}</pre>
-    </div>
-  );
-}`,
-                  },
-                ]}
-              />
-            }
-          />
-
-          <FeatureSpotlight
-            description={t("TEMPLATE_SPOTLIGHT_AUTH_DESC")}
-            reverse
-            title={t("TEMPLATE_SPOTLIGHT_AUTH_TITLE")}
-            visual={
-              <LandingSpotlightCodeTabs
-                tabs={[
-                  {
-                    value: "server",
-                    label: "Server",
-                    language: "ts",
-                    code: `import { createMiddleware, createServerFn } from "@tanstack/react-start";
-import { auth } from "@/lib/auth/auth";
-
-export const authMiddleware = createMiddleware().server(
-  async ({ next, request }) => {
-    const session = await auth.api.getSession({ headers: request.headers });
-    return next({ context: { session } });
-  }
-);
-
-export const getCurrentUserFn = createServerFn({ method: "GET" })
-  .middleware([authMiddleware])
-  .handler(async ({ context }) => context.session);`,
-                  },
-                  {
-                    value: "client",
-                    label: "Client",
-                    language: "ts",
-                    code: `import { authClient } from "@/lib/auth/auth-client";
-
-export function SessionBadge() {
-  const { data: session } = authClient.useSession();
-  if (!session?.user) return <span>Signed out</span>;
-  return <span>Signed in as {session.user.email}</span>;
-}`,
-                  },
-                ]}
-              />
-            }
-          />
-
-          <FeatureSpotlight
-            description={t("TEMPLATE_SPOTLIGHT_ORPC_DESC")}
-            title={t("TEMPLATE_SPOTLIGHT_ORPC_TITLE")}
-            visual={
-              <LandingSpotlightCodeTabs
-                tabs={[
-                  {
-                    value: "server",
-                    label: "Server",
-                    language: "ts",
-                    code: `import { ORPCError, os } from "@orpc/server";
-import { auth } from "@/lib/auth/auth";
-import { db } from "@/lib/db";
-
-export const createORPCContext = async ({ headers }: { headers: Headers }) => {
-  const session = await auth.api.getSession({ headers });
-  return { db, session };
-};
-
-export const orpc = os.$context<Awaited<ReturnType<typeof createORPCContext>>>();
-
-export const protectedProcedure = orpc.middleware(async ({ context, next }) => {
-  if (!context.session?.user) throw new ORPCError("UNAUTHORIZED");
-  return await next();
-});`,
-                  },
-                  {
-                    value: "client",
-                    label: "Client",
-                    language: "ts",
-                    code: `import { createORPCClient } from "@orpc/client";
-import { RPCLink } from "@orpc/client/fetch";
-import { createTanstackQueryUtils } from "@orpc/tanstack-query";
-
-const link = new RPCLink({
-  url: "/api/rpc",
-  fetch(url, options) {
-    return fetch(url, { ...options, credentials: "include" });
-  },
-});
-
-export const orpc = createTanstackQueryUtils(createORPCClient(link));`,
-                  },
-                ]}
-              />
-            }
-          />
-
-          <FeatureSpotlight
-            description={t("TEMPLATE_SPOTLIGHT_STORAGE_DESC")}
-            reverse
-            title={t("TEMPLATE_SPOTLIGHT_STORAGE_TITLE")}
-            visual={
-              <LandingSpotlightCodeTabs
-                tabs={[
-                  {
-                    value: "bun-s3",
-                    label: "Bun S3Client",
-                    language: "ts",
-                    code: `import { S3Client } from "bun";
-import { env } from "@/lib/env.server";
-
-const s3 = new S3Client({
-  accessKeyId: env.S3_ACCESS_KEY_ID,
-  secretAccessKey: env.S3_SECRET_ACCESS_KEY,
-  bucket: env.S3_BUCKET?.toLowerCase(),
-  region: env.S3_REGION,
-  endpoint: env.S3_ENDPOINT,
-});
-
-export const storage = {
-  async upload(key: string, data: Uint8Array, contentType?: string) {
-    await s3.file(key).write(data, { type: contentType });
-    return { key, size: data.length, contentType };
-  },
-};`,
-                  },
-                  {
-                    value: "presign",
-                    label: "Presign",
-                    language: "ts",
-                    code: `import { S3Client } from "bun";
-
-const s3 = new S3Client({ /* env config */ });
-
-export const getUrl = (key: string, expiresIn = 86_400) =>
-  s3.file(key).presign({ expiresIn });
-
-export const presignUpload = (key: string, expiresIn = 3_600) =>
-  s3.file(key).presign({ expiresIn, method: "PUT" });`,
-                  },
-                ]}
-              />
-            }
-          />
-
-          <FeatureSpotlight
-            description={t("TEMPLATE_SPOTLIGHT_DB_DESC")}
-            title={t("TEMPLATE_SPOTLIGHT_DB_TITLE")}
-            visual={
-              <LandingSpotlightCodeTabs
-                tabs={[
-                  {
-                    value: "drizzle",
-                    label: "Drizzle",
-                    language: "ts",
-                    code: `import { relations } from "drizzle-orm";
-import { bigint, index, json, pgTable, text, timestamp } from "drizzle-orm/pg-core";
-
-export const file = pgTable(
-  "file",
-  {
-    id: text("id").primaryKey(),
-    key: text("key").notNull().unique(),
-    provider: text("provider").notNull(),
-    size: bigint("size", { mode: "number" }).notNull(),
-    mimeType: text("mime_type").notNull(),
-    fileName: text("file_name").notNull(),
-    metadata: json("metadata").$type<Record<string, unknown>>(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-  },
-  (table) => [index("file_key_idx").on(table.key)]
-);
-
-export const fileRelations = relations(file, ({ one }) => ({
-  user: one(/* ... */),
-}));`,
-                  },
-                ]}
-              />
-            }
-          />
-
-          <FeatureSpotlight
-            description={t("TEMPLATE_SPOTLIGHT_REACT_QUERY_DESC")}
-            reverse
-            title={t("TEMPLATE_SPOTLIGHT_REACT_QUERY_TITLE")}
-            visual={
-              <LandingSpotlightCodeTabs
-                tabs={[
-                  {
-                    value: "query-options",
-                    label: "queryOptions",
-                    language: "ts",
-                    code: `import { queryOptions } from "@tanstack/react-query";
-
-export const repoStarsOptions = queryOptions({
-  queryKey: ["repo", "tanstack-query"],
-  queryFn: async () => {
-    const res = await fetch("https://api.github.com/repos/tanstack/query");
-    if (!res.ok) throw new Error("Request failed");
-    return await res.json() as { stargazers_count: number };
-  },
-  staleTime: 60_000,
-});`,
-                  },
-                  {
-                    value: "use-query",
-                    label: "useQuery",
-                    language: "ts",
-                    code: `import { useQuery } from "@tanstack/react-query";
-
-type Repo = { stargazers_count: number };
-
-async function fetchRepo(): Promise<Repo> {
-  const res = await fetch("https://api.github.com/repos/tanstack/query");
-  if (!res.ok) throw new Error("Request failed");
-  return await res.json();
-}
-
-export function RepoStars() {
-  const repoQuery = useQuery({
-    queryKey: ["repo", "tanstack-query"],
-    queryFn: fetchRepo,
-    staleTime: 60_000,
-  });
-
-  return <div>⭐ {repoQuery.data?.stargazers_count ?? "—"}</div>;
-}`,
-                  },
-                ]}
-              />
-            }
-          />
-        </div>
-      </Section>
-
-      {/* Grid Features */}
+      {/* Features Section */}
       <Section variant="muted">
-        <div className="mb-20 text-center">
-          <h2 className="mb-6 font-extrabold text-4xl tracking-tight md:text-5xl">
-            Everything you need to ship.
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 font-bold text-3xl md:text-4xl">
+            {t("LANDING_CANDIDATES_TITLE")}
           </h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground text-xl">
-            A comprehensive ecosystem designed for developers who don't want to
-            compromise on quality or speed.
+          <p className="text-muted-foreground text-lg">
+            {t("LANDING_CANDIDATES_SUBTITLE")}
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, idx) => (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          {features.map((feature) => (
+            <Card
+              className="group border-border/40 bg-card/40 backdrop-blur-sm transition-colors hover:border-primary/40"
               key={feature.title}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              whileInView={{ opacity: 1, y: 0 }}
             >
-              <Card className="group h-full border-border/40 bg-card/40 backdrop-blur-sm transition-colors hover:border-primary/40">
-                <CardHeader>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
-                    <feature.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-2xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <CardHeader>
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 transition-colors group-hover:bg-primary/20">
+                  <feature.icon className="h-6 w-6 text-primary" />
+                </div>
+                <CardTitle className="text-xl">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-base leading-relaxed">
+                  {feature.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </Section>
 
-      {/* Developer Experience Spotlight */}
-      <FeatureSpotlight
-        description={t("TEMPLATE_DX_DESC")}
-        image="/images/landing/tanstack-island-dev.png"
-        reverse={true}
-        title={t("TEMPLATE_DX_TITLE")}
-      />
-
-      {/* How it Works */}
+      {/* Featured Jobs Section */}
       <Section>
-        <div className="mb-20 text-center">
-          <h2 className="mb-4 font-bold text-4xl">
-            {t("TEMPLATE_HOW_IT_WORKS_TITLE")}
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 font-bold text-3xl md:text-4xl">
+            {t("LANDING_FEATURED_JOBS_TITLE")}
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            {t("LANDING_FEATURED_JOBS_SUBTITLE")}
+          </p>
+        </div>
+
+        {jobsLoading ? (
+          <div className="flex justify-center py-12">
+            <Spinner className="size-8" />
+          </div>
+        ) : featuredJobs.length === 0 ? (
+          <div className="py-12 text-center">
+            <p className="text-muted-foreground">{t("JOBS_EMPTY")}</p>
+          </div>
+        ) : (
+          <div className="grid gap-6 md:grid-cols-2">
+            {featuredJobs.map((job) => (
+              <Card
+                className="flex flex-col transition-colors hover:border-primary/40"
+                key={job.id}
+              >
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <CardTitle className="text-xl">{job.title}</CardTitle>
+                    <Badge variant="secondary">
+                      {t(getEmploymentTypeKey(job.employmentType))}
+                    </Badge>
+                  </div>
+                  <CardDescription className="flex items-center gap-4">
+                    <span className="flex items-center gap-1">
+                      <MapPinIcon className="size-4" />
+                      {t(getLocationKey(job.location))}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <BriefcaseIcon className="size-4" />
+                      {job.industry}
+                    </span>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1">
+                  <p className="line-clamp-2 text-muted-foreground">
+                    {job.description.slice(0, 150)}...
+                  </p>
+                </CardContent>
+                <div className="flex justify-end gap-2 p-6 pt-0">
+                  <Link to={`/jobs/${job.slug}`}>
+                    <Button type="button" variant="outline">
+                      {t("JOBS_VIEW_DETAILS")}
+                    </Button>
+                  </Link>
+                  <Link to={`/apply/${job.slug}`}>
+                    <Button type="button">{t("JOBS_APPLY_NOW")}</Button>
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
+
+        <div className="mt-10 text-center">
+          <Button className="rounded-full px-8" size="lg" variant="outline">
+            <Link className="flex items-center gap-2" to="/jobs">
+              {t("LANDING_VIEW_ALL_JOBS")}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </Section>
+
+      {/* CV Review CTA Section */}
+      <Section className="relative overflow-hidden" variant="subtle">
+        <div className="absolute inset-0 bg-primary/5" />
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <FileTextIcon className="mx-auto mb-6 h-16 w-16 text-primary" />
+          <h2 className="mb-6 font-bold text-3xl md:text-4xl">
+            {t("LANDING_CV_REVIEW_TITLE")}
+          </h2>
+          <p className="mb-10 text-muted-foreground text-xl">
+            {t("LANDING_CV_REVIEW_DESC")}
+          </p>
+          <Button
+            className="h-14 rounded-full px-10 font-semibold text-lg shadow-primary/25 shadow-xl"
+            size="lg"
+          >
+            <Link className="flex items-center gap-2" to="/cv-review">
+              {t("LANDING_CV_REVIEW_CTA")}
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
+      </Section>
+
+      {/* How It Works Section */}
+      <Section>
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 font-bold text-3xl md:text-4xl">
+            {t("LANDING_HOW_IT_WORKS_TITLE")}
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3">
@@ -579,120 +345,52 @@ export function RepoStars() {
               1
             </div>
             <h3 className="mb-4 font-bold text-xl">
-              {t("TEMPLATE_HOW_IT_WORKS_STEP1_TITLE")}
+              {t("LANDING_STEP_1_TITLE")}
             </h3>
-            <p className="text-muted-foreground">
-              {t("TEMPLATE_HOW_IT_WORKS_STEP1_DESC")}
-            </p>
+            <p className="text-muted-foreground">{t("LANDING_STEP_1_DESC")}</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 font-bold text-2xl text-primary">
               2
             </div>
             <h3 className="mb-4 font-bold text-xl">
-              {t("TEMPLATE_HOW_IT_WORKS_STEP2_TITLE")}
+              {t("LANDING_STEP_2_TITLE")}
             </h3>
-            <p className="text-muted-foreground">
-              {t("TEMPLATE_HOW_IT_WORKS_STEP2_DESC")}
-            </p>
+            <p className="text-muted-foreground">{t("LANDING_STEP_2_DESC")}</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 font-bold text-2xl text-primary">
               3
             </div>
             <h3 className="mb-4 font-bold text-xl">
-              {t("TEMPLATE_HOW_IT_WORKS_STEP3_TITLE")}
+              {t("LANDING_STEP_3_TITLE")}
             </h3>
-            <p className="text-muted-foreground">
-              {t("TEMPLATE_HOW_IT_WORKS_STEP3_DESC")}
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* FAQ */}
-      <Section variant="subtle">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mb-12 text-center font-bold text-4xl">
-            {t("TEMPLATE_FAQ_TITLE")}
-          </h2>
-          <Accordion className="w-full space-y-4">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-lg">
-                {t("TEMPLATE_FAQ_Q1")}
-              </AccordionTrigger>
-              <AccordionContent className="text-base text-muted-foreground">
-                {t("TEMPLATE_FAQ_A1")}
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger className="text-lg">
-                {t("TEMPLATE_FAQ_Q2")}
-              </AccordionTrigger>
-              <AccordionContent className="text-base text-muted-foreground">
-                {t("TEMPLATE_FAQ_A2")}
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger className="text-lg">
-                {t("TEMPLATE_FAQ_Q3")}
-              </AccordionTrigger>
-              <AccordionContent className="text-base text-muted-foreground">
-                {t("TEMPLATE_FAQ_A3")}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </Section>
-
-      {/* Support & Sponsorship */}
-      <Section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5" />
-        <div className="relative z-10 mx-auto max-w-4xl py-12 text-center">
-          <h2 className="mb-6 font-black text-4xl leading-tight md:text-5xl">
-            Love this template?
-          </h2>
-          <p className="mb-10 text-muted-foreground text-xl">
-            Supporting open source helps us keep improving. Give it a star or
-            buy us a coffee!
-          </p>
-          <div className="flex flex-col justify-center gap-6 sm:flex-row">
-            <Button
-              render={
-                <a
-                  href="https://github.com/CarlosZiegler/start-template"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Star on GitHub
-                </a>
-              }
-              className="h-16 rounded-full px-10 font-bold text-xl shadow-2xl shadow-primary/30"
-              size="lg"
-            />
-            <Button
-              render={
-                <a
-                  href="https://buymeacoffee.com/carlosziegler"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  ☕ Buy me a coffee
-                </a>
-              }
-              className="h-16 rounded-full border-primary/20 px-10 font-medium text-xl hover:bg-primary/5"
-              size="lg"
-              variant="outline"
-            />
+            <p className="text-muted-foreground">{t("LANDING_STEP_3_DESC")}</p>
           </div>
         </div>
       </Section>
 
       {/* Footer */}
-      <footer className="border-border/40 border-t bg-background py-16">
+      <footer className="border-border/40 border-t bg-background py-12">
         <div className="container mx-auto px-4">
-          <div className=" pt-8 text-center text-muted-foreground text-sm">
-            <p>© 2025 Start Kit Template. {t("ALL_RIGHTS")}</p>
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div className="flex items-center gap-2">
+              <Logo className="h-8 w-8" />
+              <span className="font-bold">{DEFAULT_SITE_NAME}</span>
+            </div>
+            <div className="flex gap-6 text-muted-foreground text-sm">
+              <Link className="hover:text-foreground" to="/jobs">
+                {t("LANDING_NAV_JOBS")}
+              </Link>
+              <Link className="hover:text-foreground" to="/cv-review">
+                {t("LANDING_NAV_CV_REVIEW")}
+              </Link>
+            </div>
+          </div>
+          <div className="mt-8 text-center text-muted-foreground text-sm">
+            <p>
+              {new Date().getFullYear()} {DEFAULT_SITE_NAME}. {t("ALL_RIGHTS")}
+            </p>
           </div>
         </div>
       </footer>
