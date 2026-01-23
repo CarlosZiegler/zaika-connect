@@ -24,17 +24,19 @@ function TableActionsDropdown({
 }: TableActionsDropdownProps) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button
-          className="flex h-8 w-8 p-0 text-muted-foreground data-[state=open]:bg-muted"
-          disabled={disabled}
-          onMouseDown={(e) => e.stopPropagation()}
-          size="icon"
-          variant="ghost"
-        >
-          <MoreVerticalIcon className="h-4 w-4" />
-          <span className="sr-only">{ariaLabel}</span>
-        </Button>
+      <DropdownMenuTrigger
+        disabled={disabled}
+        render={
+          <Button
+            className="flex h-8 w-8 p-0 text-muted-foreground data-[state=open]:bg-muted"
+            size="icon"
+            type="button"
+            variant="ghost"
+          />
+        }
+      >
+        <MoreVerticalIcon className="h-4 w-4" />
+        <span className="sr-only">{ariaLabel}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-32">
         {children}
