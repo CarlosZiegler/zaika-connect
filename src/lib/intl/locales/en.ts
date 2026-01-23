@@ -669,6 +669,8 @@ export default {
   JOB_DETAIL_BENEFITS: "Benefits",
   JOB_DETAIL_ABOUT: "About this role",
   JOB_DETAIL_BACK: "Back to jobs",
+  JOB_DETAIL_APPLY_DESC:
+    "Submit your application and we'll get back to you soon.",
   JOB_CHATBOT_TITLE: "Questions about this job?",
   JOB_CHATBOT_PLACEHOLDER: "Ask anything about this position...",
   JOB_CHATBOT_WELCOME:

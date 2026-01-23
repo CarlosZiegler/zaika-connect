@@ -506,6 +506,8 @@ export default {
   JOB_DETAIL_BENEFITS: "Beneficios",
   JOB_DETAIL_ABOUT: "Sobre esta vaga",
   JOB_DETAIL_BACK: "Voltar para vagas",
+  JOB_DETAIL_APPLY_DESC:
+    "Envie sua candidatura e entraremos em contato em breve.",
   JOB_CHATBOT_TITLE: "Duvidas sobre esta vaga?",
   JOB_CHATBOT_PLACEHOLDER: "Pergunte qualquer coisa sobre esta posicao...",
   JOB_CHATBOT_WELCOME:
