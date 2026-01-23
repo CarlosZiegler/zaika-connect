@@ -538,6 +538,7 @@ export default {
   APPLICATION_APPLY_FOR: "Candidatar-se a",
 
   // Recruiting - CV Review
+  CV_REVIEW_BADGE: "Análise com IA",
   CV_REVIEW_TITLE: "Avaliacao de CV Gratis",
   CV_REVIEW_DESC: "Receba feedback instantaneo com IA sobre seu curriculo",
   CV_REVIEW_UPLOAD: "Envie seu curriculo para analise",

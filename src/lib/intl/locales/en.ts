@@ -712,6 +712,7 @@ export default {
   APPLICATION_APPLY_FOR: "Apply for",
 
   // Recruiting - CV Review
+  CV_REVIEW_BADGE: "AI-Powered Analysis",
   CV_REVIEW_TITLE: "Free CV Review",
   CV_REVIEW_DESC: "Get instant AI-powered feedback on your CV",
   CV_REVIEW_UPLOAD: "Upload your CV for analysis",

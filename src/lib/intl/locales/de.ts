@@ -544,6 +544,7 @@ export default {
   APPLICATION_APPLY_FOR: "Bewerben für",
 
   // Recruiting - CV Review
+  CV_REVIEW_BADGE: "KI-gestützte Analyse",
   CV_REVIEW_TITLE: "Kostenloser Lebenslauf-Check",
   CV_REVIEW_DESC:
     "Erhalten Sie sofortiges KI-gestütztes Feedback zu Ihrem Lebenslauf",
