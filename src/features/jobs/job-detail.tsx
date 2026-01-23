@@ -192,21 +192,6 @@ export function JobDetail({ job }: JobDetailProps) {
             </a>
           </CardContent>
         </Card>
-
-        <div id="chat-widget-container" className="min-h-[300px]">
-          <Card className="h-full">
-            <CardHeader>
-              <CardTitle className="text-lg">
-                {t("JOB_CHATBOT_TITLE")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                {t("JOB_CHATBOT_WELCOME")}
-              </p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </div>
   );

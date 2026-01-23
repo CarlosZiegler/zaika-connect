@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { ChatWidget } from "@/features/jobs/chat-widget";
 import { JobDetail } from "@/features/jobs/job-detail";
 import { orpc } from "@/orpc/orpc-client";
 import { DEFAULT_SITE_NAME, seo } from "@/utils/seo";
@@ -26,7 +27,11 @@ function JobDetailPage() {
   const { t } = useTranslation();
   const { slug } = Route.useParams();
 
-  const { data: job, isLoading, error } = useQuery({
+  const {
+    data: job,
+    isLoading,
+    error,
+  } = useQuery({
     ...orpc.jobs.getBySlug.queryOptions({
       input: { slug },
     }),
@@ -60,17 +65,21 @@ function JobDetailPage() {
   }
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-8">
-      <div className="mb-6">
-        <Link to="/jobs">
-          <Button type="button" variant="ghost" size="sm">
-            <ArrowLeftIcon className="mr-2 size-4" />
-            {t("JOB_DETAIL_BACK")}
-          </Button>
-        </Link>
+    <>
+      <div className="container mx-auto max-w-4xl px-4 py-8">
+        <div className="mb-6">
+          <Link to="/jobs">
+            <Button type="button" variant="ghost" size="sm">
+              <ArrowLeftIcon className="mr-2 size-4" />
+              {t("JOB_DETAIL_BACK")}
+            </Button>
+          </Link>
+        </div>
+
+        <JobDetail job={job} />
       </div>
 
-      <JobDetail job={job} />
-    </div>
+      <ChatWidget jobId={job.id} />
+    </>
   );
 }

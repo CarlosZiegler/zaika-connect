@@ -635,6 +635,14 @@ export default {
   JOB_CHATBOT_PLACEHOLDER: "Ask anything about this position...",
   JOB_CHATBOT_WELCOME:
     "Hi! I can answer questions about this position. What would you like to know?",
+  JOB_CHATBOT_OPEN: "Open chat",
+  JOB_CHATBOT_SEND: "Send message",
+  JOB_CHATBOT_ERROR: "Sorry, I encountered an error. Please try again.",
+  JOB_CHATBOT_SUGGESTIONS_LABEL: "Suggested questions:",
+  JOB_CHATBOT_SUGGESTION_SKILLS: "What skills are required?",
+  JOB_CHATBOT_SUGGESTION_SALARY: "What's the salary range?",
+  JOB_CHATBOT_SUGGESTION_BENEFITS: "What benefits are offered?",
+  JOB_CHATBOT_SUGGESTION_APPLY: "How do I apply?",
 
   // Recruiting - Application
   APPLICATION_TITLE: "Apply for this position",
