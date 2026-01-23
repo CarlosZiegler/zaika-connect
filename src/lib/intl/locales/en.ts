@@ -648,6 +648,9 @@ export default {
   JOBS_TITLE: "Open Positions",
   JOBS_SUBTITLE: "Find your next opportunity",
   JOBS_EMPTY: "No jobs found matching your criteria.",
+  JOBS_EMPTY_SUBTITLE:
+    "Try adjusting your search or filters to find more opportunities.",
+  JOBS_FILTERS: "Filters",
   JOBS_LOADING: "Loading jobs...",
   JOBS_FILTER_LOCATION: "Location",
   JOBS_FILTER_TYPE: "Employment Type",

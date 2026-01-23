@@ -485,6 +485,9 @@ export default {
   JOBS_TITLE: "Vagas Abertas",
   JOBS_SUBTITLE: "Encontre sua proxima oportunidade",
   JOBS_EMPTY: "Nenhuma vaga encontrada com seus criterios.",
+  JOBS_EMPTY_SUBTITLE:
+    "Tente ajustar sua busca ou filtros para encontrar mais oportunidades.",
+  JOBS_FILTERS: "Filtros",
   JOBS_LOADING: "Carregando vagas...",
   JOBS_FILTER_LOCATION: "Localizacao",
   JOBS_FILTER_TYPE: "Tipo de Emprego",

@@ -491,6 +491,9 @@ export default {
   JOBS_TITLE: "Offene Stellen",
   JOBS_SUBTITLE: "Finden Sie Ihre nächste Chance",
   JOBS_EMPTY: "Keine Stellen gefunden, die Ihren Kriterien entsprechen.",
+  JOBS_EMPTY_SUBTITLE:
+    "Versuchen Sie, Ihre Suche oder Filter anzupassen, um mehr Möglichkeiten zu finden.",
+  JOBS_FILTERS: "Filter",
   JOBS_LOADING: "Stellen werden geladen...",
   JOBS_FILTER_LOCATION: "Standort",
   JOBS_FILTER_TYPE: "Beschäftigungsart",
