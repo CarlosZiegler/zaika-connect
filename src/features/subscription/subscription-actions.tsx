@@ -1,8 +1,9 @@
 import { ExternalLinkIcon, Loader2Icon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "@/components/ui/button";
 import type { Subscription } from "@/features/payment/stripe/stripe.factory.queries";
+
+import { Button } from "@/components/ui/button";
 import { useSubscriptionContext } from "@/providers/subscription-provider";
 
 type SubscriptionActionsProps = {

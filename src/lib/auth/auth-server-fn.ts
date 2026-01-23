@@ -1,6 +1,7 @@
 import { createMiddleware, createServerFn } from "@tanstack/react-start";
 import { getRequest } from "@tanstack/react-start/server";
 
+import { isAdminEmail } from "./admin-check";
 import { auth } from "./auth";
 
 export const authMiddleware = createMiddleware().server(
@@ -25,3 +26,16 @@ export const getUser = createServerFn({ method: "GET" }).handler(async () => {
 
   return session;
 });
+
+export const getUserWithAdmin = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const session = await auth.api.getSession({
+      headers: getRequest().headers,
+    });
+
+    return {
+      session,
+      isAdmin: isAdminEmail(session?.user?.email),
+    };
+  }
+);

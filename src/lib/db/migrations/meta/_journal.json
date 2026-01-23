@@ -15,6 +15,13 @@
       "when": 1769070843359,
       "tag": "0001_old_kingpin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1769200523611,
+      "tag": "0002_concerned_vector",
+      "breakpoints": true
     }
   ]
 }

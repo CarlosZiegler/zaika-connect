@@ -2,8 +2,9 @@ import { format } from "date-fns";
 import { AlertTriangleIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { Badge } from "@/components/ui/badge";
 import type { Subscription } from "@/features/payment/stripe/stripe.factory.queries";
+
+import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { getPlanDisplayName } from "@/lib/payment/plan.utils";
 

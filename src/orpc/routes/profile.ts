@@ -1,3 +1,4 @@
+import { ORPCError } from "@orpc/server";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -22,7 +23,7 @@ export const profileRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       const [updatedUser] = await context.db
@@ -44,7 +45,7 @@ export const profileRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       // Delete old avatar records from DB (keep files in S3 for potential recovery)
@@ -104,7 +105,7 @@ export const profileRouter = orpc.router({
     const { session } = context;
 
     if (!session?.user?.id) {
-      throw new Error("Unauthorized");
+      throw new ORPCError("UNAUTHORIZED");
     }
 
     const [avatarFile] = await context.db
@@ -136,7 +137,7 @@ export const profileRouter = orpc.router({
       const targetUserId = input.userId ?? session?.user?.id;
 
       if (!targetUserId) {
-        throw new Error("User ID is required");
+        throw new ORPCError("BAD_REQUEST", { message: "User ID is required" });
       }
 
       // First get the user to find their avatar reference

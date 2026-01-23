@@ -1,3 +1,4 @@
+import { ORPCError } from "@orpc/server";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -20,7 +21,7 @@ export const storageRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       const result = await storage.uploadFile(input.file, {
@@ -66,7 +67,7 @@ export const storageRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       const [fileRecord] = await context.db
@@ -76,14 +77,16 @@ export const storageRouter = orpc.router({
         .limit(1);
 
       if (!fileRecord) {
-        throw new Error("File not found");
+        throw new ORPCError("NOT_FOUND", { message: "File not found" });
       }
 
       if (
         fileRecord.userId !== session.user.id &&
         fileRecord.organizationId !== session.session.activeOrganizationId
       ) {
-        throw new Error("Unauthorized to delete this file");
+        throw new ORPCError("FORBIDDEN", {
+          message: "Unauthorized to delete this file",
+        });
       }
 
       await storage.delete(fileRecord.key);
@@ -104,7 +107,7 @@ export const storageRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       const [fileRecord] = await context.db
@@ -114,14 +117,16 @@ export const storageRouter = orpc.router({
         .limit(1);
 
       if (!fileRecord) {
-        throw new Error("File not found");
+        throw new ORPCError("NOT_FOUND", { message: "File not found" });
       }
 
       if (
         fileRecord.userId !== session.user.id &&
         fileRecord.organizationId !== session.session.activeOrganizationId
       ) {
-        throw new Error("Unauthorized to access this file");
+        throw new ORPCError("FORBIDDEN", {
+          message: "Unauthorized to access this file",
+        });
       }
 
       const url = await storage.getUrl(input.key, input.expiresIn);
@@ -142,7 +147,7 @@ export const storageRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       const { key, url } = await storage.presignUpload(
@@ -174,7 +179,7 @@ export const storageRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       const [fileRecord] = await context.db
@@ -220,7 +225,7 @@ export const storageRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       const conditions = [eq(file.userId, session.user.id)];
@@ -258,7 +263,7 @@ export const storageRouter = orpc.router({
       const { session } = context;
 
       if (!session?.user?.id) {
-        throw new Error("Unauthorized");
+        throw new ORPCError("UNAUTHORIZED");
       }
 
       /*

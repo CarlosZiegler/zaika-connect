@@ -23,15 +23,15 @@ export function StatsSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="border-b border-slate-100 bg-white py-12 dark:border-slate-800 dark:bg-depth-1">
+    <section className="border-b border-slate-100 bg-white py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {STATS.map((stat) => (
             <div key={stat.i18nKey} className="group cursor-default">
-              <div className="text-3xl font-bold text-ocean-1 transition duration-300 group-hover:scale-110 dark:text-teal-400">
+              <div className="text-3xl font-bold text-ocean-1 transition duration-300 group-hover:scale-110">
                 {stat.value}
               </div>
-              <div className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              <div className="text-sm font-semibold uppercase tracking-wider text-slate-500">
                 {t(stat.i18nKey)}
               </div>
             </div>

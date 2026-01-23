@@ -1,4 +1,5 @@
 import type { UITree } from "@json-render/core";
+
 import { BLOCK_COMPONENTS } from "./block-generator.components";
 import { createImportsFromConfigs } from "./block-generator.config";
 

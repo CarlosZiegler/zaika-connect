@@ -8,7 +8,10 @@ export const Route = createFileRoute("/api/chat/resume")({
       GET: async ({ request }: { request: Request }) => {
         const url = new URL(request.url);
         const streamId = url.searchParams.get("streamId");
-        const skipChars = Number.parseInt(url.searchParams.get("skipChars") ?? "0", 10);
+        const skipChars = Number.parseInt(
+          url.searchParams.get("skipChars") ?? "0",
+          10
+        );
 
         if (!streamId) {
           return new Response(JSON.stringify({ error: "Missing streamId" }), {
@@ -34,7 +37,10 @@ export const Route = createFileRoute("/api/chat/resume")({
         }
 
         // Resume the stream from the specified character offset
-        const resumedStream = await streamContext.resumeExistingStream(streamId, skipChars);
+        const resumedStream = await streamContext.resumeExistingStream(
+          streamId,
+          skipChars
+        );
 
         if (!resumedStream) {
           return new Response(null, { status: 204 });

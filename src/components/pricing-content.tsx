@@ -43,7 +43,6 @@ type PlanCardProps = {
   onSelectPlan: (planName: PlanName) => void;
 };
 
-
 function getTopBarClassName({
   isCurrentPlan,
   isHighlighted,

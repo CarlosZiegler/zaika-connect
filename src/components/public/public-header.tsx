@@ -22,7 +22,7 @@ export function PublicHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 glass-panel">
+    <header className="fixed top-0 right-0 left-0 z-50 bg-ocean-5">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">

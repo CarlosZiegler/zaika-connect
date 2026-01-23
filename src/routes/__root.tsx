@@ -116,6 +116,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           defaultTheme="system"
           disableTransitionOnChange
           enableSystem
+
+          
         >
           <I18nextProvider defaultNS={"translation"} i18n={i18n}>
             {children}

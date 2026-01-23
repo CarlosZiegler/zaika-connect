@@ -16,6 +16,7 @@ import { PublicLayout } from "@/components/public/public-layout";
 import { SearchHero } from "@/components/public/search-hero";
 import { StatsSection } from "@/components/public/stats-section";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { orpc } from "@/orpc/orpc-client";
 import { DEFAULT_SITE_NAME, SITE_URL, seo } from "@/utils/seo";
@@ -228,15 +229,15 @@ function LandingPage() {
       <StatsSection />
 
       {/* Featured Jobs Section */}
-      <section className="bg-background-light py-20 dark:bg-background">
+      <section className="bg-ocean-1/5 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="mb-10 flex items-end justify-between">
             <div>
-              <h2 className="font-display text-3xl font-bold text-depth-1 dark:text-white">
+              <h2 className="font-display text-3xl font-bold text-depth-1">
                 {t("LANDING_FEATURED_TITLE")}
               </h2>
-              <p className="mt-2 text-slate-600 dark:text-slate-400">
+              <p className="mt-2 text-slate-600">
                 {t("LANDING_FEATURED_SUBTITLE")}
               </p>
             </div>
@@ -256,7 +257,7 @@ function LandingPage() {
             </div>
           ) : featuredJobs.length === 0 ? (
             <div className="py-12 text-center">
-              <p className="text-slate-500 dark:text-slate-400">
+              <p className="text-slate-500">
                 {t("JOBS_EMPTY")}
               </p>
             </div>
@@ -265,7 +266,7 @@ function LandingPage() {
               {featuredJobs.map((job, index) => (
                 <div
                   key={job.id}
-                  className="group relative cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-md transition hover:shadow-xl dark:border-slate-700 dark:bg-depth-1"
+                  className="group relative cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-md transition hover:shadow-xl"
                 >
                   {/* Colored Left Border */}
                   <div
@@ -274,24 +275,24 @@ function LandingPage() {
 
                   {/* Card Header */}
                   <div className="flex items-start justify-between">
-                    <div className="flex size-12 items-center justify-center rounded-lg bg-slate-100 text-ocean-5 dark:bg-slate-700">
+                    <div className="flex size-12 items-center justify-center rounded-lg bg-slate-100 text-ocean-5">
                       <BriefcaseIcon className="size-6" aria-hidden="true" />
                     </div>
                     <Badge
                       variant="secondary"
-                      className="bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300"
+                      className="bg-teal-50 text-teal-700"
                     >
                       {t(getEmploymentTypeKey(job.employmentType))}
                     </Badge>
                   </div>
 
                   {/* Job Title */}
-                  <h3 className="mt-4 text-xl font-bold text-slate-900 transition group-hover:text-ocean-1 dark:text-white">
+                  <h3 className="mt-4 text-xl font-bold text-slate-900 transition group-hover:text-ocean-1">
                     {job.title}
                   </h3>
 
                   {/* Company & Location */}
-                  <p className="mt-1 flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 flex items-center gap-1 text-sm text-slate-500">
                     <MapPinIcon className="size-4" aria-hidden="true" />
                     {t(getLocationKey(job.location))}
                     <span className="mx-2">|</span>
@@ -299,12 +300,12 @@ function LandingPage() {
                   </p>
 
                   {/* Description Preview */}
-                  <p className="mt-4 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">
+                  <p className="mt-4 line-clamp-2 text-sm text-slate-600">
                     {job.description.slice(0, 120)}...
                   </p>
 
                   {/* Card Footer */}
-                  <div className="mt-6 flex items-center justify-between border-t border-slate-50 pt-4 dark:border-slate-800">
+                  <div className="mt-6 flex items-center justify-between border-t border-slate-50 pt-4">
                     <span className="text-xs text-slate-400">
                       {t("JOBS_POSTED")} recently
                     </span>
@@ -405,7 +406,7 @@ function LandingPage() {
       </section>
 
       {/* Enterprise Section */}
-      <section className="bg-white py-24 dark:bg-background">
+      <section className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-16 md:flex-row">
             {/* Image Placeholder */}
@@ -429,16 +430,16 @@ function LandingPage() {
               <span className="mb-3 text-xs font-bold uppercase tracking-widest text-ocean-1">
                 {t("LANDING_ENTERPRISE_LABEL")}
               </span>
-              <h2 className="mb-6 font-display text-4xl font-bold leading-snug text-depth-1 dark:text-white">
+              <h2 className="mb-6 font-display text-4xl font-bold leading-snug text-depth-1">
                 {t("LANDING_ENTERPRISE_TITLE")}
               </h2>
-              <p className="mb-8 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              <p className="mb-8 text-lg leading-relaxed text-slate-600">
                 {t("LANDING_ENTERPRISE_DESC")}
               </p>
 
               {/* Feature List */}
               <ul className="mb-10 space-y-4">
-                <li className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+                <li className="flex items-start gap-3 text-slate-700">
                   <BarChart2
                     className="mt-1 size-5 text-ocean-1"
                     aria-hidden="true"
@@ -452,7 +453,7 @@ function LandingPage() {
                     </p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3 text-slate-700 dark:text-slate-300">
+                <li className="flex items-start gap-3 text-slate-700">
                   <Network
                     className="mt-1 size-5 text-ocean-1"
                     aria-hidden="true"
@@ -468,12 +469,12 @@ function LandingPage() {
                 </li>
               </ul>
 
-              <Link
-                to="/jobs"
-                className="inline-block rounded-xl bg-depth-5 px-8 py-3 font-bold text-white shadow-lg shadow-depth-5/20 transition hover:bg-depth-4"
+              <Button
+                asChild
+                className="rounded-xl bg-depth-5 px-8 py-3 font-bold text-white shadow-lg shadow-depth-5/20 transition hover:bg-depth-4"
               >
-                {t("LANDING_ENTERPRISE_CTA")}
-              </Link>
+                <Link to="/jobs">{t("LANDING_ENTERPRISE_CTA")}</Link>
+              </Button>
             </div>
           </div>
         </div>

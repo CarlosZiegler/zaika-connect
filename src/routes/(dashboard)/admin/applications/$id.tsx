@@ -26,16 +26,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Spinner } from "@/components/ui/spinner";
-import { isAdminEmail } from "@/lib/auth/admin-check";
-import { authQueryOptions } from "@/lib/auth/queries";
+import { getUserWithAdmin } from "@/lib/auth/auth-server-fn";
 import { client, orpc } from "@/orpc/orpc-client";
 
 export const Route = createFileRoute("/(dashboard)/admin/applications/$id")({
   component: AdminApplicationDetailPage,
-  beforeLoad: async ({ context }) => {
-    const session =
-      await context.queryClient.ensureQueryData(authQueryOptions());
-    if (!isAdminEmail(session?.user?.email)) {
+  beforeLoad: async () => {
+    const { session, isAdmin } = await getUserWithAdmin();
+    if (!isAdmin) {
       throw redirect({ to: "/overview" });
     }
     return { session };

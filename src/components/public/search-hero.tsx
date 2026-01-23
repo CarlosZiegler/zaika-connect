@@ -61,7 +61,7 @@ export function SearchHero({
     <div className="mx-auto mt-10 max-w-4xl">
       {/* Search Bar */}
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white p-2 shadow-2xl dark:border-slate-700 dark:bg-depth-1 md:flex-row">
+        <div className="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white p-2 shadow-2xl md:flex-row justify-center items-center">
           {/* Keywords Input */}
           <div className="relative flex flex-grow items-center">
             <Search
@@ -73,13 +73,13 @@ export function SearchHero({
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder={t("LANDING_SEARCH_KEYWORDS_PLACEHOLDER")}
-              className="w-full rounded-xl border-none bg-transparent py-4 pr-4 pl-12 text-slate-900 placeholder-slate-400 focus:ring-0 dark:text-white"
+              className="w-full rounded-xl border-none bg-transparent py-4 pr-4 pl-12 text-slate-900 placeholder-slate-400 focus:ring-0"
               aria-label={t("LANDING_SEARCH_KEYWORDS_PLACEHOLDER")}
             />
           </div>
 
           {/* Location Input */}
-          <div className="relative flex flex-grow items-center border-slate-200 dark:border-slate-600 md:border-l">
+          <div className="relative flex flex-grow items-center border-slate-200 md:border-l">
             <MapPin
               className="absolute left-4 size-5 text-slate-400"
               aria-hidden="true"
@@ -89,7 +89,7 @@ export function SearchHero({
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder={t("LANDING_SEARCH_LOCATION_PLACEHOLDER")}
-              className="w-full rounded-xl border-none bg-transparent py-4 pr-4 pl-12 text-slate-900 placeholder-slate-400 focus:ring-0 dark:text-white"
+              className="w-full rounded-xl border-none bg-transparent py-4 pr-4 pl-12 text-slate-900 placeholder-slate-400 focus:ring-0"
               aria-label={t("LANDING_SEARCH_LOCATION_PLACEHOLDER")}
             />
           </div>
@@ -110,7 +110,7 @@ export function SearchHero({
           {TRUST_BADGES.map((badge) => (
             <div key={badge.i18nKey} className="flex items-center gap-2">
               <badge.icon
-                className="size-4 text-ocean-1 dark:text-teal-400"
+                className="size-4 text-ocean-1"
                 aria-hidden="true"
               />
               <span>{t(badge.i18nKey)}</span>

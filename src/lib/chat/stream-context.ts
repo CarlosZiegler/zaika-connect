@@ -7,7 +7,9 @@ import {
 
 import { env } from "@/lib/env.server";
 
-let streamContextInstance: ReturnType<typeof createResumableStreamContext> | null = null;
+let streamContextInstance: ReturnType<
+  typeof createResumableStreamContext
+> | null = null;
 
 /**
  * Create Bun Redis adapter for resumable-stream Publisher interface

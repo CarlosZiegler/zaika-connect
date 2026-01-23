@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 import {
   Accordion,
   AccordionContent,
@@ -208,8 +210,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { z } from "zod";
-import { type ComponentConfig, defineComponent } from "./block-generator.config";
+
+import {
+  type ComponentConfig,
+  defineComponent,
+} from "./block-generator.config";
 
 // =============================================================================
 // LAYOUT COMPONENTS
@@ -325,7 +330,13 @@ const CardComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/card",
-    named: ["Card", "CardContent", "CardDescription", "CardHeader", "CardTitle"],
+    named: [
+      "Card",
+      "CardContent",
+      "CardDescription",
+      "CardHeader",
+      "CardTitle",
+    ],
   },
   hasChildren: true,
   description: "Card container with optional header title and description",
@@ -349,7 +360,9 @@ const ButtonComponent = defineComponent({
   name: "Button",
   schema: z.object({
     text: z.string(),
-    variant: z.enum(["default", "outline", "secondary", "ghost", "destructive"]).optional(),
+    variant: z
+      .enum(["default", "outline", "secondary", "ghost", "destructive"])
+      .optional(),
     size: z.enum(["default", "sm", "lg", "icon"]).optional(),
     disabled: z.boolean().optional(),
     className: z.string().optional(),
@@ -377,7 +390,9 @@ const BadgeComponent = defineComponent({
   name: "Badge",
   schema: z.object({
     text: z.string(),
-    variant: z.enum(["default", "secondary", "destructive", "outline"]).optional(),
+    variant: z
+      .enum(["default", "secondary", "destructive", "outline"])
+      .optional(),
     className: z.string().optional(),
   }),
   imports: { from: "@/components/ui/badge", named: ["Badge"] },
@@ -421,7 +436,9 @@ const TextComponent = defineComponent({
   name: "Text",
   schema: z.object({
     content: z.string(),
-    variant: z.enum(["default", "muted", "heading", "subheading", "label"]).optional(),
+    variant: z
+      .enum(["default", "muted", "heading", "subheading", "label"])
+      .optional(),
     className: z.string().optional(),
   }),
   imports: { from: "", named: [] },
@@ -585,7 +602,13 @@ const SelectComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/select",
-    named: ["Select", "SelectContent", "SelectItem", "SelectTrigger", "SelectValue"],
+    named: [
+      "Select",
+      "SelectContent",
+      "SelectItem",
+      "SelectTrigger",
+      "SelectValue",
+    ],
   },
   hasChildren: false,
   description: "Dropdown select with options",
@@ -717,12 +740,19 @@ const SliderComponent = defineComponent({
 const AccordionComponent = defineComponent({
   name: "Accordion",
   schema: z.object({
-    items: z.array(z.object({ value: z.string(), title: z.string(), content: z.string() })),
+    items: z.array(
+      z.object({ value: z.string(), title: z.string(), content: z.string() })
+    ),
     className: z.string().optional(),
   }),
   imports: {
     from: "@/components/ui/accordion",
-    named: ["Accordion", "AccordionContent", "AccordionItem", "AccordionTrigger"],
+    named: [
+      "Accordion",
+      "AccordionContent",
+      "AccordionItem",
+      "AccordionTrigger",
+    ],
   },
   hasChildren: false,
   description: "Collapsible accordion sections",
@@ -746,7 +776,9 @@ const AccordionComponent = defineComponent({
 const TabsComponent = defineComponent({
   name: "Tabs",
   schema: z.object({
-    tabs: z.array(z.object({ value: z.string(), label: z.string(), content: z.string() })),
+    tabs: z.array(
+      z.object({ value: z.string(), label: z.string(), content: z.string() })
+    ),
     defaultValue: z.string().optional(),
     className: z.string().optional(),
   }),
@@ -790,7 +822,15 @@ const TableComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/table",
-    named: ["Table", "TableBody", "TableCaption", "TableCell", "TableHead", "TableHeader", "TableRow"],
+    named: [
+      "Table",
+      "TableBody",
+      "TableCaption",
+      "TableCell",
+      "TableHead",
+      "TableHeader",
+      "TableRow",
+    ],
   },
   hasChildren: false,
   description: "Data table with headers and rows",
@@ -906,7 +946,15 @@ const DialogComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/dialog",
-    named: ["Dialog", "DialogContent", "DialogDescription", "DialogFooter", "DialogHeader", "DialogTitle", "DialogTrigger"],
+    named: [
+      "Dialog",
+      "DialogContent",
+      "DialogDescription",
+      "DialogFooter",
+      "DialogHeader",
+      "DialogTitle",
+      "DialogTrigger",
+    ],
   },
   hasChildren: true,
   description: "Modal dialog with trigger button",
@@ -943,12 +991,26 @@ const SheetComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/sheet",
-    named: ["Sheet", "SheetContent", "SheetDescription", "SheetFooter", "SheetHeader", "SheetTitle", "SheetTrigger"],
+    named: [
+      "Sheet",
+      "SheetContent",
+      "SheetDescription",
+      "SheetFooter",
+      "SheetHeader",
+      "SheetTitle",
+      "SheetTrigger",
+    ],
   },
   hasChildren: true,
   description: "Slide-out sheet panel",
   render: ({ element, children }) => {
-    const { title, description, trigger, side = "right", className } = element.props;
+    const {
+      title,
+      description,
+      trigger,
+      side = "right",
+      className,
+    } = element.props;
     return (
       <Sheet>
         <SheetTrigger render={<Button variant="outline" type="button" />}>
@@ -978,7 +1040,14 @@ const PopoverComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/popover",
-    named: ["Popover", "PopoverContent", "PopoverDescription", "PopoverHeader", "PopoverTitle", "PopoverTrigger"],
+    named: [
+      "Popover",
+      "PopoverContent",
+      "PopoverDescription",
+      "PopoverHeader",
+      "PopoverTitle",
+      "PopoverTrigger",
+    ],
   },
   hasChildren: true,
   description: "Floating popover panel",
@@ -1015,7 +1084,14 @@ const DropdownMenuComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/dropdown-menu",
-    named: ["DropdownMenu", "DropdownMenuContent", "DropdownMenuItem", "DropdownMenuLabel", "DropdownMenuSeparator", "DropdownMenuTrigger"],
+    named: [
+      "DropdownMenu",
+      "DropdownMenuContent",
+      "DropdownMenuItem",
+      "DropdownMenuLabel",
+      "DropdownMenuSeparator",
+      "DropdownMenuTrigger",
+    ],
   },
   hasChildren: false,
   description: "Dropdown menu with items",
@@ -1024,7 +1100,9 @@ const DropdownMenuComponent = defineComponent({
     const menuItems = (items as Array<{ label: string }>) ?? [];
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger render={<Button variant="outline" type="button" />}>
+        <DropdownMenuTrigger
+          render={<Button variant="outline" type="button" />}
+        >
           {trigger}
         </DropdownMenuTrigger>
         <DropdownMenuContent className={className}>
@@ -1055,7 +1133,17 @@ const AlertDialogComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/alert-dialog",
-    named: ["AlertDialog", "AlertDialogAction", "AlertDialogCancel", "AlertDialogContent", "AlertDialogDescription", "AlertDialogFooter", "AlertDialogHeader", "AlertDialogTitle", "AlertDialogTrigger"],
+    named: [
+      "AlertDialog",
+      "AlertDialogAction",
+      "AlertDialogCancel",
+      "AlertDialogContent",
+      "AlertDialogDescription",
+      "AlertDialogFooter",
+      "AlertDialogHeader",
+      "AlertDialogTitle",
+      "AlertDialogTrigger",
+    ],
   },
   hasChildren: false,
   description: "Confirmation alert dialog",
@@ -1116,18 +1204,28 @@ const AspectRatioComponent = defineComponent({
 const BreadcrumbComponent = defineComponent({
   name: "Breadcrumb",
   schema: z.object({
-    items: z.array(z.object({ label: z.string(), href: z.string().optional() })),
+    items: z.array(
+      z.object({ label: z.string(), href: z.string().optional() })
+    ),
     className: z.string().optional(),
   }),
   imports: {
     from: "@/components/ui/breadcrumb",
-    named: ["Breadcrumb", "BreadcrumbItem", "BreadcrumbLink", "BreadcrumbList", "BreadcrumbPage", "BreadcrumbSeparator"],
+    named: [
+      "Breadcrumb",
+      "BreadcrumbItem",
+      "BreadcrumbLink",
+      "BreadcrumbList",
+      "BreadcrumbPage",
+      "BreadcrumbSeparator",
+    ],
   },
   hasChildren: false,
   description: "Navigation breadcrumb trail",
   render: ({ element }) => {
     const { items, className } = element.props;
-    const breadcrumbItems = (items as Array<{ label: string; href?: string }>) ?? [];
+    const breadcrumbItems =
+      (items as Array<{ label: string; href?: string }>) ?? [];
     return (
       <Breadcrumb className={className}>
         <BreadcrumbList>
@@ -1211,7 +1309,13 @@ const CarouselComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/carousel",
-    named: ["Carousel", "CarouselContent", "CarouselItem", "CarouselNext", "CarouselPrevious"],
+    named: [
+      "Carousel",
+      "CarouselContent",
+      "CarouselItem",
+      "CarouselNext",
+      "CarouselPrevious",
+    ],
   },
   hasChildren: false,
   description: "Carousel slider with navigation",
@@ -1226,7 +1330,9 @@ const CarouselComponent = defineComponent({
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-4xl font-semibold">{item.content}</span>
+                    <span className="text-4xl font-semibold">
+                      {item.content}
+                    </span>
                   </CardContent>
                 </Card>
               </div>
@@ -1269,19 +1375,39 @@ const CommandComponent = defineComponent({
   name: "Command",
   schema: z.object({
     placeholder: z.string().optional(),
-    items: z.array(z.object({ group: z.string().optional(), label: z.string(), value: z.string() })),
+    items: z.array(
+      z.object({
+        group: z.string().optional(),
+        label: z.string(),
+        value: z.string(),
+      })
+    ),
     emptyText: z.string().optional(),
     className: z.string().optional(),
   }),
   imports: {
     from: "@/components/ui/command",
-    named: ["Command", "CommandEmpty", "CommandGroup", "CommandInput", "CommandItem", "CommandList", "CommandSeparator"],
+    named: [
+      "Command",
+      "CommandEmpty",
+      "CommandGroup",
+      "CommandInput",
+      "CommandItem",
+      "CommandList",
+      "CommandSeparator",
+    ],
   },
   hasChildren: false,
   description: "Command palette with search",
   render: ({ element }) => {
-    const { placeholder, items, emptyText = "No results found.", className } = element.props;
-    const commandItems = (items as Array<{ group?: string; label: string; value: string }>) ?? [];
+    const {
+      placeholder,
+      items,
+      emptyText = "No results found.",
+      className,
+    } = element.props;
+    const commandItems =
+      (items as Array<{ group?: string; label: string; value: string }>) ?? [];
     const groupedItems = commandItems.reduce(
       (acc, item) => {
         const group = item.group ?? "default";
@@ -1297,7 +1423,10 @@ const CommandComponent = defineComponent({
         <CommandList>
           <CommandEmpty>{emptyText}</CommandEmpty>
           {Object.entries(groupedItems).map(([group, groupItems], index) => (
-            <CommandGroup key={group} heading={group !== "default" ? group : undefined}>
+            <CommandGroup
+              key={group}
+              heading={group !== "default" ? group : undefined}
+            >
               {index > 0 && <CommandSeparator />}
               {groupItems.map((item) => (
                 <CommandItem key={item.value}>{item.label}</CommandItem>
@@ -1318,7 +1447,12 @@ const ContextMenuComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/context-menu",
-    named: ["ContextMenu", "ContextMenuContent", "ContextMenuItem", "ContextMenuTrigger"],
+    named: [
+      "ContextMenu",
+      "ContextMenuContent",
+      "ContextMenuItem",
+      "ContextMenuTrigger",
+    ],
   },
   hasChildren: true,
   description: "Right-click context menu",
@@ -1327,7 +1461,9 @@ const ContextMenuComponent = defineComponent({
     const menuItems = (items as Array<{ label: string }>) ?? [];
     return (
       <ContextMenu>
-        <ContextMenuTrigger className={className}>{children}</ContextMenuTrigger>
+        <ContextMenuTrigger className={className}>
+          {children}
+        </ContextMenuTrigger>
         <ContextMenuContent>
           {menuItems.map((item, index) => (
             <ContextMenuItem key={index}>{item.label}</ContextMenuItem>
@@ -1348,7 +1484,14 @@ const EmptyComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/empty",
-    named: ["Empty", "EmptyContent", "EmptyDescription", "EmptyHeader", "EmptyMedia", "EmptyTitle"],
+    named: [
+      "Empty",
+      "EmptyContent",
+      "EmptyDescription",
+      "EmptyHeader",
+      "EmptyMedia",
+      "EmptyTitle",
+    ],
   },
   hasChildren: false,
   description: "Empty state placeholder",
@@ -1375,7 +1518,14 @@ const FieldComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/field",
-    named: ["Field", "FieldContent", "FieldDescription", "FieldError", "FieldGroup", "FieldLabel"],
+    named: [
+      "Field",
+      "FieldContent",
+      "FieldDescription",
+      "FieldError",
+      "FieldGroup",
+      "FieldLabel",
+    ],
   },
   hasChildren: true,
   description: "Form field wrapper",
@@ -1497,7 +1647,12 @@ const InputGroupComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/input-group",
-    named: ["InputGroup", "InputGroupAddon", "InputGroupButton", "InputGroupInput"],
+    named: [
+      "InputGroup",
+      "InputGroupAddon",
+      "InputGroupButton",
+      "InputGroupInput",
+    ],
   },
   hasChildren: false,
   description: "Input with prefix/suffix addons",
@@ -1505,9 +1660,13 @@ const InputGroupComponent = defineComponent({
     const { placeholder, prefix, suffix, className } = element.props;
     return (
       <InputGroup className={className}>
-        {prefix && <InputGroupAddon align="inline-start">{prefix}</InputGroupAddon>}
+        {prefix && (
+          <InputGroupAddon align="inline-start">{prefix}</InputGroupAddon>
+        )}
         <InputGroupInput placeholder={placeholder} />
-        {suffix && <InputGroupAddon align="inline-end">{suffix}</InputGroupAddon>}
+        {suffix && (
+          <InputGroupAddon align="inline-end">{suffix}</InputGroupAddon>
+        )}
       </InputGroup>
     );
   },
@@ -1568,7 +1727,15 @@ const ItemComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/item",
-    named: ["Item", "ItemActions", "ItemContent", "ItemDescription", "ItemGroup", "ItemMedia", "ItemTitle"],
+    named: [
+      "Item",
+      "ItemActions",
+      "ItemContent",
+      "ItemDescription",
+      "ItemGroup",
+      "ItemMedia",
+      "ItemTitle",
+    ],
   },
   hasChildren: true,
   description: "List item container",
@@ -1700,21 +1867,31 @@ const KbdComponent = defineComponent({
 const MenubarComponent = defineComponent({
   name: "Menubar",
   schema: z.object({
-    menus: z.array(z.object({
-      trigger: z.string(),
-      items: z.array(z.object({ label: z.string() })),
-    })),
+    menus: z.array(
+      z.object({
+        trigger: z.string(),
+        items: z.array(z.object({ label: z.string() })),
+      })
+    ),
     className: z.string().optional(),
   }),
   imports: {
     from: "@/components/ui/menubar",
-    named: ["Menubar", "MenubarContent", "MenubarItem", "MenubarMenu", "MenubarTrigger"],
+    named: [
+      "Menubar",
+      "MenubarContent",
+      "MenubarItem",
+      "MenubarMenu",
+      "MenubarTrigger",
+    ],
   },
   hasChildren: false,
   description: "Horizontal menu bar",
   render: ({ element }) => {
     const { menus, className } = element.props;
-    const menuList = (menus as Array<{ trigger: string; items: Array<{ label: string }> }>) ?? [];
+    const menuList =
+      (menus as Array<{ trigger: string; items: Array<{ label: string }> }>) ??
+      [];
     return (
       <Menubar className={className}>
         {menuList.map((menu, index) => (
@@ -1735,22 +1912,33 @@ const MenubarComponent = defineComponent({
 const NavigationMenuComponent = defineComponent({
   name: "NavigationMenu",
   schema: z.object({
-    items: z.array(z.object({
-      trigger: z.string(),
-      content: z.string().optional(),
-      href: z.string().optional(),
-    })),
+    items: z.array(
+      z.object({
+        trigger: z.string(),
+        content: z.string().optional(),
+        href: z.string().optional(),
+      })
+    ),
     className: z.string().optional(),
   }),
   imports: {
     from: "@/components/ui/navigation-menu",
-    named: ["NavigationMenu", "NavigationMenuContent", "NavigationMenuItem", "NavigationMenuLink", "NavigationMenuList", "NavigationMenuTrigger"],
+    named: [
+      "NavigationMenu",
+      "NavigationMenuContent",
+      "NavigationMenuItem",
+      "NavigationMenuLink",
+      "NavigationMenuList",
+      "NavigationMenuTrigger",
+    ],
   },
   hasChildren: false,
   description: "Navigation menu with dropdowns",
   render: ({ element }) => {
     const { items, className } = element.props;
-    const navItems = (items as Array<{ trigger: string; content?: string; href?: string }>) ?? [];
+    const navItems =
+      (items as Array<{ trigger: string; content?: string; href?: string }>) ??
+      [];
     return (
       <NavigationMenu className={className}>
         <NavigationMenuList>
@@ -1764,7 +1952,9 @@ const NavigationMenuComponent = defineComponent({
                   </NavigationMenuContent>
                 </>
               ) : (
-                <NavigationMenuLink href={item.href}>{item.trigger}</NavigationMenuLink>
+                <NavigationMenuLink href={item.href}>
+                  {item.trigger}
+                </NavigationMenuLink>
               )}
             </NavigationMenuItem>
           ))}
@@ -1783,7 +1973,15 @@ const PaginationComponent = defineComponent({
   }),
   imports: {
     from: "@/components/ui/pagination",
-    named: ["Pagination", "PaginationContent", "PaginationEllipsis", "PaginationItem", "PaginationLink", "PaginationNext", "PaginationPrevious"],
+    named: [
+      "Pagination",
+      "PaginationContent",
+      "PaginationEllipsis",
+      "PaginationItem",
+      "PaginationLink",
+      "PaginationNext",
+      "PaginationPrevious",
+    ],
   },
   hasChildren: false,
   description: "Pagination navigation",
@@ -1892,7 +2090,12 @@ const ToggleComponent = defineComponent({
   hasChildren: false,
   description: "Toggle button",
   render: ({ element }) => {
-    const { text, variant = "default", size = "default", className } = element.props;
+    const {
+      text,
+      variant = "default",
+      size = "default",
+      className,
+    } = element.props;
     return (
       <Toggle variant={variant} size={size} className={className}>
         {text}
@@ -1916,10 +2119,21 @@ const ToggleGroupComponent = defineComponent({
   hasChildren: false,
   description: "Toggle button group",
   render: ({ element }) => {
-    const { items, variant = "default", size = "default", className } = element.props;
-    const toggleItems = (items as Array<{ value: string; label: string }>) ?? [];
+    const {
+      items,
+      variant = "default",
+      size = "default",
+      className,
+    } = element.props;
+    const toggleItems =
+      (items as Array<{ value: string; label: string }>) ?? [];
     return (
-      <ToggleGroup inputMode="text" variant={variant} size={size} className={className}>
+      <ToggleGroup
+        inputMode="text"
+        variant={variant}
+        size={size}
+        className={className}
+      >
         {toggleItems.map((item) => (
           <ToggleGroupItem key={item.value} value={item.value}>
             {item.label}

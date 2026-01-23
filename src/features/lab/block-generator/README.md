@@ -20,14 +20,14 @@ generateReactCode → Exportable Code
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `index.ts` (API route) | Server endpoint using TanStack AI |
-| `block-generator.page.tsx` | Main page with `useUIStream` |
-| `block-generator.preview.tsx` | Live preview using `Renderer` |
-| `block-generator.registry.tsx` | Component registry mapping |
-| `block-generator.codegen.ts` | UITree → React code converter |
-| `to-text-stream.ts` | TanStack AI → text stream adapter |
+| File                           | Purpose                           |
+| ------------------------------ | --------------------------------- |
+| `index.ts` (API route)         | Server endpoint using TanStack AI |
+| `block-generator.page.tsx`     | Main page with `useUIStream`      |
+| `block-generator.preview.tsx`  | Live preview using `Renderer`     |
+| `block-generator.registry.tsx` | Component registry mapping        |
+| `block-generator.codegen.ts`   | UITree → React code converter     |
+| `to-text-stream.ts`            | TanStack AI → text stream adapter |
 
 ## Server-Side: TanStack AI Setup
 
@@ -56,7 +56,7 @@ POST: async ({ request }: { request: Request }) => {
       "Transfer-Encoding": "chunked",
     },
   });
-}
+};
 ```
 
 ### TanStack AI → Text Stream Adapter
@@ -115,13 +115,13 @@ function BlockGeneratorPage() {
 
 ### Hook Return Values
 
-| Value | Type | Description |
-|-------|------|-------------|
-| `tree` | `UITree \| null` | Parsed UI structure |
-| `isStreaming` | `boolean` | Active stream status |
-| `error` | `Error \| null` | Stream error if any |
-| `send(prompt)` | `function` | Start generation |
-| `clear()` | `function` | Reset tree state |
+| Value          | Type             | Description          |
+| -------------- | ---------------- | -------------------- |
+| `tree`         | `UITree \| null` | Parsed UI structure  |
+| `isStreaming`  | `boolean`        | Active stream status |
+| `error`        | `Error \| null`  | Stream error if any  |
+| `send(prompt)` | `function`       | Start generation     |
+| `clear()`      | `function`       | Reset tree state     |
 
 ## JSONL Patch Format
 
@@ -135,19 +135,19 @@ The LLM outputs JSONL where each line is a patch operation:
 
 ### Operations
 
-| Operation | Path | Description |
-|-----------|------|-------------|
-| `set` | `/root` | Set root element key |
-| `add` | `/elements/{key}` | Add element by unique key |
+| Operation | Path              | Description               |
+| --------- | ----------------- | ------------------------- |
+| `set`     | `/root`           | Set root element key      |
+| `add`     | `/elements/{key}` | Add element by unique key |
 
 ### Element Structure
 
 ```typescript
 interface Element {
-  key: string;           // Unique identifier
-  type: string;          // Component type (Card, Button, etc.)
+  key: string; // Unique identifier
+  type: string; // Component type (Card, Button, etc.)
   props: Record<string, unknown>;
-  children?: string[];   // Child element keys (containers only)
+  children?: string[]; // Child element keys (containers only)
 }
 ```
 

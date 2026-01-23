@@ -59,9 +59,13 @@ function ChatPage() {
       ))}
       <form onSubmit={handleSubmit}>
         <input value={input} onChange={handleInputChange} />
-        <button type="submit" disabled={isStreaming}>Send</button>
+        <button type="submit" disabled={isStreaming}>
+          Send
+        </button>
       </form>
-      <button onClick={clearChat} type="button">Clear</button>
+      <button onClick={clearChat} type="button">
+        Clear
+      </button>
     </div>
   );
 }
@@ -76,6 +80,7 @@ function ChatPage() {
 Hook wrapping TanStack's `useChat` with resume capability.
 
 Returns:
+
 - All `useChat` properties (`messages`, `input`, `handleSubmit`, etc.)
 - `isInitialized` - `true` after initial load/restore
 - `isResuming` - `true` during stream resume
@@ -103,7 +108,10 @@ Get the singleton resumable stream context. Returns `null` if Redis unavailable.
 ```ts
 const ctx = await getStreamContext();
 if (ctx) {
-  const stream = await ctx.createNewResumableStream(streamId, () => sourceStream);
+  const stream = await ctx.createNewResumableStream(
+    streamId,
+    () => sourceStream
+  );
 }
 ```
 
@@ -114,6 +122,7 @@ if (ctx) {
 Create new chat stream.
 
 Request:
+
 ```json
 {
   "messages": [...],
@@ -122,6 +131,7 @@ Request:
 ```
 
 Response Headers:
+
 - `X-Stream-Id` - UUID for resume (empty if no Redis)
 - `X-Conversation-Id` - Conversation UUID
 
@@ -130,32 +140,36 @@ Response Headers:
 Resume an active stream.
 
 Query params:
+
 - `streamId` - Stream UUID from initial request
 - `skipChars` - Character offset to skip
 
 Returns:
+
 - `204` - Stream doesn't exist or already completed
 - SSE stream from specified offset
 
 ## Files
 
-| File | Purpose |
-|------|---------|
+| File                                   | Purpose                                    |
+| -------------------------------------- | ------------------------------------------ |
 | `src/lib/chat/resumable-connection.ts` | Client-side SSE parsing and sessionStorage |
-| `src/lib/chat/use-resumable-chat.ts` | React hook with auto-resume |
-| `src/lib/chat/stream-context.ts` | Server-side Redis/resumable-stream setup |
-| `src/routes/api/chat/index.ts` | Chat endpoint with resumable wrapping |
-| `src/routes/api/chat/resume.ts` | Resume endpoint |
+| `src/lib/chat/use-resumable-chat.ts`   | React hook with auto-resume                |
+| `src/lib/chat/stream-context.ts`       | Server-side Redis/resumable-stream setup   |
+| `src/routes/api/chat/index.ts`         | Chat endpoint with resumable wrapping      |
+| `src/routes/api/chat/resume.ts`        | Resume endpoint                            |
 
 ## How It Works
 
 ### Storage
 
 **sessionStorage** (client):
+
 - `chat:active-stream` - `{ streamId, conversationId, charOffset }`
 - `chat:messages` - Serialized `UIMessage[]`
 
 **Redis** (server):
+
 - Managed by `resumable-stream` package
 - Auto-expires after stream completion
 
@@ -173,12 +187,12 @@ Returns:
 
 ### Graceful Degradation
 
-| Scenario | Behavior |
-|----------|----------|
-| No `REDIS_URL` | Chat works, `X-Stream-Id` header empty |
-| Redis connection fails | Logs warning, falls back to non-resumable |
-| Stream not found on resume | Returns 204, client clears storage |
-| Stream completed before resume | Returns 204 |
+| Scenario                       | Behavior                                  |
+| ------------------------------ | ----------------------------------------- |
+| No `REDIS_URL`                 | Chat works, `X-Stream-Id` header empty    |
+| Redis connection fails         | Logs warning, falls back to non-resumable |
+| Stream not found on resume     | Returns 204, client clears storage        |
+| Stream completed before resume | Returns 204                               |
 
 ## Dependencies
 

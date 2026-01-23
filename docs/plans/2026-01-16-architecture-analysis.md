@@ -23,6 +23,7 @@
 ## Task 1: Enable Rate Limiting for Production ✅
 
 **Files:**
+
 - Modified: `src/lib/auth/auth.ts:296-302`
 
 **Change:** `enabled: false` → `enabled: true`
@@ -32,6 +33,7 @@
 ## Task 2: Add Email Environment Variables ✅
 
 **Files:**
+
 - Modified: `src/lib/env.server.ts`
 
 **Change:** Added `RESEND_FROM_EMAIL: z.string().optional()`
@@ -41,10 +43,12 @@
 ## Task 3: Refactor Email Service to Use Environment Config ✅
 
 **Files:**
+
 - Modified: `src/lib/resend.ts`
 - Modified: `.env.example`
 
 **Changes:**
+
 - Removed hardcoded `from` and `to` values
 - Uses `env.RESEND_FROM_EMAIL` with fallback to `payload.from` or `DEFAULT_FROM`
 - Added `RESEND_FROM_EMAIL` to `.env.example`
@@ -72,6 +76,7 @@ The `listUserInvitations` API is provided by Better Auth's organization plugin. 
 ## Task 6: Final Cleanup - Remove Unused Exports ✅
 
 **Files:**
+
 - Modified: `src/lib/payment/types.ts`
 
 **Change:** Removed unused `SubscriptionStatus` re-export (was added for backwards compatibility but never used).
@@ -80,14 +85,14 @@ The `listUserInvitations` API is provided by Better Auth's organization plugin. 
 
 ## Summary
 
-| Task | Description | Status |
-|------|-------------|--------|
-| 1 | Enable rate limiting | ✅ Complete |
-| 2 | Add email env vars | ✅ Complete |
-| 3 | Refactor email service | ✅ Complete |
-| 4 | Pagination for invitations | ⏭️ Skipped (Better Auth limitation) |
-| 5 | Pagination for organizations | ⏭️ Skipped (Better Auth limitation) |
-| 6 | Final type cleanup | ✅ Complete |
+| Task | Description                  | Status                              |
+| ---- | ---------------------------- | ----------------------------------- |
+| 1    | Enable rate limiting         | ✅ Complete                         |
+| 2    | Add email env vars           | ✅ Complete                         |
+| 3    | Refactor email service       | ✅ Complete                         |
+| 4    | Pagination for invitations   | ⏭️ Skipped (Better Auth limitation) |
+| 5    | Pagination for organizations | ⏭️ Skipped (Better Auth limitation) |
+| 6    | Final type cleanup           | ✅ Complete                         |
 
 ---
 

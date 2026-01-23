@@ -36,6 +36,8 @@ export const env = createEnv({
     DRIZZLE_QUERY_LOGGER_ENABLED: z.coerce.boolean().default(false),
     // Redis (optional - for resumable chat streams)
     REDIS_URL: z.string().url().optional(),
+    // Admin whitelist (comma-separated emails)
+    ADMIN_EMAILS: z.string().optional(),
   },
 
   /**

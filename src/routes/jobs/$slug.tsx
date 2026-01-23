@@ -95,10 +95,10 @@ function JobDetailPage() {
     return (
       <PublicLayout>
         <div className="py-24 text-center">
-          <h2 className="text-2xl font-bold text-depth-1 dark:text-white">
+          <h2 className="text-2xl font-bold text-depth-1">
             {t("NOT_FOUND_TITLE")}
           </h2>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">
+          <p className="mt-2 text-slate-500">
             {t("NOT_FOUND_DESC")}
           </p>
           <Link to="/jobs">
@@ -193,7 +193,7 @@ function JobDetailPage() {
       </section>
 
       {/* Job Content Section */}
-      <section className="bg-background-light py-12 dark:bg-background">
+      <section className="bg-background-light py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <JobDetail job={job} />
         </div>

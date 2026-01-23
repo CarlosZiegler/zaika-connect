@@ -40,16 +40,14 @@ import {
   JobFormDialog,
 } from "@/features/admin/job-form-dialog";
 import { useConfirmationDialog } from "@/hooks/use-confirmation-dialog";
-import { isAdminEmail } from "@/lib/auth/admin-check";
-import { authQueryOptions } from "@/lib/auth/queries";
+import { getUserWithAdmin } from "@/lib/auth/auth-server-fn";
 import { client, orpc } from "@/orpc/orpc-client";
 
 export const Route = createFileRoute("/(dashboard)/admin/jobs/")({
   component: AdminJobsPage,
-  beforeLoad: async ({ context }) => {
-    const session =
-      await context.queryClient.ensureQueryData(authQueryOptions());
-    if (!isAdminEmail(session?.user?.email)) {
+  beforeLoad: async () => {
+    const { session, isAdmin } = await getUserWithAdmin();
+    if (!isAdmin) {
       throw redirect({ to: "/overview" });
     }
     return { session };

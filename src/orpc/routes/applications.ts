@@ -1,3 +1,4 @@
+import { ORPCError } from "@orpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -34,11 +35,13 @@ export const applicationsRouter = orpc.router({
         .limit(1);
 
       if (!job) {
-        throw new Error("Job not found");
+        throw new ORPCError("NOT_FOUND", { message: "Job not found" });
       }
 
       if (!job.isActive) {
-        throw new Error("Job is no longer accepting applications");
+        throw new ORPCError("BAD_REQUEST", {
+          message: "Job is no longer accepting applications",
+        });
       }
 
       // Decode and upload CV to storage

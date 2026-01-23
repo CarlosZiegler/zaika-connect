@@ -191,10 +191,10 @@ function JobsPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="border-b border-slate-200 bg-white py-6 dark:border-slate-700 dark:bg-depth-1">
+      <section className="border-b border-slate-200 bg-white py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2 text-ocean-5 dark:text-ocean-1">
+            <div className="flex items-center gap-2 text-ocean-5">
               <Filter className="size-5" aria-hidden="true" />
               <span className="font-medium">{t("JOBS_FILTERS")}</span>
             </div>
@@ -203,7 +203,7 @@ function JobsPage() {
               value={search.locationFilter ?? "all"}
               onValueChange={(v) => handleFilterChange("locationFilter", v)}
             >
-              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1 dark:border-slate-600 dark:bg-depth-2">
+              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
                 <SelectValue placeholder={t("JOBS_FILTER_LOCATION")} />
               </SelectTrigger>
               <SelectContent>
@@ -220,7 +220,7 @@ function JobsPage() {
               value={search.employmentType ?? "all"}
               onValueChange={(v) => handleFilterChange("employmentType", v)}
             >
-              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1 dark:border-slate-600 dark:bg-depth-2">
+              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
                 <SelectValue placeholder={t("JOBS_FILTER_TYPE")} />
               </SelectTrigger>
               <SelectContent>
@@ -237,7 +237,7 @@ function JobsPage() {
               value={search.industry ?? "all"}
               onValueChange={(v) => handleFilterChange("industry", v)}
             >
-              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1 dark:border-slate-600 dark:bg-depth-2">
+              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
                 <SelectValue placeholder={t("JOBS_FILTER_INDUSTRY")} />
               </SelectTrigger>
               <SelectContent>
@@ -255,7 +255,7 @@ function JobsPage() {
                 type="button"
                 variant="ghost"
                 onClick={handleClearFilters}
-                className="gap-1 text-ocean-5 hover:bg-ocean-1/10 hover:text-ocean-5 dark:text-ocean-1"
+                className="gap-1 text-ocean-5 hover:bg-ocean-1/10 hover:text-ocean-5"
               >
                 <X className="size-4" aria-hidden="true" />
                 {t("JOBS_FILTER_CLEAR")}
@@ -264,7 +264,7 @@ function JobsPage() {
 
             {/* Results count */}
             {!isLoading && (
-              <span className="ml-auto text-sm text-slate-500 dark:text-slate-400">
+              <span className="ml-auto text-sm text-slate-500">
                 {jobs.length} {jobs.length === 1 ? "position" : "positions"}{" "}
                 found
               </span>
@@ -274,7 +274,7 @@ function JobsPage() {
       </section>
 
       {/* Jobs List Section */}
-      <section className="bg-background-light py-12 dark:bg-background">
+      <section className="bg-background-light py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {isLoading ? (
             <div className="flex justify-center py-16">
@@ -286,10 +286,10 @@ function JobsPage() {
               <div className="mx-auto flex size-20 items-center justify-center rounded-full bg-ocean-1/10">
                 <Search className="size-10 text-ocean-1" aria-hidden="true" />
               </div>
-              <h3 className="mt-6 text-xl font-semibold text-depth-1 dark:text-white">
+              <h3 className="mt-6 text-xl font-semibold text-depth-1">
                 {t("JOBS_EMPTY")}
               </h3>
-              <p className="mt-2 text-slate-500 dark:text-slate-400">
+              <p className="mt-2 text-slate-500">
                 {t("JOBS_EMPTY_SUBTITLE")}
               </p>
               {hasFilters ? (
@@ -308,7 +308,7 @@ function JobsPage() {
               {jobs.map((job, index) => (
                 <div
                   key={job.id}
-                  className="group relative cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-md transition hover:shadow-xl dark:border-slate-700 dark:bg-depth-1"
+                  className="group relative cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-md transition hover:shadow-xl"
                 >
                   {/* Colored Left Border */}
                   <div
@@ -317,24 +317,24 @@ function JobsPage() {
 
                   {/* Card Header */}
                   <div className="flex items-start justify-between">
-                    <div className="flex size-12 items-center justify-center rounded-lg bg-slate-100 text-ocean-5 dark:bg-slate-700">
+                    <div className="flex size-12 items-center justify-center rounded-lg bg-slate-100 text-ocean-5">
                       <BriefcaseIcon className="size-6" aria-hidden="true" />
                     </div>
                     <Badge
                       variant="secondary"
-                      className="bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-300"
+                      className="bg-teal-50 text-teal-700"
                     >
                       {t(getEmploymentTypeKey(job.employmentType))}
                     </Badge>
                   </div>
 
                   {/* Job Title */}
-                  <h3 className="mt-4 text-xl font-bold text-slate-900 transition group-hover:text-ocean-1 dark:text-white">
+                  <h3 className="mt-4 text-xl font-bold text-slate-900 transition group-hover:text-ocean-1">
                     {job.title}
                   </h3>
 
                   {/* Company & Location */}
-                  <p className="mt-1 flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 flex items-center gap-1 text-sm text-slate-500">
                     <MapPinIcon className="size-4" aria-hidden="true" />
                     {t(getLocationKey(job.location))}
                     <span className="mx-2">|</span>
@@ -342,12 +342,12 @@ function JobsPage() {
                   </p>
 
                   {/* Description Preview */}
-                  <p className="mt-4 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">
+                  <p className="mt-4 line-clamp-2 text-sm text-slate-600">
                     {job.description.slice(0, 120)}...
                   </p>
 
                   {/* Card Footer */}
-                  <div className="mt-6 flex items-center justify-between border-t border-slate-50 pt-4 dark:border-slate-800">
+                  <div className="mt-6 flex items-center justify-between border-t border-slate-50 pt-4">
                     <span className="text-xs text-slate-400">
                       {t("JOBS_POSTED")} recently
                     </span>

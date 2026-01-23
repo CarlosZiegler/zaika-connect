@@ -4,13 +4,7 @@ import type * as React from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import { ClientOnly } from "@tanstack/react-router";
-import {
-  Beaker,
-  Building2,
-  Home,
-  Settings,
-  ShieldCheck,
-} from "lucide-react";
+import { Beaker, Building2, Home, Settings, ShieldCheck } from "lucide-react";
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 

@@ -37,7 +37,9 @@ export const Route = createFileRoute("/api/chat/")({
                 return baseStream.pipeThrough(
                   new TransformStream<Uint8Array, string>({
                     transform(chunk, controller) {
-                      controller.enqueue(decoder.decode(chunk, { stream: true }));
+                      controller.enqueue(
+                        decoder.decode(chunk, { stream: true })
+                      );
                     },
                   })
                 );

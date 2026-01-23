@@ -59,10 +59,10 @@ export function JobDetail({ job }: JobDetailProps) {
       {/* Main Content */}
       <div className="space-y-8 lg:col-span-2">
         {/* About Section */}
-        <Card className="overflow-hidden border-slate-100 shadow-md dark:border-slate-700 dark:bg-depth-1">
+        <Card className="overflow-hidden border-slate-100 bg-white shadow-md">
           <div className="h-1 bg-ocean-1" />
           <CardHeader className="pb-4">
-            <CardTitle className="flex items-center gap-2 text-xl text-depth-1 dark:text-white">
+            <CardTitle className="flex items-center gap-2 text-xl text-depth-1">
               <div className="flex size-8 items-center justify-center rounded-lg bg-ocean-1/10 text-ocean-1">
                 <SparklesIcon className="size-4" aria-hidden="true" />
               </div>
@@ -70,7 +70,7 @@ export function JobDetail({ job }: JobDetailProps) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="prose prose-sm max-w-none text-slate-600 dark:text-slate-300">
+            <div className="prose prose-sm max-w-none text-slate-600">
               {renderTextWithLineBreaks(job.description)}
             </div>
           </CardContent>
@@ -78,10 +78,10 @@ export function JobDetail({ job }: JobDetailProps) {
 
         {/* Requirements Section */}
         {job.requirements ? (
-          <Card className="overflow-hidden border-slate-100 shadow-md dark:border-slate-700 dark:bg-depth-1">
+          <Card className="overflow-hidden border-slate-100 bg-white shadow-md">
             <div className="h-1 bg-ocean-3" />
             <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-2 text-xl text-depth-1 dark:text-white">
+              <CardTitle className="flex items-center gap-2 text-xl text-depth-1">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-ocean-3/10 text-ocean-3">
                   <TargetIcon className="size-4" aria-hidden="true" />
                 </div>
@@ -89,7 +89,7 @@ export function JobDetail({ job }: JobDetailProps) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="prose prose-sm max-w-none text-slate-600 dark:text-slate-300">
+              <div className="prose prose-sm max-w-none text-slate-600">
                 {renderTextWithLineBreaks(job.requirements)}
               </div>
             </CardContent>
@@ -98,10 +98,10 @@ export function JobDetail({ job }: JobDetailProps) {
 
         {/* Benefits Section */}
         {job.benefits ? (
-          <Card className="overflow-hidden border-slate-100 shadow-md dark:border-slate-700 dark:bg-depth-1">
+          <Card className="overflow-hidden border-slate-100 bg-white shadow-md">
             <div className="h-1 bg-depth-5" />
             <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-2 text-xl text-depth-1 dark:text-white">
+              <CardTitle className="flex items-center gap-2 text-xl text-depth-1">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-depth-5/10 text-depth-5">
                   <CheckCircle2Icon className="size-4" aria-hidden="true" />
                 </div>
@@ -109,7 +109,7 @@ export function JobDetail({ job }: JobDetailProps) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="prose prose-sm max-w-none text-slate-600 dark:text-slate-300">
+              <div className="prose prose-sm max-w-none text-slate-600">
                 {renderTextWithLineBreaks(job.benefits)}
               </div>
             </CardContent>
@@ -120,16 +120,16 @@ export function JobDetail({ job }: JobDetailProps) {
       {/* Sidebar */}
       <div className="space-y-6">
         {/* Apply Now Card */}
-        <Card className="sticky top-24 overflow-hidden border-slate-100 shadow-md dark:border-slate-700 dark:bg-depth-1">
+        <Card className="sticky top-24 overflow-hidden border-slate-100 bg-white shadow-md">
           <div className="h-1 bg-ocean-1" />
           <CardHeader className="pb-4">
-            <CardTitle className="text-lg text-depth-1 dark:text-white">
+            <CardTitle className="text-lg text-depth-1">
               {t("JOBS_APPLY_NOW")}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {salary ? (
-              <div className="flex items-center gap-2 rounded-lg bg-ocean-1/10 p-3 text-ocean-5 dark:bg-ocean-1/20 dark:text-ocean-1">
+              <div className="flex items-center gap-2 rounded-lg bg-ocean-1/10 p-3 text-ocean-5">
                 <DollarSignIcon className="size-5" aria-hidden="true" />
                 <span className="font-semibold">{salary}</span>
               </div>
@@ -143,7 +143,7 @@ export function JobDetail({ job }: JobDetailProps) {
                 {t("JOBS_APPLY_NOW")}
               </Button>
             </a>
-            <p className="text-center text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-center text-xs text-slate-500">
               {t("JOB_DETAIL_APPLY_DESC")}
             </p>
           </CardContent>

@@ -1,15 +1,15 @@
+import { sql } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/node-postgres";
 import { exec } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { promisify } from "node:util";
-
-import { sql } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/node-postgres";
 import pg from "pg";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-import * as schema from "@/lib/db/schema";
 import type { RlsSession } from "@/lib/db/secure-client";
+
+import * as schema from "@/lib/db/schema";
 
 const execAsync = promisify(exec);
 
@@ -308,7 +308,9 @@ describe("RLS Enforcement", () => {
     it("User with wrong org cannot access org files", async () => {
       const sessionBWithWrongOrg: RlsSession = {
         user: { id: TEST_USER_B.id },
-        session: { activeOrganizationId: "99999999-9999-9999-9999-999999999999" },
+        session: {
+          activeOrganizationId: "99999999-9999-9999-9999-999999999999",
+        },
       };
 
       const result = await testWithRls(sessionBWithWrongOrg, async (tx) => {

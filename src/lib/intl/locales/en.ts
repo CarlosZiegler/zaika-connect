@@ -580,7 +580,12 @@ export default {
   LANDING_FEATURED_SUBTITLE: "Highly selective roles from top employers.",
   LANDING_FEATURED_TITLE: "Curated Opportunities",
   LANDING_HERO_DESC:
-    "ZaikaConnect leverages AI to match ambitious professionals with organizations that amplify their potential.",
+    `ZaikaConnect isn't just a job board; it's a precision-engineered
+            ecosystem designed for the world's most ambitious professionals. By
+            leveraging deep-industry data and behavioral analytics, we map your
+            unique trajectory to organizations that don't just hire, but
+            amplify. Experience the synthesis of human potential and corporate
+            vision.`,
   LANDING_HERO_SUBTITLE_NEW:
     "The Intelligent Bridge Between Skills and Opportunity",
   LANDING_HERO_TITLE_NEW: "Connect with Excellence",

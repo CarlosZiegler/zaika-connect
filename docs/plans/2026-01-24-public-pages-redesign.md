@@ -13,6 +13,7 @@
 ## Color Palette
 
 Ocean (teal/blue-green):
+
 - ocean-1: #006466 (primary teal)
 - ocean-2: #065A60
 - ocean-3: #0B525B (accent)
@@ -20,6 +21,7 @@ Ocean (teal/blue-green):
 - ocean-5: #1B3A4B (deep blue - hero backgrounds)
 
 Depth (purple/violet):
+
 - depth-1: #212F45 (midnight - footer)
 - depth-2: #272640
 - depth-3: #312244 (CTA sections)
@@ -31,26 +33,29 @@ Depth (purple/violet):
 ## Task 0: Add Color System to CSS
 
 **Files:**
+
 - Modify: `src/app.css`
 
 **Step 1:** Add ocean/depth colors to @theme inline block
+
 ```css
 /* Ocean palette */
 --color-ocean-1: #006466;
---color-ocean-2: #065A60;
---color-ocean-3: #0B525B;
+--color-ocean-2: #065a60;
+--color-ocean-3: #0b525b;
 --color-ocean-4: #144552;
---color-ocean-5: #1B3A4B;
+--color-ocean-5: #1b3a4b;
 
 /* Depth palette */
---color-depth-1: #212F45;
+--color-depth-1: #212f45;
 --color-depth-2: #272640;
 --color-depth-3: #312244;
---color-depth-4: #3E1F47;
---color-depth-5: #4D194D;
+--color-depth-4: #3e1f47;
+--color-depth-5: #4d194d;
 ```
 
 **Step 2:** Add glass-panel utility to @layer utilities
+
 ```css
 .glass-panel {
   background: rgba(255, 255, 255, 0.1);
@@ -66,6 +71,7 @@ Depth (purple/violet):
 ```
 
 **Step 3:** Commit
+
 ```bash
 git add src/app.css
 git commit -m "feat: add ocean/depth color palette and glass-panel utility"
@@ -76,9 +82,11 @@ git commit -m "feat: add ocean/depth color palette and glass-panel utility"
 ## Task 1: Create Public Header Component
 
 **Files:**
+
 - Create: `src/components/public/public-header.tsx`
 
 **Requirements:**
+
 - Fixed position, z-50
 - Glass-panel styling (blur backdrop)
 - Logo on left (use existing Logo component or text)
@@ -96,9 +104,11 @@ git commit -m "feat: add ocean/depth color palette and glass-panel utility"
 ## Task 2: Create Public Footer Component
 
 **Files:**
+
 - Create: `src/components/public/public-footer.tsx`
 
 **Requirements:**
+
 - Dark background (depth-1)
 - 4-column grid on desktop, stacked on mobile
 - Column 1: Logo + tagline
@@ -116,9 +126,11 @@ git commit -m "feat: add ocean/depth color palette and glass-panel utility"
 ## Task 3: Create Public Layout Wrapper
 
 **Files:**
+
 - Create: `src/components/public/public-layout.tsx`
 
 **Requirements:**
+
 - Accepts children
 - Renders PublicHeader at top
 - Renders children in main
@@ -133,9 +145,11 @@ git commit -m "feat: add ocean/depth color palette and glass-panel utility"
 ## Task 4: Create Search Hero Component
 
 **Files:**
+
 - Create: `src/components/public/search-hero.tsx`
 
 **Requirements:**
+
 - Dual input search bar (keywords + location)
 - "Find Jobs" button
 - On submit, navigates to /jobs with query params (?q=keyword&location=location)
@@ -150,9 +164,11 @@ git commit -m "feat: add ocean/depth color palette and glass-panel utility"
 ## Task 5: Create Stats Section Component
 
 **Files:**
+
 - Create: `src/components/public/stats-section.tsx`
 
 **Requirements:**
+
 - 4-column grid (2 cols on mobile)
 - Hardcoded impressive numbers with labels
 - Hover scale animation on numbers
@@ -166,11 +182,13 @@ git commit -m "feat: add ocean/depth color palette and glass-panel utility"
 ## Task 6: Add Public Pages i18n Keys
 
 **Files:**
+
 - Modify: `src/lib/intl/locales/en.ts`
 - Modify: `src/lib/intl/locales/de.ts`
 - Modify: `src/lib/intl/locales/pt.ts`
 
 **New Keys:**
+
 ```
 PUBLIC_NAV_FIND_JOBS, PUBLIC_NAV_CV_REVIEW, PUBLIC_NAV_LOGIN, PUBLIC_NAV_SIGNUP
 PUBLIC_FOOTER_TAGLINE, PUBLIC_FOOTER_JOB_SEEKERS, PUBLIC_FOOTER_RESOURCES
@@ -199,9 +217,11 @@ LANDING_ENTERPRISE_CTA
 ## Task 7: Redesign Landing Page
 
 **Files:**
+
 - Modify: `src/routes/index.tsx`
 
 **Sections:**
+
 1. Hero with SearchHero component, ocean-5 background, animated grid SVG
 2. StatsSection component
 3. Featured Jobs section (reuse existing job query, new card design)
@@ -222,9 +242,11 @@ LANDING_ENTERPRISE_CTA
 ## Task 8: Redesign Jobs List Page
 
 **Files:**
+
 - Modify: `src/routes/jobs/index.tsx`
 
 **Changes:**
+
 - Wrap with PublicLayout
 - Add smaller hero with SearchHero (reads from URL params)
 - Update job cards to new design with colored left borders
@@ -244,10 +266,12 @@ LANDING_ENTERPRISE_CTA
 ## Task 9: Update Job Detail Page
 
 **Files:**
+
 - Modify: `src/routes/jobs/$slug.tsx`
 - Modify: `src/features/jobs/job-detail.tsx`
 
 **Changes:**
+
 - Wrap with PublicLayout
 - Hero section with ocean-4 background, job title
 - Update card styling with ocean accents
@@ -263,9 +287,11 @@ LANDING_ENTERPRISE_CTA
 ## Task 10: Update Apply Page
 
 **Files:**
+
 - Modify: `src/routes/apply/$jobSlug.tsx`
 
 **Changes:**
+
 - Wrap with PublicLayout
 - Update form styling with ocean accents
 - Cleaner layout
@@ -279,9 +305,11 @@ LANDING_ENTERPRISE_CTA
 ## Task 11: Update CV Review Page
 
 **Files:**
+
 - Modify: `src/routes/cv-review.tsx`
 
 **Changes:**
+
 - Wrap with PublicLayout
 - Hero section explaining the tool
 - Update upload area styling
