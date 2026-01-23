@@ -541,6 +541,7 @@ export default {
   APPLICATION_SUCCESS_DESC:
     "Vielen Dank für Ihre Bewerbung. Wir werden sie prüfen und uns bald bei Ihnen melden.",
   APPLICATION_BACK_TO_JOBS: "Zurück zu Stellen",
+  APPLICATION_APPLY_FOR: "Bewerben für",
 
   // Recruiting - CV Review
   CV_REVIEW_TITLE: "Kostenloser Lebenslauf-Check",

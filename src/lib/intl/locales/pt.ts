@@ -535,6 +535,7 @@ export default {
   APPLICATION_SUCCESS_DESC:
     "Obrigado por se candidatar. Analisaremos sua candidatura e entraremos em contato em breve.",
   APPLICATION_BACK_TO_JOBS: "Voltar para Vagas",
+  APPLICATION_APPLY_FOR: "Candidatar-se a",
 
   // Recruiting - CV Review
   CV_REVIEW_TITLE: "Avaliacao de CV Gratis",

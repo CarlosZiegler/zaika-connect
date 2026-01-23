@@ -137,17 +137,21 @@ export function ApplicationForm({ jobSlug, jobTitle }: ApplicationFormProps) {
 
   if (isSubmitted) {
     return (
-      <Card>
+      <Card className="border-ocean-1/20 shadow-lg">
         <CardContent className="flex flex-col items-center py-12 text-center">
-          <CheckCircleIcon className="mb-4 size-16 text-green-500" />
-          <h2 className="mb-2 text-2xl font-bold">
+          <CheckCircleIcon className="mb-4 size-16 text-teal-500" />
+          <h2 className="mb-2 text-2xl font-bold text-depth-1 dark:text-white">
             {t("APPLICATION_SUCCESS_TITLE")}
           </h2>
-          <p className="mb-6 text-muted-foreground">
+          <p className="mb-6 text-slate-500 dark:text-slate-400">
             {t("APPLICATION_SUCCESS_DESC")}
           </p>
           <Link to="/jobs">
-            <Button type="button" variant="outline">
+            <Button
+              type="button"
+              className="bg-ocean-1 hover:bg-ocean-2"
+              variant="default"
+            >
               {t("APPLICATION_BACK_TO_JOBS")}
             </Button>
           </Link>
@@ -157,10 +161,12 @@ export function ApplicationForm({ jobSlug, jobTitle }: ApplicationFormProps) {
   }
 
   return (
-    <Card>
+    <Card className="border-ocean-1/20 shadow-lg">
       <CardHeader>
-        <CardTitle>{t("APPLICATION_TITLE")}</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-depth-1 dark:text-white">
+          {t("APPLICATION_TITLE")}
+        </CardTitle>
+        <CardDescription className="text-slate-500 dark:text-slate-400">
           {t("APPLICATION_SUBTITLE")} - {jobTitle}
         </CardDescription>
       </CardHeader>
@@ -277,7 +283,7 @@ export function ApplicationForm({ jobSlug, jobTitle }: ApplicationFormProps) {
 
           <Button
             type="submit"
-            className="w-full"
+            className="w-full bg-ocean-1 hover:bg-ocean-2"
             size="lg"
             disabled={createApplicationMutation.isPending}
           >

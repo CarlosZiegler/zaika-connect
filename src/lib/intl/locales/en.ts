@@ -709,6 +709,7 @@ export default {
   APPLICATION_SUCCESS_DESC:
     "Thank you for applying. We'll review your application and get back to you soon.",
   APPLICATION_BACK_TO_JOBS: "Back to Jobs",
+  APPLICATION_APPLY_FOR: "Apply for",
 
   // Recruiting - CV Review
   CV_REVIEW_TITLE: "Free CV Review",
