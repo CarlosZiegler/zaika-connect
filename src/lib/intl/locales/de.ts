@@ -405,9 +405,41 @@ export default {
   SETTINGS_DELETE_ACCOUNT_DELETING: "Konto wird gelöscht...",
 
   // Recruiting - Landing page
-  LANDING_NAV_JOBS: "Stellen",
+  LANDING_CV_CTA: "Lebenslauf-Feedback erhalten",
+  LANDING_CV_DESC:
+    "Laden Sie Ihren Lebenslauf hoch für sofortige KI-Analyse und personalisierte Stellenempfehlungen.",
+  LANDING_CV_EXPLORE: "Stellen entdecken",
+  LANDING_CV_TITLE: "KI-gestütztes Karriere-Matching",
+  LANDING_ENTERPRISE_CTA: "Partnerschaft starten",
+  LANDING_ENTERPRISE_DESC:
+    "Nutzen Sie unser intelligentes Dashboard, um Kandidaten zu finden, die zu Ihrer Vision passen.",
+  LANDING_ENTERPRISE_FEATURE_1_DESC: "KI-gestützte Kandidatenempfehlungen.",
+  LANDING_ENTERPRISE_FEATURE_1_TITLE: "Prädiktives Matching",
+  LANDING_ENTERPRISE_FEATURE_2_DESC: "Zugang zu exklusiven Talentpools.",
+  LANDING_ENTERPRISE_FEATURE_2_TITLE: "Talentnetzwerk",
+  LANDING_ENTERPRISE_LABEL: "Für Arbeitgeber",
+  LANDING_ENTERPRISE_TITLE: "Teams der Exzellenz aufbauen",
+  LANDING_FEATURED_SUBTITLE: "Hochselektive Stellen von Top-Arbeitgebern.",
+  LANDING_FEATURED_TITLE: "Kuratierte Möglichkeiten",
+  LANDING_HERO_DESC:
+    "ZaikaConnect nutzt KI, um ambitionierte Fachkräfte mit Organisationen zu verbinden, die ihr Potenzial verstärken.",
+  LANDING_HERO_SUBTITLE_NEW:
+    "Die intelligente Brücke zwischen Fähigkeiten und Chancen",
+  LANDING_HERO_TITLE_NEW: "Verbinden Sie sich mit Exzellenz",
   LANDING_NAV_CV_REVIEW: "Lebenslauf-Check",
   LANDING_NAV_FIND_JOB: "Job finden",
+  LANDING_NAV_JOBS: "Stellen",
+  LANDING_SEARCH_BUTTON: "Jobs finden",
+  LANDING_SEARCH_KEYWORDS_PLACEHOLDER: "Jobtitel, Stichwörter oder Unternehmen",
+  LANDING_SEARCH_LOCATION_PLACEHOLDER: "Stadt oder Remote",
+  LANDING_STATS_OPPORTUNITIES: "Analysierte Möglichkeiten",
+  LANDING_STATS_PARTNERSHIPS: "Strategische Partnerschaften",
+  LANDING_STATS_PROFILES: "Elite-Talentprofile",
+  LANDING_STATS_RETENTION: "Bindungsrate",
+  LANDING_TRUST_ACCURACY: "98,4% Übereinstimmungsgenauigkeit",
+  LANDING_TRUST_NETWORK: "Premium-Netzwerkzugang",
+  LANDING_TRUST_VERIFIED: "Verifizierte Arbeitgeber",
+  LANDING_VIEW_ALL: "Alle Stellen anzeigen",
   LANDING_HERO_BADGE: "KI-gestütztes Recruiting",
   LANDING_HERO_TITLE: "Finden Sie Ihre nächste Chance",
   LANDING_HERO_SUBTITLE:
@@ -569,4 +601,23 @@ export default {
   LOCATION_HAMBURG: "Hamburg",
   LOCATION_FRANKFURT: "Frankfurt",
   LOCATION_HYBRID: "Hybrid",
+
+  // Public Pages - Navigation/Header
+  PUBLIC_NAV_CV_REVIEW: "Lebenslauf-Check",
+  PUBLIC_NAV_FIND_JOBS: "Jobs finden",
+  PUBLIC_NAV_LOGIN: "Anmelden",
+  PUBLIC_NAV_SIGNUP: "Registrieren",
+
+  // Public Pages - Footer
+  PUBLIC_FOOTER_COPYRIGHT: "© {{year}} ZaikaConnect. Alle Rechte vorbehalten.",
+  PUBLIC_FOOTER_JOB_SEEKERS: "Für Jobsuchende",
+  PUBLIC_FOOTER_NEWSLETTER_DESC:
+    "Erhalten Sie Benachrichtigungen über neue Möglichkeiten.",
+  PUBLIC_FOOTER_NEWSLETTER_PLACEHOLDER: "Ihre E-Mail",
+  PUBLIC_FOOTER_NEWSLETTER_TITLE: "Bleiben Sie informiert",
+  PUBLIC_FOOTER_PRIVACY: "Datenschutz",
+  PUBLIC_FOOTER_RESOURCES: "Ressourcen",
+  PUBLIC_FOOTER_TAGLINE:
+    "Elite-Talente mit visionären Organisationen verbinden.",
+  PUBLIC_FOOTER_TERMS: "AGB",
 };

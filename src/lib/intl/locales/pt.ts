@@ -398,9 +398,42 @@ export default {
   SETTINGS_DELETE_ACCOUNT_DELETING: "Excluindo conta...",
 
   // Recruiting - Landing page
-  LANDING_NAV_JOBS: "Vagas",
+  LANDING_CV_CTA: "Obter Feedback do CV",
+  LANDING_CV_DESC:
+    "Envie seu CV para analise instantanea com IA e recomendacoes personalizadas de vagas.",
+  LANDING_CV_EXPLORE: "Explorar Vagas",
+  LANDING_CV_TITLE: "Matching de Carreira com IA",
+  LANDING_ENTERPRISE_CTA: "Seja Parceiro",
+  LANDING_ENTERPRISE_DESC:
+    "Acesse nosso painel inteligente para encontrar candidatos que correspondam a sua visao.",
+  LANDING_ENTERPRISE_FEATURE_1_DESC: "Recomendacoes de candidatos com IA.",
+  LANDING_ENTERPRISE_FEATURE_1_TITLE: "Matching Preditivo",
+  LANDING_ENTERPRISE_FEATURE_2_DESC: "Acesso a pools exclusivos de candidatos.",
+  LANDING_ENTERPRISE_FEATURE_2_TITLE: "Rede de Talentos",
+  LANDING_ENTERPRISE_LABEL: "Para Empregadores",
+  LANDING_ENTERPRISE_TITLE: "Construa Equipes de Excelencia",
+  LANDING_FEATURED_SUBTITLE:
+    "Vagas altamente seletivas de empregadores de ponta.",
+  LANDING_FEATURED_TITLE: "Oportunidades Selecionadas",
+  LANDING_HERO_DESC:
+    "ZaikaConnect usa IA para conectar profissionais ambiciosos com organizacoes que amplificam seu potencial.",
+  LANDING_HERO_SUBTITLE_NEW:
+    "A Ponte Inteligente Entre Habilidades e Oportunidade",
+  LANDING_HERO_TITLE_NEW: "Conecte-se com Excelencia",
   LANDING_NAV_CV_REVIEW: "Avaliacao de CV",
   LANDING_NAV_FIND_JOB: "Encontrar Vaga",
+  LANDING_NAV_JOBS: "Vagas",
+  LANDING_SEARCH_BUTTON: "Encontrar Vagas",
+  LANDING_SEARCH_KEYWORDS_PLACEHOLDER: "Cargo, palavras-chave ou empresa",
+  LANDING_SEARCH_LOCATION_PLACEHOLDER: "Cidade ou remoto",
+  LANDING_STATS_OPPORTUNITIES: "Oportunidades Analisadas",
+  LANDING_STATS_PARTNERSHIPS: "Parcerias Estrategicas",
+  LANDING_STATS_PROFILES: "Perfis de Talentos Elite",
+  LANDING_STATS_RETENTION: "Taxa de Retencao",
+  LANDING_TRUST_ACCURACY: "98,4% de Precisao no Matching",
+  LANDING_TRUST_NETWORK: "Acesso a Rede Premium",
+  LANDING_TRUST_VERIFIED: "Empregadores Verificados",
+  LANDING_VIEW_ALL: "Ver todas as vagas",
   LANDING_HERO_BADGE: "Recrutamento com IA",
   LANDING_HERO_TITLE: "Encontre Sua Proxima Oportunidade",
   LANDING_HERO_SUBTITLE:
@@ -559,4 +592,24 @@ export default {
   LOCATION_HAMBURG: "Hamburgo",
   LOCATION_FRANKFURT: "Frankfurt",
   LOCATION_HYBRID: "Hibrido",
+
+  // Public Pages - Navigation/Header
+  PUBLIC_NAV_CV_REVIEW: "Revisao de CV",
+  PUBLIC_NAV_FIND_JOBS: "Encontrar Vagas",
+  PUBLIC_NAV_LOGIN: "Entrar",
+  PUBLIC_NAV_SIGNUP: "Cadastrar",
+
+  // Public Pages - Footer
+  PUBLIC_FOOTER_COPYRIGHT:
+    "© {{year}} ZaikaConnect. Todos os direitos reservados.",
+  PUBLIC_FOOTER_JOB_SEEKERS: "Para Candidatos",
+  PUBLIC_FOOTER_NEWSLETTER_DESC:
+    "Receba notificacoes sobre novas oportunidades.",
+  PUBLIC_FOOTER_NEWSLETTER_PLACEHOLDER: "Seu email",
+  PUBLIC_FOOTER_NEWSLETTER_TITLE: "Fique Atualizado",
+  PUBLIC_FOOTER_PRIVACY: "Privacidade",
+  PUBLIC_FOOTER_RESOURCES: "Recursos",
+  PUBLIC_FOOTER_TAGLINE:
+    "Conectando talentos de elite com organizacoes visionarias.",
+  PUBLIC_FOOTER_TERMS: "Termos",
 };
