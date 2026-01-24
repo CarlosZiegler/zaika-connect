@@ -3,6 +3,7 @@ import { Menu, Waves, X } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { LanguageSwitcher } from "@/components/public/language-switcher";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -70,6 +71,7 @@ export function PublicHeader() {
 
         {/* Desktop Auth Actions */}
         <div className="hidden items-center gap-4 md:flex">
+          <LanguageSwitcher variant="header" />
           <Link
             to="/sign-in"
             className="text-sm font-medium uppercase tracking-wide text-slate-200 transition-colors hover:text-white"
@@ -164,6 +166,9 @@ export function PublicHeader() {
 
               {/* Mobile Auth Actions */}
               <div className="flex flex-col gap-3 border-t border-white/10 p-4">
+                <div className="flex justify-center pb-2">
+                  <LanguageSwitcher variant="header" />
+                </div>
                 <SheetClose
                   render={
                     <Link

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Send, Waves } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+import { LanguageSwitcher } from "@/components/public/language-switcher";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -107,7 +108,8 @@ export function PublicFooter() {
         {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between border-t border-slate-800 pt-8 text-sm text-slate-500 md:flex-row">
           <p>{t("PUBLIC_FOOTER_COPYRIGHT", { year: currentYear })}</p>
-          <div className="mt-4 flex space-x-6 md:mt-0">
+          <div className="mt-4 flex items-center space-x-6 md:mt-0">
+            <LanguageSwitcher variant="footer" />
             <Link to="/privacy" className="transition-colors hover:text-white">
               {t("PUBLIC_FOOTER_PRIVACY")}
             </Link>

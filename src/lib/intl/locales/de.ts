@@ -633,6 +633,9 @@ export default {
   PUBLIC_FOOTER_TAGLINE:
     "Elite-Talente mit visionären Organisationen verbinden.",
   PUBLIC_FOOTER_TERMS: "AGB",
+  PUBLIC_FOOTER_LANGUAGE: "Sprache",
+  LANGUAGE_EN: "English",
+  LANGUAGE_DE: "Deutsch",
 
   // Landing - Core Services Section
   LANDING_SERVICES_LABEL: "Unsere Leistungen",

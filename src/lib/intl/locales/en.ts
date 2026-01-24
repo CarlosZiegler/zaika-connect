@@ -853,6 +853,10 @@ export default {
   PUBLIC_FOOTER_TAGLINE:
     "Connecting elite talent with visionary organizations.",
   PUBLIC_FOOTER_TERMS: "Terms",
+  PUBLIC_FOOTER_LANGUAGE: "Language",
+  LANGUAGE_EN: "English",
+  LANGUAGE_DE: "Deutsch",
+  LANGUAGE_PT: "Português",
 
   // Landing - Core Services Section
   LANDING_SERVICES_LABEL: "Our Services",
