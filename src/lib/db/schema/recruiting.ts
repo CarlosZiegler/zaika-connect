@@ -53,6 +53,9 @@ export const cvs = pgTable(
     cvEmbedding: vector("cv_embedding", { dimensions: 1536 }),
     aiScore: integer("ai_score"),
     aiAnalysis: json("ai_analysis").$type<CVAnalysis>(),
+    processingStatus: text("processing_status").default("pending").notNull(),
+    processingError: text("processing_error"),
+    processedAt: timestamp("processed_at"),
     createdAt: timestamp("created_at").defaultNow().notNull(),
   },
   (table) => [
