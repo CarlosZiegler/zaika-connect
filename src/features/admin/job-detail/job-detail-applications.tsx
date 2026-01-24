@@ -44,6 +44,7 @@ type ApplicationListItem = {
   aiScore: number | null;
   aiAnalysis: CVAnalysis | null;
   status: string;
+  processingStatus?: string;
   createdAt: Date;
   cvUrl?: string | null;
 };
@@ -86,6 +87,15 @@ export function JobDetailApplications({
         status: statusFilter === "all" ? undefined : statusFilter,
       },
     }),
+    refetchInterval: (query) => {
+      // Poll every 2s if any CV is pending/processing
+      const hasProcessing = query.state.data?.applications.some(
+        (app) =>
+          app.processingStatus === "pending" ||
+          app.processingStatus === "processing"
+      );
+      return hasProcessing ? 2000 : false;
+    },
   });
 
   const applications = (data?.applications ?? []).map((item) => ({
