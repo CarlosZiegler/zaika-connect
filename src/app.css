@@ -3,6 +3,10 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme inline {
   --font-sans: "Inter Variable", sans-serif;
   --font-mono: "Inter Variable", monospace;

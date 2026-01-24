@@ -13,9 +13,7 @@ import {
   Network,
   SearchIcon,
   SettingsIcon,
-  ShieldCheckIcon,
   Upload,
-  UserCheckIcon,
   UserPlusIcon,
   UsersIcon,
   ZapIcon,
@@ -238,7 +236,7 @@ function LandingPage() {
       <StatsSection />
 
       {/* Core Services Section */}
-      <section className="bg-white py-20">
+      <section id="services" className="scroll-mt-20 bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="mb-12 text-center">
@@ -441,7 +439,7 @@ function LandingPage() {
       </section>
 
       {/* For Companies Section */}
-      <section className="bg-white py-24">
+      <section id="for-companies" className="scroll-mt-20 bg-white py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-16 lg:flex-row">
             {/* Image */}
@@ -535,7 +533,7 @@ function LandingPage() {
       </section>
 
       {/* For Candidates Section */}
-      <section className="bg-slate-50 py-24">
+      <section id="for-talents" className="scroll-mt-20 bg-slate-50 py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="mb-12 text-center">

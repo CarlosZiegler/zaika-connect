@@ -13,8 +13,14 @@ import {
 } from "@/components/ui/sheet";
 
 const NAV_LINKS = [
-  { href: "/jobs", i18nKey: "PUBLIC_NAV_FIND_JOBS" },
-  { href: "/cv-review", i18nKey: "PUBLIC_NAV_CV_REVIEW" },
+  { href: "/#services", i18nKey: "PUBLIC_NAV_SERVICES", isAnchor: true },
+  {
+    href: "/#for-companies",
+    i18nKey: "PUBLIC_NAV_FOR_COMPANIES",
+    isAnchor: true,
+  },
+  { href: "/#for-talents", i18nKey: "PUBLIC_NAV_FOR_TALENTS", isAnchor: true },
+  { href: "/jobs", i18nKey: "PUBLIC_NAV_JOBS", isAnchor: false },
 ] as const;
 
 export function PublicHeader() {
@@ -33,32 +39,43 @@ export function PublicHeader() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="text-sm font-medium text-slate-200 transition-colors hover:text-white"
-            >
-              {t(link.i18nKey)}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-6 md:flex">
+          {NAV_LINKS.map((link) =>
+            link.isAnchor ? (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium uppercase tracking-wide text-slate-200 transition-colors hover:text-white"
+              >
+                {t(link.i18nKey)}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm font-medium uppercase tracking-wide text-slate-200 transition-colors hover:text-white"
+              >
+                {t(link.i18nKey)}
+              </Link>
+            )
+          )}
+          {/* Contact Link */}
+          <Link
+            to="/contact"
+            className="text-sm font-medium uppercase tracking-wide text-slate-200 transition-colors hover:text-white"
+          >
+            {t("PUBLIC_NAV_CONTACT")}
+          </Link>
         </div>
 
         {/* Desktop Auth Actions */}
         <div className="hidden items-center gap-4 md:flex">
           <Link
             to="/sign-in"
-            className="text-sm font-medium text-slate-200 transition-colors hover:text-white"
+            className="text-sm font-medium uppercase tracking-wide text-slate-200 transition-colors hover:text-white"
           >
             {t("PUBLIC_NAV_LOGIN")}
           </Link>
-          {/* <Button
-            render={<Link to="/sign-up" />}
-            className="bg-ocean-1 text-white hover:bg-ocean-2"
-          >
-            {t("PUBLIC_NAV_SIGNUP")}
-          </Button> */}
         </div>
 
         {/* Mobile Menu */}
@@ -105,19 +122,44 @@ export function PublicHeader() {
 
               {/* Mobile Nav Links */}
               <div className="flex flex-1 flex-col gap-1 p-4">
-                {NAV_LINKS.map((link) => (
-                  <SheetClose
-                    key={link.href}
-                    render={
-                      <Link
-                        to={link.href}
-                        className="rounded-lg px-4 py-3 text-base font-medium text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
-                      />
-                    }
-                  >
-                    {t(link.i18nKey)}
-                  </SheetClose>
-                ))}
+                {NAV_LINKS.map((link) =>
+                  link.isAnchor ? (
+                    <SheetClose
+                      key={link.href}
+                      render={
+                        <a
+                          href={link.href}
+                          className="rounded-lg px-4 py-3 text-base font-medium uppercase tracking-wide text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
+                        />
+                      }
+                    >
+                      {t(link.i18nKey)}
+                    </SheetClose>
+                  ) : (
+                    <SheetClose
+                      key={link.href}
+                      render={
+                        <Link
+                          to={link.href}
+                          className="rounded-lg px-4 py-3 text-base font-medium uppercase tracking-wide text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
+                        />
+                      }
+                    >
+                      {t(link.i18nKey)}
+                    </SheetClose>
+                  )
+                )}
+                {/* Contact Link */}
+                <SheetClose
+                  render={
+                    <Link
+                      to="/contact"
+                      className="rounded-lg px-4 py-3 text-base font-medium uppercase tracking-wide text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
+                    />
+                  }
+                >
+                  {t("PUBLIC_NAV_CONTACT")}
+                </SheetClose>
               </div>
 
               {/* Mobile Auth Actions */}
@@ -126,7 +168,7 @@ export function PublicHeader() {
                   render={
                     <Link
                       to="/sign-in"
-                      className="rounded-lg px-4 py-3 text-center text-base font-medium text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
+                      className="rounded-lg px-4 py-3 text-center text-base font-medium uppercase tracking-wide text-slate-200 transition-colors hover:bg-white/10 hover:text-white"
                     />
                   }
                 >

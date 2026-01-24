@@ -831,6 +831,12 @@ export default {
   LOCATION_HYBRID: "Hybrid",
 
   // Public Pages - Navigation/Header
+  PUBLIC_NAV_HOME: "Home",
+  PUBLIC_NAV_SERVICES: "Services",
+  PUBLIC_NAV_FOR_COMPANIES: "For Companies",
+  PUBLIC_NAV_FOR_TALENTS: "For Talents",
+  PUBLIC_NAV_JOBS: "Jobs",
+  PUBLIC_NAV_CONTACT: "Contact",
   PUBLIC_NAV_CV_REVIEW: "CV Review",
   PUBLIC_NAV_FIND_JOBS: "Find Jobs",
   PUBLIC_NAV_LOGIN: "Log in",
