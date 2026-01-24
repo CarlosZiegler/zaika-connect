@@ -2,9 +2,6 @@ import { ORPCError } from "@orpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
-import { analyzeCV } from "@/lib/ai/cv-parser";
-import { extractCvText } from "@/lib/cv/cv-extractor";
-import { generateCvEmbedding } from "@/lib/cv/cv-embeddings";
 import { applications, candidates, cvs, file, jobs } from "@/lib/db/schema";
 import { sendApplicationConfirmation } from "@/lib/email/send-application-confirmation";
 import { env } from "@/lib/env.server";
@@ -97,41 +94,6 @@ export const applicationsRouter = orpc.router({
         });
       }
 
-      // Get CV URL for AI extraction
-      const cvUrl = storage.getUrl(cvKey, 3600);
-
-      // Extract CV text and generate embedding
-      let cvText: string | null = null;
-      let cvEmbedding: number[] | null = null;
-      let aiAnalysis = null;
-      let aiScore: number | null = null;
-
-      try {
-        // Extract text from CV
-        const extraction = await extractCvText({
-          fileDataUrl: cvUrl,
-          mediaType: input.cvFileType,
-        });
-        cvText = extraction.fullText;
-
-        // Generate embedding
-        if (cvText) {
-          cvEmbedding = await generateCvEmbedding(cvText);
-        }
-
-        // Run full CV analysis
-        const analysis = await analyzeCV({
-          fileDataUrl: cvUrl,
-          mediaType: input.cvFileType,
-          jobRequirements: job.requirements ?? undefined,
-        });
-        aiAnalysis = analysis;
-        aiScore = analysis.overallScore;
-      } catch (error) {
-        console.error("CV extraction/analysis failed:", error);
-        // Continue without AI data - can be processed later
-      }
-
       // Create CV record
       const cvId = crypto.randomUUID();
       await context.db.insert(cvs).values({
@@ -139,10 +101,7 @@ export const applicationsRouter = orpc.router({
         candidateId,
         fileId,
         fileKey: cvKey,
-        cvText,
-        cvEmbedding,
-        aiScore,
-        aiAnalysis,
+        processingStatus: "pending",
       });
 
       // Create application
