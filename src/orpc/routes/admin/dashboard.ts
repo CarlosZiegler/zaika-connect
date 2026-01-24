@@ -12,7 +12,7 @@ import { and, avg, count, desc, eq, gte, lte, sql } from "drizzle-orm";
 import { z } from "zod";
 
 import { isAdminEmail } from "@/lib/auth/admin-check";
-import { applications, jobs } from "@/lib/db/schema";
+import { applications, candidates, cvs, jobs } from "@/lib/db/schema";
 
 import { orpc, protectedProcedure } from "../../orpc-server";
 
@@ -143,35 +143,37 @@ export const adminDashboardRouter = orpc.router({
             and(gte(jobs.createdAt, startDate), lte(jobs.createdAt, endDate))
           ),
 
-        // Average AI score (where not null)
+        // Average AI score (from cvs table)
         context.db
-          .select({ avg: avg(applications.aiScore) })
+          .select({ avg: avg(cvs.aiScore) })
           .from(applications)
+          .innerJoin(cvs, eq(applications.cvId, cvs.id))
           .where(
             and(
               gte(applications.createdAt, startDate),
               lte(applications.createdAt, endDate),
-              sql`${applications.aiScore} IS NOT NULL`
+              sql`${cvs.aiScore} IS NOT NULL`
             )
           ),
 
-        // Top scoring job
+        // Top scoring job (using cvs.aiScore)
         context.db
           .select({
             id: jobs.id,
             title: jobs.title,
-            avgScore: avg(applications.aiScore),
+            avgScore: avg(cvs.aiScore),
           })
           .from(applications)
           .innerJoin(jobs, eq(applications.jobId, jobs.id))
+          .innerJoin(cvs, eq(applications.cvId, cvs.id))
           .where(
             and(
               gte(applications.createdAt, startDate),
-              sql`${applications.aiScore} IS NOT NULL`
+              sql`${cvs.aiScore} IS NOT NULL`
             )
           )
           .groupBy(jobs.id, jobs.title)
-          .orderBy(desc(avg(applications.aiScore)))
+          .orderBy(desc(avg(cvs.aiScore)))
           .limit(1),
 
         // Applications by status
@@ -199,16 +201,17 @@ export const adminDashboardRouter = orpc.router({
           .groupBy(sql`to_char(${applications.createdAt}, 'YYYY-MM-DD')`)
           .orderBy(sql`to_char(${applications.createdAt}, 'YYYY-MM-DD')`),
 
-        // Top jobs by applications
+        // Top jobs by applications (using cvs.aiScore)
         context.db
           .select({
             id: jobs.id,
             title: jobs.title,
             count: count(),
-            avgScore: avg(applications.aiScore),
+            avgScore: avg(cvs.aiScore),
           })
           .from(applications)
           .innerJoin(jobs, eq(applications.jobId, jobs.id))
+          .leftJoin(cvs, eq(applications.cvId, cvs.id))
           .where(
             and(
               gte(applications.createdAt, startDate),
@@ -219,20 +222,22 @@ export const adminDashboardRouter = orpc.router({
           .orderBy(desc(count()))
           .limit(5),
 
-        // Recent applications
+        // Recent applications (join with candidates and cvs)
         context.db
           .select({
             id: applications.id,
-            fullName: applications.fullName,
-            email: applications.email,
+            fullName: candidates.fullName,
+            email: candidates.email,
             jobId: applications.jobId,
             jobTitle: jobs.title,
-            aiScore: applications.aiScore,
+            aiScore: cvs.aiScore,
             status: applications.status,
             createdAt: applications.createdAt,
           })
           .from(applications)
           .innerJoin(jobs, eq(applications.jobId, jobs.id))
+          .innerJoin(candidates, eq(applications.candidateId, candidates.id))
+          .leftJoin(cvs, eq(applications.cvId, cvs.id))
           .orderBy(desc(applications.createdAt))
           .limit(10),
       ]);
