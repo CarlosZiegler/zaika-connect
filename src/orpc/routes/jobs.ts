@@ -1,8 +1,9 @@
 import { ORPCError } from "@orpc/server";
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import z from "zod";
 
 import { jobs } from "@/lib/db/schema";
+import { searchJobs } from "@/lib/search/jobs-search";
 
 import { orpc, publicProcedure } from "../orpc-server";
 
@@ -19,44 +20,14 @@ export const jobsRouter = orpc.router({
       })
     )
     .handler(async ({ input, context }) => {
-      const conditions = [eq(jobs.isActive, true)];
-
-      if (input.location) {
-        conditions.push(eq(jobs.location, input.location));
-      }
-      if (input.employmentType) {
-        conditions.push(eq(jobs.employmentType, input.employmentType));
-      }
-      if (input.industry) {
-        conditions.push(eq(jobs.industry, input.industry));
-      }
-      if (input.search) {
-        conditions.push(
-          sql`(${jobs.title} ILIKE ${`%${input.search}%`} OR ${jobs.description} ILIKE ${`%${input.search}%`})`
-        );
-      }
-
-      const [jobsList, countResult] = await Promise.all([
-        context.db
-          .select()
-          .from(jobs)
-          .where(and(...conditions))
-          .orderBy(desc(jobs.createdAt))
-          .limit(input.limit)
-          .offset(input.offset),
-        context.db
-          .select({ count: sql<number>`count(*)` })
-          .from(jobs)
-          .where(and(...conditions)),
-      ]);
-
-      return {
-        jobs: jobsList,
-        total: Number(countResult.at(0)?.count ?? 0),
-        hasMore:
-          input.offset + jobsList.length <
-          Number(countResult.at(0)?.count ?? 0),
-      };
+      return searchJobs(context.db, {
+        query: input.search,
+        location: input.location,
+        employmentType: input.employmentType,
+        industry: input.industry,
+        limit: input.limit,
+        offset: input.offset,
+      });
     }),
 
   getBySlug: publicProcedure
