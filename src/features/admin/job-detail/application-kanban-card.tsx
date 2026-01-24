@@ -18,6 +18,7 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu";
 import { KanbanItem, KanbanItemHandle } from "@/components/ui/kanban";
+import { ProcessingStatusBadge } from "@/features/admin/applications/processing-status-badge";
 
 type Application = {
   id: string;
@@ -26,6 +27,8 @@ type Application = {
   aiScore: number | null;
   createdAt: Date;
   cvUrl?: string | null;
+  processingStatus: "pending" | "processing" | "completed" | "failed";
+  processingError?: string | null;
 };
 
 type ApplicationKanbanCardProps = {
@@ -66,7 +69,14 @@ export function ApplicationKanbanCard({
           <span className="line-clamp-1 font-medium text-sm">
             {application.fullName}
           </span>
-          <AIScoreBadge score={application.aiScore} size="sm" />
+          {application.processingStatus !== "completed" ? (
+            <ProcessingStatusBadge
+              status={application.processingStatus}
+              error={application.processingError}
+            />
+          ) : (
+            <AIScoreBadge score={application.aiScore} size="sm" />
+          )}
         </div>
         <p className="line-clamp-1 text-muted-foreground text-xs">
           {application.email}
