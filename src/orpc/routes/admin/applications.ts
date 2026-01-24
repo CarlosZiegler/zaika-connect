@@ -64,6 +64,8 @@ export const adminApplicationsRouter = orpc.router({
           phone: r.candidate?.phone,
           aiScore: r.cv?.aiScore,
           aiAnalysis: r.cv?.aiAnalysis,
+          processingStatus: r.cv?.processingStatus ?? "pending",
+          processingError: r.cv?.processingError,
         })),
       };
     }),
@@ -112,6 +114,8 @@ export const adminApplicationsRouter = orpc.router({
         phone: result.candidate?.phone,
         aiScore: result.cv?.aiScore,
         aiAnalysis: result.cv?.aiAnalysis,
+        processingStatus: result.cv?.processingStatus ?? "pending",
+        processingError: result.cv?.processingError,
       };
     }),
 
