@@ -16,6 +16,8 @@ import {
 } from "@/features/admin/job-form-dialog";
 import { client, orpc } from "@/orpc/orpc-client";
 
+import { ProcessPendingButton } from "@/features/admin/applications/process-pending-button";
+
 import { JobDetailApplications } from "./job-detail-applications";
 import { JobDetailOverview } from "./job-detail-overview";
 import { JobDetailStats } from "./job-detail-stats";
@@ -104,10 +106,13 @@ export function JobDetailPage() {
             </p>
           </div>
         </div>
-        <Button onClick={() => setIsEditDialogOpen(true)}>
-          <PencilIcon className="mr-2 size-4" />
-          Edit Job
-        </Button>
+        <div className="flex items-center gap-2">
+          <ProcessPendingButton />
+          <Button onClick={() => setIsEditDialogOpen(true)}>
+            <PencilIcon className="mr-2 size-4" />
+            Edit Job
+          </Button>
+        </div>
       </div>
 
       {/* Stats */}
