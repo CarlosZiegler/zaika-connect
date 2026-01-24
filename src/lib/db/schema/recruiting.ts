@@ -1,11 +1,13 @@
 import { relations } from "drizzle-orm";
 import {
   boolean,
+  index,
   integer,
   json,
   pgTable,
   text,
   timestamp,
+  vector,
 } from "drizzle-orm/pg-core";
 
 import { file } from "./storage";
@@ -37,6 +39,29 @@ export const candidates = pgTable("candidates", {
     .$onUpdate(() => new Date())
     .notNull(),
 });
+
+export const cvs = pgTable(
+  "cvs",
+  {
+    id: text("id").primaryKey(),
+    candidateId: text("candidate_id")
+      .references(() => candidates.id, { onDelete: "cascade" })
+      .notNull(),
+    fileId: text("file_id").references(() => file.id),
+    fileKey: text("file_key"),
+    cvText: text("cv_text"),
+    cvEmbedding: vector("cv_embedding", { dimensions: 1536 }),
+    aiScore: integer("ai_score"),
+    aiAnalysis: json("ai_analysis").$type<CVAnalysis>(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    index("cvs_embedding_idx").using(
+      "hnsw",
+      table.cvEmbedding.op("vector_cosine_ops")
+    ),
+  ]
+);
 
 export const jobs = pgTable("jobs", {
   id: text("id").primaryKey(),
