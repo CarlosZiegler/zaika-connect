@@ -3,7 +3,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { isAdminEmail } from "@/lib/auth/admin-check";
-import { applications, file, jobs } from "@/lib/db/schema";
+import { applications, candidates, cvs, file, jobs } from "@/lib/db/schema";
 import { storage } from "@/lib/storage";
 
 import { orpc, protectedProcedure } from "../../orpc-server";
@@ -39,9 +39,13 @@ export const adminApplicationsRouter = orpc.router({
         .select({
           application: applications,
           job: jobs,
+          candidate: candidates,
+          cv: cvs,
         })
         .from(applications)
         .leftJoin(jobs, eq(applications.jobId, jobs.id))
+        .leftJoin(candidates, eq(applications.candidateId, candidates.id))
+        .leftJoin(cvs, eq(applications.cvId, cvs.id))
         .where(conditions.length > 0 ? and(...conditions) : undefined)
         .orderBy(desc(applications.createdAt))
         .limit(input.limit)
@@ -51,6 +55,14 @@ export const adminApplicationsRouter = orpc.router({
         applications: results.map((r) => ({
           ...r.application,
           job: r.job,
+          candidate: r.candidate,
+          cv: r.cv,
+          // Flatten for backward compatibility
+          fullName: r.candidate?.fullName,
+          email: r.candidate?.email,
+          phone: r.candidate?.phone,
+          aiScore: r.cv?.aiScore,
+          aiAnalysis: r.cv?.aiAnalysis,
         })),
       };
     }),
@@ -62,11 +74,15 @@ export const adminApplicationsRouter = orpc.router({
         .select({
           application: applications,
           job: jobs,
+          candidate: candidates,
+          cv: cvs,
           cvFile: file,
         })
         .from(applications)
         .leftJoin(jobs, eq(applications.jobId, jobs.id))
-        .leftJoin(file, eq(applications.cvFileId, file.id))
+        .leftJoin(candidates, eq(applications.candidateId, candidates.id))
+        .leftJoin(cvs, eq(applications.cvId, cvs.id))
+        .leftJoin(file, eq(cvs.fileId, file.id))
         .where(eq(applications.id, input.id))
         .limit(1);
 
@@ -78,15 +94,23 @@ export const adminApplicationsRouter = orpc.router({
 
       // Get CV download URL
       let cvUrl: string | null = null;
-      if (result.application.cvFileKey) {
-        cvUrl = storage.getUrl(result.application.cvFileKey, 3600);
+      if (result.cv?.fileKey) {
+        cvUrl = storage.getUrl(result.cv.fileKey, 3600);
       }
 
       return {
         ...result.application,
         job: result.job,
+        candidate: result.candidate,
+        cv: result.cv,
         cvFile: result.cvFile,
         cvUrl,
+        // Flatten for backward compatibility
+        fullName: result.candidate?.fullName,
+        email: result.candidate?.email,
+        phone: result.candidate?.phone,
+        aiScore: result.cv?.aiScore,
+        aiAnalysis: result.cv?.aiAnalysis,
       };
     }),
 
