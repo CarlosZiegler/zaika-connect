@@ -13,6 +13,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as CvReviewRouteImport } from './routes/cv-review'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as dashboardLayoutRouteImport } from './routes/(dashboard)/layout'
 import { Route as authLayoutRouteImport } from './routes/(auth)/layout'
 import { Route as IndexRouteImport } from './routes/index'
@@ -71,6 +72,11 @@ const PricingRoute = PricingRouteImport.update({
 const CvReviewRoute = CvReviewRouteImport.update({
   id: '/cv-review',
   path: '/cv-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const dashboardLayoutRoute = dashboardLayoutRouteImport.update({
@@ -280,6 +286,7 @@ const dashboardAdminApplicationsIdRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/cv-review': typeof CvReviewRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -323,6 +330,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/cv-review': typeof CvReviewRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -368,6 +376,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/(auth)': typeof authLayoutRouteWithChildren
   '/(dashboard)': typeof dashboardLayoutRouteWithChildren
+  '/contact': typeof ContactRoute
   '/cv-review': typeof CvReviewRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -413,6 +422,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
     | '/cv-review'
     | '/pricing'
     | '/privacy'
@@ -456,6 +466,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/cv-review'
     | '/pricing'
     | '/privacy'
@@ -500,6 +511,7 @@ export interface FileRouteTypes {
     | '/'
     | '/(auth)'
     | '/(dashboard)'
+    | '/contact'
     | '/cv-review'
     | '/pricing'
     | '/privacy'
@@ -546,6 +558,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   authLayoutRoute: typeof authLayoutRouteWithChildren
   dashboardLayoutRoute: typeof dashboardLayoutRouteWithChildren
+  ContactRoute: typeof ContactRoute
   CvReviewRoute: typeof CvReviewRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -592,6 +605,13 @@ declare module '@tanstack/react-router' {
       path: '/cv-review'
       fullPath: '/cv-review'
       preLoaderRoute: typeof CvReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(dashboard)': {
@@ -955,6 +975,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   authLayoutRoute: authLayoutRouteWithChildren,
   dashboardLayoutRoute: dashboardLayoutRouteWithChildren,
+  ContactRoute: ContactRoute,
   CvReviewRoute: CvReviewRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,

@@ -4,11 +4,21 @@ import {
   ArrowRight,
   BarChart2,
   BriefcaseIcon,
+  CalendarIcon,
+  CheckCircle2,
   ExternalLink,
   FileText,
+  HandshakeIcon,
   MapPinIcon,
   Network,
+  SearchIcon,
+  SettingsIcon,
+  ShieldCheckIcon,
   Upload,
+  UserCheckIcon,
+  UserPlusIcon,
+  UsersIcon,
+  ZapIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -16,7 +26,6 @@ import { PublicLayout } from "@/components/public/public-layout";
 import { SearchHero } from "@/components/public/search-hero";
 import { StatsSection } from "@/components/public/stats-section";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { orpc } from "@/orpc/orpc-client";
 import { DEFAULT_SITE_NAME, SITE_URL, seo } from "@/utils/seo";
@@ -228,6 +237,114 @@ function LandingPage() {
       {/* Stats Section */}
       <StatsSection />
 
+      {/* Core Services Section */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-12 text-center">
+            <span className="mb-3 text-xs font-bold uppercase tracking-widest text-ocean-1">
+              {t("LANDING_SERVICES_LABEL")}
+            </span>
+            <h2 className="mb-4 font-display text-3xl font-bold text-depth-1 md:text-4xl">
+              {t("LANDING_SERVICES_TITLE")}
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              {t("LANDING_SERVICES_SUBTITLE")}
+            </p>
+          </div>
+
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Permanent Placement */}
+            <div className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-ocean-1/20 hover:shadow-lg">
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-ocean-1/10 text-ocean-1">
+                <UsersIcon className="size-6" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold text-depth-1">
+                {t("LANDING_SERVICE_PERMANENT_TITLE")}
+              </h3>
+              <p className="text-slate-600">
+                {t("LANDING_SERVICE_PERMANENT_DESC")}
+              </p>
+            </div>
+
+            {/* Executive Search */}
+            <div className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-ocean-1/20 hover:shadow-lg">
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-depth-5/10 text-depth-5">
+                <SearchIcon className="size-6" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold text-depth-1">
+                {t("LANDING_SERVICE_EXECUTIVE_TITLE")}
+              </h3>
+              <p className="text-slate-600">
+                {t("LANDING_SERVICE_EXECUTIVE_DESC")}
+              </p>
+            </div>
+
+            {/* Interim & Contract */}
+            <div className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-ocean-1/20 hover:shadow-lg">
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-ocean-3/10 text-ocean-3">
+                <CalendarIcon className="size-6" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold text-depth-1">
+                {t("LANDING_SERVICE_INTERIM_TITLE")}
+              </h3>
+              <p className="text-slate-600">
+                {t("LANDING_SERVICE_INTERIM_DESC")}
+              </p>
+            </div>
+
+            {/* HR Consulting */}
+            <div className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-ocean-1/20 hover:shadow-lg">
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-ocean-1/10 text-ocean-1">
+                <SettingsIcon className="size-6" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold text-depth-1">
+                {t("LANDING_SERVICE_CONSULTING_TITLE")}
+              </h3>
+              <p className="text-slate-600">
+                {t("LANDING_SERVICE_CONSULTING_DESC")}
+              </p>
+            </div>
+
+            {/* Rec2Rec */}
+            <div className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-ocean-1/20 hover:shadow-lg">
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-depth-5/10 text-depth-5">
+                <UserPlusIcon className="size-6" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold text-depth-1">
+                {t("LANDING_SERVICE_REC2REC_TITLE")}
+              </h3>
+              <p className="text-slate-600">
+                {t("LANDING_SERVICE_REC2REC_DESC")}
+              </p>
+            </div>
+
+            {/* RPO Solutions */}
+            <div className="group rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-ocean-1/20 hover:shadow-lg">
+              <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-ocean-3/10 text-ocean-3">
+                <Network className="size-6" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-xl font-bold text-depth-1">
+                {t("LANDING_SERVICE_RPO_TITLE")}
+              </h3>
+              <p className="text-slate-600">{t("LANDING_SERVICE_RPO_DESC")}</p>
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div className="mt-10 text-center">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-xl bg-ocean-1 px-8 py-3 font-bold text-white shadow-lg shadow-ocean-1/20 transition hover:bg-ocean-2"
+            >
+              {t("LANDING_SERVICES_CTA")}
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Jobs Section */}
       <section className="bg-ocean-1/5 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -323,6 +440,274 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* For Companies Section */}
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center gap-16 lg:flex-row">
+            {/* Image */}
+            <div className="relative lg:w-1/2">
+              <img
+                alt="Professional team meeting in modern office"
+                className="relative z-10 h-[450px] w-full rounded-2xl object-cover shadow-2xl grayscale-[20%] transition duration-500 hover:grayscale-0"
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+              />
+              <div className="absolute -right-6 -bottom-6 z-0 hidden h-full w-full rounded-2xl border-2 border-ocean-1 lg:block" />
+            </div>
+
+            {/* Content */}
+            <div className="lg:w-1/2">
+              <span className="mb-3 text-xs font-bold uppercase tracking-widest text-ocean-1">
+                {t("LANDING_COMPANIES_LABEL")}
+              </span>
+              <h2 className="mb-4 font-display text-3xl font-bold leading-snug text-depth-1 md:text-4xl">
+                {t("LANDING_COMPANIES_TITLE_NEW")}
+              </h2>
+              <p className="mb-8 text-lg leading-relaxed text-slate-600">
+                {t("LANDING_COMPANIES_SUBTITLE_NEW")}
+              </p>
+
+              {/* Process Steps */}
+              <div className="mb-8 space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ocean-1 text-sm font-bold text-white">
+                    1
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-depth-1">
+                      {t("LANDING_COMPANIES_STEP1_TITLE")}
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      {t("LANDING_COMPANIES_STEP1_DESC")}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ocean-1 text-sm font-bold text-white">
+                    2
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-depth-1">
+                      {t("LANDING_COMPANIES_STEP2_TITLE")}
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      {t("LANDING_COMPANIES_STEP2_DESC")}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ocean-1 text-sm font-bold text-white">
+                    3
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-depth-1">
+                      {t("LANDING_COMPANIES_STEP3_TITLE")}
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      {t("LANDING_COMPANIES_STEP3_DESC")}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-ocean-1 text-sm font-bold text-white">
+                    4
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-depth-1">
+                      {t("LANDING_COMPANIES_STEP4_TITLE")}
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                      {t("LANDING_COMPANIES_STEP4_DESC")}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-xl bg-depth-5 px-8 py-3 font-bold text-white shadow-lg shadow-depth-5/20 transition hover:bg-depth-4"
+              >
+                {t("LANDING_COMPANIES_CTA")}
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* For Candidates Section */}
+      <section className="bg-slate-50 py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-12 text-center">
+            <span className="mb-3 text-xs font-bold uppercase tracking-widest text-ocean-1">
+              {t("LANDING_TALENTS_LABEL")}
+            </span>
+            <h2 className="mb-4 font-display text-3xl font-bold text-depth-1 md:text-4xl">
+              {t("LANDING_TALENTS_TITLE")}
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              {t("LANDING_TALENTS_SUBTITLE")}
+            </p>
+          </div>
+
+          {/* Journey Steps */}
+          <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {/* Step 1 */}
+            <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-lg border-2 border-slate-200 text-lg font-bold text-slate-400">
+                1
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_TALENTS_STEP1_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_TALENTS_STEP1_DESC")}
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-lg border-2 border-slate-200 text-lg font-bold text-slate-400">
+                2
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_TALENTS_STEP2_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_TALENTS_STEP2_DESC")}
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-lg border-2 border-slate-200 text-lg font-bold text-slate-400">
+                3
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_TALENTS_STEP3_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_TALENTS_STEP3_DESC")}
+              </p>
+            </div>
+
+            {/* Step 4 */}
+            <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
+              <div className="mb-4 flex size-10 items-center justify-center rounded-lg border-2 border-slate-200 text-lg font-bold text-slate-400">
+                4
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_TALENTS_STEP4_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_TALENTS_STEP4_DESC")}
+              </p>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Link
+              to="/jobs"
+              className="inline-flex items-center gap-2 rounded-xl bg-ocean-1 px-8 py-3 font-bold text-white shadow-lg shadow-ocean-1/20 transition hover:bg-ocean-2"
+            >
+              {t("LANDING_TALENTS_CTA")}
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+
+          {/* Talent Pool Banner */}
+          <div className="mt-12 rounded-2xl bg-depth-3/5 p-8 text-center">
+            <span className="mb-2 block text-sm font-medium text-slate-500">
+              {t("LANDING_TALENTS_POOL_LABEL")}
+            </span>
+            <h3 className="mb-2 font-display text-2xl font-bold text-depth-1">
+              {t("LANDING_TALENTS_POOL_TITLE")}
+            </h3>
+            <p className="mx-auto mb-6 max-w-xl text-slate-600">
+              {t("LANDING_TALENTS_POOL_DESC")}
+            </p>
+            <Link
+              to="/cv-review"
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-depth-5 px-6 py-2 font-bold text-depth-5 transition hover:bg-depth-5 hover:text-white"
+            >
+              {t("LANDING_TALENTS_POOL_CTA")}
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Partner With Us Section */}
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-display text-3xl font-bold text-depth-1 md:text-4xl">
+              {t("LANDING_PARTNER_TITLE")}
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-slate-600">
+              {t("LANDING_PARTNER_SUBTITLE")}
+            </p>
+          </div>
+
+          {/* Trust Cards */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {/* Local Market Expertise */}
+            <div className="text-center">
+              <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-ocean-1/10 text-ocean-1">
+                <MapPinIcon className="size-7" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_PARTNER_EXPERTISE_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_PARTNER_EXPERTISE_DESC")}
+              </p>
+            </div>
+
+            {/* Data-Driven Selection */}
+            <div className="text-center">
+              <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-depth-5/10 text-depth-5">
+                <BarChart2 className="size-7" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_PARTNER_DATA_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_PARTNER_DATA_DESC")}
+              </p>
+            </div>
+
+            {/* 95% Retention Rate */}
+            <div className="text-center">
+              <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-green-100 text-green-600">
+                <CheckCircle2 className="size-7" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_PARTNER_RETENTION_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_PARTNER_RETENTION_DESC")}
+              </p>
+            </div>
+
+            {/* 30-Day Average Placement */}
+            <div className="text-center">
+              <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-full bg-ocean-3/10 text-ocean-3">
+                <ZapIcon className="size-7" aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-depth-1">
+                {t("LANDING_PARTNER_SPEED_TITLE")}
+              </h3>
+              <p className="text-sm text-slate-600">
+                {t("LANDING_PARTNER_SPEED_DESC")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CV CTA Section */}
       <section className="relative overflow-hidden bg-depth-3 py-20">
         {/* Dot Pattern Background */}
@@ -403,75 +788,60 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* Enterprise Section */}
-      <section className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-16 md:flex-row">
-            {/* Image Placeholder */}
-            <div className="relative md:w-1/2">
-              <div className="relative z-10 flex h-[500px] w-full items-center justify-center rounded-2xl bg-gradient-to-br from-ocean-4 to-depth-3 shadow-2xl">
-                <div className="text-center text-white">
-                  <Network
-                    className="mx-auto mb-4 size-24 opacity-50"
-                    aria-hidden="true"
-                  />
-                  <p className="text-lg font-medium opacity-75">
-                    Enterprise Solutions
-                  </p>
-                </div>
-              </div>
-              <div className="absolute -right-10 -bottom-10 z-0 hidden h-full w-full rounded-2xl border-2 border-ocean-1 md:block" />
-            </div>
+      {/* Final CTA Section */}
+      <section className="relative overflow-hidden bg-ocean-5 py-24">
+        {/* Animated Background */}
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-20">
+          <svg
+            width="100%"
+            height="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <title>Background Pattern</title>
+            <defs>
+              <pattern
+                id="cta-grid"
+                width="60"
+                height="60"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 60 0 L 0 0 0 60"
+                  fill="none"
+                  stroke="white"
+                  strokeOpacity="0.15"
+                  strokeWidth="0.5"
+                />
+              </pattern>
+            </defs>
+            <rect fill="url(#cta-grid)" width="100%" height="100%" />
+          </svg>
+        </div>
 
-            {/* Content */}
-            <div className="md:w-1/2">
-              <span className="mb-3 text-xs font-bold uppercase tracking-widest text-ocean-1">
-                {t("LANDING_ENTERPRISE_LABEL")}
-              </span>
-              <h2 className="mb-6 font-display text-4xl font-bold leading-snug text-depth-1">
-                {t("LANDING_ENTERPRISE_TITLE")}
-              </h2>
-              <p className="mb-8 text-lg leading-relaxed text-slate-600">
-                {t("LANDING_ENTERPRISE_DESC")}
-              </p>
-
-              {/* Feature List */}
-              <ul className="mb-10 space-y-4">
-                <li className="flex items-start gap-3 text-slate-700">
-                  <BarChart2
-                    className="mt-1 size-5 text-ocean-1"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <span className="font-bold">
-                      {t("LANDING_ENTERPRISE_FEATURE_1_TITLE")}
-                    </span>
-                    <p className="text-sm opacity-80">
-                      {t("LANDING_ENTERPRISE_FEATURE_1_DESC")}
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 text-slate-700">
-                  <Network
-                    className="mt-1 size-5 text-ocean-1"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <span className="font-bold">
-                      {t("LANDING_ENTERPRISE_FEATURE_2_TITLE")}
-                    </span>
-                    <p className="text-sm opacity-80">
-                      {t("LANDING_ENTERPRISE_FEATURE_2_DESC")}
-                    </p>
-                  </div>
-                </li>
-              </ul>
-
-              <Button
-                render={<Link to="/jobs">{t("LANDING_ENTERPRISE_CTA")}</Link>}
-                className="rounded-xl bg-depth-5 px-8 py-3 font-bold text-white shadow-lg shadow-depth-5/20 transition hover:bg-depth-4"
-              />
-            </div>
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-6 font-display text-4xl font-bold text-white md:text-5xl">
+            {t("LANDING_FINAL_CTA_TITLE")}
+          </h2>
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-teal-100">
+            {t("LANDING_FINAL_CTA_SUBTITLE")}
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              to="/contact"
+              className="flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 font-bold text-ocean-5 shadow-lg transition hover:bg-teal-50"
+            >
+              <HandshakeIcon className="size-5" aria-hidden="true" />
+              {t("LANDING_FINAL_CTA_BUTTON")}
+            </Link>
+            <a
+              href="#"
+              className="flex items-center justify-center gap-2 rounded-xl border-2 border-white bg-transparent px-8 py-4 font-bold text-white transition hover:bg-white/10"
+              rel="noopener noreferrer"
+            >
+              <CalendarIcon className="size-5" aria-hidden="true" />
+              {t("LANDING_FINAL_CTA_CALENDAR")}
+            </a>
           </div>
         </div>
       </section>

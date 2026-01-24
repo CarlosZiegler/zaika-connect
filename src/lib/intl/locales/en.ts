@@ -847,4 +847,124 @@ export default {
   PUBLIC_FOOTER_TAGLINE:
     "Connecting elite talent with visionary organizations.",
   PUBLIC_FOOTER_TERMS: "Terms",
+
+  // Landing - Core Services Section
+  LANDING_SERVICES_LABEL: "Our Services",
+  LANDING_SERVICES_TITLE: "Comprehensive Recruitment Solutions",
+  LANDING_SERVICES_SUBTITLE:
+    "Full-service talent acquisition tailored to your needs",
+  LANDING_SERVICE_PERMANENT_TITLE: "Permanent Placement",
+  LANDING_SERVICE_PERMANENT_DESC:
+    "Building your core team with candidates who fit culturally and stay long-term. Rigorous screening ensures seamless integration.",
+  LANDING_SERVICE_EXECUTIVE_TITLE: "Executive Search",
+  LANDING_SERVICE_EXECUTIVE_DESC:
+    "Confidential C-suite and leadership headhunting. We identify leaders who navigate complexity and drive growth.",
+  LANDING_SERVICE_INTERIM_TITLE: "Interim & Contract",
+  LANDING_SERVICE_INTERIM_DESC:
+    "Flexible specialists for project needs. Quick deployment of vetted professionals when you need expertise fast.",
+  LANDING_SERVICE_CONSULTING_TITLE: "HR Consulting",
+  LANDING_SERVICE_CONSULTING_DESC:
+    "Organizational design, compensation analysis, and process optimization. Data-backed insights for your HR strategy.",
+  LANDING_SERVICE_REC2REC_TITLE: "Rec2Rec",
+  LANDING_SERVICE_REC2REC_DESC:
+    "Recruiting for recruiters. We specialize in placing talent acquisition professionals in HR, Sales, and consulting.",
+  LANDING_SERVICE_RPO_TITLE: "RPO Solutions",
+  LANDING_SERVICE_RPO_DESC:
+    "Full recruitment process outsourcing. We become your hiring team - end-to-end talent acquisition at scale.",
+  LANDING_SERVICES_CTA: "Book a Consultation",
+
+  // Landing - For Companies Section
+  LANDING_COMPANIES_LABEL: "For Companies",
+  LANDING_COMPANIES_TITLE_NEW: "Fast & Quality Talent Acquisition",
+  LANDING_COMPANIES_SUBTITLE_NEW:
+    "Our partnership is built on transparency, trust, and clear communication. We work closely to make your recruiting process efficient and goal-oriented.",
+  LANDING_COMPANIES_STEP1_TITLE: "Needs Analysis",
+  LANDING_COMPANIES_STEP1_DESC:
+    "We analyze your specific requirements to tailor the recruiting process to your company's needs.",
+  LANDING_COMPANIES_STEP2_TITLE: "Candidate Search",
+  LANDING_COMPANIES_STEP2_DESC:
+    "Leveraging our network of 10,000+ candidates, we quickly identify the best talent for your open positions.",
+  LANDING_COMPANIES_STEP3_TITLE: "Process Management",
+  LANDING_COMPANIES_STEP3_DESC:
+    "We handle screening, coordination, and communication - ensuring a smooth experience from first contact to offer.",
+  LANDING_COMPANIES_STEP4_TITLE: "After Placement Care",
+  LANDING_COMPANIES_STEP4_DESC:
+    "Our support continues after hiring. We ensure successful onboarding and long-term integration.",
+  LANDING_COMPANIES_CTA: "Schedule a Consultation",
+
+  // Landing - For Candidates Section
+  LANDING_TALENTS_LABEL: "For Talents",
+  LANDING_TALENTS_TITLE: "Looking for Your Next Challenge?",
+  LANDING_TALENTS_SUBTITLE:
+    "We guide you to your next career step - whether it's more responsibility, new growth opportunities, or better compensation.",
+  LANDING_TALENTS_STEP1_TITLE: "First Meeting",
+  LANDING_TALENTS_STEP1_DESC:
+    "We discuss your experience, goals, and career aspirations - together we find the perfect position for you.",
+  LANDING_TALENTS_STEP2_TITLE: "Company Introduction",
+  LANDING_TALENTS_STEP2_DESC:
+    "When your profile matches, we introduce you to the company with all relevant info and prepare you for the interview.",
+  LANDING_TALENTS_STEP3_TITLE: "Interviews & Feedback",
+  LANDING_TALENTS_STEP3_DESC:
+    "Throughout the interview process, we're by your side. After each round, you get valuable feedback and can discuss any questions.",
+  LANDING_TALENTS_STEP4_TITLE: "Offer & Start",
+  LANDING_TALENTS_STEP4_DESC:
+    "Success! We support you through final negotiations and accompany you to a perfect start in your new role.",
+  LANDING_TALENTS_CTA: "Start Your Journey",
+  LANDING_TALENTS_POOL_LABEL: "No matching job right now?",
+  LANDING_TALENTS_POOL_TITLE: "Join Our Talent Pool",
+  LANDING_TALENTS_POOL_DESC:
+    "Submit your profile to our talent pool - when a position fits, we'll open doors to top companies.",
+  LANDING_TALENTS_POOL_CTA: "Join Talent Pool",
+
+  // Landing - Why Partner With Us Section
+  LANDING_PARTNER_TITLE: "Why Partner With Us?",
+  LANDING_PARTNER_SUBTITLE:
+    "We don't just fill seats. We build the foundation for your company's future success.",
+  LANDING_PARTNER_EXPERTISE_TITLE: "Local Market Expertise",
+  LANDING_PARTNER_EXPERTISE_DESC:
+    "Deep roots in the German talent market with a global perspective. We know where top talent is and how to reach them.",
+  LANDING_PARTNER_DATA_TITLE: "Data-Driven Selection",
+  LANDING_PARTNER_DATA_DESC:
+    "Advanced analytics and behavioral assessments to predict candidate success and long-term fit.",
+  LANDING_PARTNER_RETENTION_TITLE: "95% Retention Rate",
+  LANDING_PARTNER_RETENTION_DESC:
+    "Our track record speaks for itself. Candidates we place stay longer and contribute more to your bottom line.",
+  LANDING_PARTNER_SPEED_TITLE: "30-Day Average Placement",
+  LANDING_PARTNER_SPEED_DESC:
+    "Speed without compromise. Our streamlined process delivers quality hires faster than industry average.",
+
+  // Landing - Final CTA Section
+  LANDING_FINAL_CTA_TITLE: "Ready to Build Your Dream Team?",
+  LANDING_FINAL_CTA_SUBTITLE:
+    "Schedule a free consultation with our senior recruitment strategists and discover how we can help you find the perfect talent.",
+  LANDING_FINAL_CTA_BUTTON: "Book a Consultation",
+  LANDING_FINAL_CTA_CALENDAR: "Schedule via Calendar",
+
+  // Contact Page
+  CONTACT_TITLE: "Get in Touch",
+  CONTACT_SUBTITLE:
+    "Have questions or ready to start? We'd love to hear from you.",
+  CONTACT_FORM_NAME: "Full Name",
+  CONTACT_FORM_NAME_PLACEHOLDER: "John Doe",
+  CONTACT_FORM_EMAIL: "Email Address",
+  CONTACT_FORM_EMAIL_PLACEHOLDER: "john@example.com",
+  CONTACT_FORM_COMPANY: "Company (Optional)",
+  CONTACT_FORM_COMPANY_PLACEHOLDER: "Your company name",
+  CONTACT_FORM_PHONE: "Phone (Optional)",
+  CONTACT_FORM_PHONE_PLACEHOLDER: "+49 123 456 789",
+  CONTACT_FORM_INQUIRY_TYPE: "Inquiry Type",
+  CONTACT_FORM_INQUIRY_HIRING: "Hiring for my company",
+  CONTACT_FORM_INQUIRY_JOB: "Looking for a job",
+  CONTACT_FORM_INQUIRY_PARTNERSHIP: "Partnership opportunity",
+  CONTACT_FORM_INQUIRY_OTHER: "Other",
+  CONTACT_FORM_MESSAGE: "Message",
+  CONTACT_FORM_MESSAGE_PLACEHOLDER: "Tell us how we can help you...",
+  CONTACT_FORM_SUBMIT: "Send Message",
+  CONTACT_FORM_SUBMITTING: "Sending...",
+  CONTACT_SUCCESS_TITLE: "Message Sent!",
+  CONTACT_SUCCESS_DESC:
+    "Thank you for reaching out. We'll get back to you within 24 hours.",
+  CONTACT_CALENDAR_NOTE: "Prefer to book directly?",
+  CONTACT_CALENDAR_LINK: "Schedule via Calendar",
+  CONTACT_BACK_HOME: "Back to Home",
 };
