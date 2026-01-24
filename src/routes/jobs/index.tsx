@@ -101,8 +101,11 @@ function JobsPage() {
   const search = Route.useSearch();
 
   // Build filters from search params
+  // Combine q (keyword search) and location (free text) into search query
+  const searchTerms = [search.q, search.location].filter(Boolean).join(" ");
+
   const filters = {
-    q: search.q,
+    search: searchTerms || undefined,
     location: search.locationFilter,
     employmentType: search.employmentType,
     industry: search.industry,

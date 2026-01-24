@@ -41,9 +41,22 @@ export function JobEditorPage() {
     mutationFn: (data: { id: string; description: string }) =>
       client.admin.jobs.update(data),
     onSuccess: () => {
+      // Invalidate all job-related queries to ensure fresh data everywhere
       queryClient.invalidateQueries({
         queryKey: orpc.admin.jobs.list.queryOptions().queryKey,
       });
+      if (selectedJobId) {
+        queryClient.invalidateQueries({
+          queryKey: orpc.admin.jobs.getWithStats.queryOptions({
+            input: { id: selectedJobId },
+          }).queryKey,
+        });
+        queryClient.invalidateQueries({
+          queryKey: orpc.admin.jobs.get.queryOptions({
+            input: { id: selectedJobId },
+          }).queryKey,
+        });
+      }
       toast.success("Job description saved");
       setInitialDescription(description);
     },
