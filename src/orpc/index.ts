@@ -5,6 +5,7 @@ import { adminApplicationsRouter } from "./routes/admin/applications";
 import { adminCheckRouter } from "./routes/admin/check";
 import { adminDashboardRouter } from "./routes/admin/dashboard";
 import { adminJobsRouter } from "./routes/admin/jobs";
+import { adminSearchRouter } from "./routes/admin/search";
 import { applicationsRouter } from "./routes/applications";
 import { dashboardRouter } from "./routes/dashboard";
 import { jobsRouter } from "./routes/jobs";
@@ -24,6 +25,7 @@ export const router = orpc.router({
     dashboard: adminDashboardRouter,
     jobs: adminJobsRouter,
     applications: adminApplicationsRouter,
+    search: adminSearchRouter,
   }),
 });
 
