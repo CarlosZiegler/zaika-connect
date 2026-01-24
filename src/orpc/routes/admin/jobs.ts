@@ -3,7 +3,7 @@ import { desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
 import { isAdminEmail } from "@/lib/auth/admin-check";
-import { applications, jobs } from "@/lib/db/schema";
+import { applications, cvs, jobs } from "@/lib/db/schema";
 
 import { orpc, protectedProcedure } from "../../orpc-server";
 
@@ -90,13 +90,15 @@ export const adminJobsRouter = orpc.router({
         throw new ORPCError("NOT_FOUND", { message: "Job not found" });
       }
 
+      // Get stats with aiScore from cvs table
       const statsResult = await context.db
         .select({
           status: applications.status,
           count: sql<number>`cast(count(*) as int)`,
-          avgScore: sql<number>`cast(avg(${applications.aiScore}) as int)`,
+          avgScore: sql<number>`cast(avg(${cvs.aiScore}) as int)`,
         })
         .from(applications)
+        .leftJoin(cvs, eq(applications.cvId, cvs.id))
         .where(eq(applications.jobId, input.id))
         .groupBy(applications.status);
 
