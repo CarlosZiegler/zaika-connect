@@ -2,7 +2,10 @@ import { ORPCError } from "@orpc/server";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 
-import { applications, file, jobs } from "@/lib/db/schema";
+import { analyzeCV } from "@/lib/ai/cv-parser";
+import { extractCvText } from "@/lib/cv/cv-extractor";
+import { generateCvEmbedding } from "@/lib/cv/cv-embeddings";
+import { applications, candidates, cvs, file, jobs } from "@/lib/db/schema";
 import { sendApplicationConfirmation } from "@/lib/email/send-application-confirmation";
 import { env } from "@/lib/env.server";
 import { storage } from "@/lib/storage";
@@ -18,10 +21,9 @@ export const applicationsRouter = orpc.router({
         email: z.email(),
         phone: z.string().optional(),
         message: z.string().optional(),
-        // CV file passed as base64 data
         cvFileName: z.string(),
         cvFileType: z.string(),
-        cvFileData: z.string(), // base64 encoded file data
+        cvFileData: z.string(),
       })
     )
     .handler(async ({ input, context }) => {
@@ -42,7 +44,7 @@ export const applicationsRouter = orpc.router({
         });
       }
 
-      // Decode and upload CV to storage
+      // Upload CV to storage
       const cvKey = `applications/${job.id}/${crypto.randomUUID()}-${input.cvFileName}`;
       const buffer = Buffer.from(input.cvFileData, "base64");
 
@@ -50,7 +52,7 @@ export const applicationsRouter = orpc.router({
         contentType: input.cvFileType,
       });
 
-      // Create file record for tracking
+      // Create file record
       const fileId = crypto.randomUUID();
       await context.db.insert(file).values({
         id: fileId,
@@ -66,6 +68,83 @@ export const applicationsRouter = orpc.router({
         updatedAt: new Date(),
       });
 
+      // Find or create candidate
+      const existingCandidate = await context.db
+        .select()
+        .from(candidates)
+        .where(eq(candidates.email, input.email))
+        .limit(1);
+
+      let candidateId: string;
+
+      if (existingCandidate.at(0)) {
+        candidateId = existingCandidate[0].id;
+        // Update name/phone if provided
+        await context.db
+          .update(candidates)
+          .set({
+            fullName: input.fullName,
+            phone: input.phone ?? existingCandidate[0].phone,
+          })
+          .where(eq(candidates.id, candidateId));
+      } else {
+        candidateId = crypto.randomUUID();
+        await context.db.insert(candidates).values({
+          id: candidateId,
+          email: input.email,
+          fullName: input.fullName,
+          phone: input.phone ?? null,
+        });
+      }
+
+      // Get CV URL for AI extraction
+      const cvUrl = storage.getUrl(cvKey, 3600);
+
+      // Extract CV text and generate embedding
+      let cvText: string | null = null;
+      let cvEmbedding: number[] | null = null;
+      let aiAnalysis = null;
+      let aiScore: number | null = null;
+
+      try {
+        // Extract text from CV
+        const extraction = await extractCvText({
+          fileDataUrl: cvUrl,
+          mediaType: input.cvFileType,
+        });
+        cvText = extraction.fullText;
+
+        // Generate embedding
+        if (cvText) {
+          cvEmbedding = await generateCvEmbedding(cvText);
+        }
+
+        // Run full CV analysis
+        const analysis = await analyzeCV({
+          fileDataUrl: cvUrl,
+          mediaType: input.cvFileType,
+          jobRequirements: job.requirements ?? undefined,
+        });
+        aiAnalysis = analysis;
+        aiScore = analysis.overallScore;
+      } catch (error) {
+        console.error("CV extraction/analysis failed:", error);
+        // Continue without AI data - can be processed later
+      }
+
+      // Create CV record
+      const cvId = crypto.randomUUID();
+      await context.db.insert(cvs).values({
+        id: cvId,
+        candidateId,
+        fileId,
+        fileKey: cvKey,
+        cvText,
+        cvEmbedding,
+        aiScore,
+        aiAnalysis,
+      });
+
       // Create application
       const applicationId = crypto.randomUUID();
       const [application] = await context.db
@@ -73,19 +152,14 @@ export const applicationsRouter = orpc.router({
         .values({
           id: applicationId,
           jobId: job.id,
-          fullName: input.fullName,
-          email: input.email,
-          phone: input.phone ?? null,
+          candidateId,
+          cvId,
           message: input.message ?? null,
-          cvFileId: fileId,
-          cvFileKey: cvKey,
           status: "new",
         })
         .returning();
 
-      // TODO: Trigger AI scoring in background
-
-      // Send confirmation email (fire and forget - don't block on failure)
+      // Send confirmation email
       sendApplicationConfirmation({
         candidateEmail: input.email,
         candidateName: input.fullName,
