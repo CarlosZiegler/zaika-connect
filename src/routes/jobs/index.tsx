@@ -192,7 +192,9 @@ function JobsPage() {
           </p>
 
           {/* Search Hero Component - no trust badges on jobs page */}
+          {/* Key forces re-mount when search params are cleared */}
           <SearchHero
+            key={`${search.q ?? ""}-${search.location ?? ""}`}
             defaultKeyword={search.q ?? ""}
             defaultLocation={search.location ?? ""}
             showTrustBadges={false}
