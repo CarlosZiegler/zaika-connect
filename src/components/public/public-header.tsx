@@ -53,12 +53,12 @@ export function PublicHeader() {
           >
             {t("PUBLIC_NAV_LOGIN")}
           </Link>
-          <Button
+          {/* <Button
             render={<Link to="/sign-up" />}
             className="bg-ocean-1 text-white hover:bg-ocean-2"
           >
             {t("PUBLIC_NAV_SIGNUP")}
-          </Button>
+          </Button> */}
         </div>
 
         {/* Mobile Menu */}

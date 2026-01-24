@@ -255,12 +255,12 @@ function RouteComponent() {
           </Button> */}
         </div>
 
-        <div className="text-center text-sm">
+        {/* <div className="text-center text-sm">
           {t("DONT_HAVE_ACCOUNT")}{" "}
           <Button className="px-0" variant="link">
             <Link to="/sign-up">{t("SIGN_UP_LINK")}</Link>
           </Button>
-        </div>
+        </div> */}
       </div>
     </>
   );
