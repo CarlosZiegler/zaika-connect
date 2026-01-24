@@ -137,6 +137,13 @@ function JobsPage() {
     });
   };
 
+  const handleClearAll = () => {
+    navigate({
+      search: {},
+      replace: true,
+    });
+  };
+
   const hasFilters =
     search.locationFilter ?? search.employmentType ?? search.industry;
 
@@ -196,69 +203,131 @@ function JobsPage() {
       {/* Filters Section */}
       <section className="border-b border-slate-200 bg-white py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Active Search Badges */}
+          {(search.q ?? search.location) ? (
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <span className="text-sm text-slate-500">Searching for:</span>
+              {search.q ? (
+                <Badge
+                  variant="secondary"
+                  className="flex items-center gap-1 bg-ocean-1/10 text-ocean-5"
+                >
+                  <Search className="size-3" aria-hidden="true" />
+                  {search.q}
+                  <button
+                    type="button"
+                    onClick={() => handleFilterChange("q", null)}
+                    className="ml-1 rounded-full hover:bg-ocean-1/20"
+                    aria-label={`Remove keyword filter: ${search.q}`}
+                  >
+                    <X className="size-3" />
+                  </button>
+                </Badge>
+              ) : null}
+              {search.location ? (
+                <Badge
+                  variant="secondary"
+                  className="flex items-center gap-1 bg-ocean-1/10 text-ocean-5"
+                >
+                  <MapPinIcon className="size-3" aria-hidden="true" />
+                  {search.location}
+                  <button
+                    type="button"
+                    onClick={() => handleFilterChange("location", null)}
+                    className="ml-1 rounded-full hover:bg-ocean-1/20"
+                    aria-label={`Remove location filter: ${search.location}`}
+                  >
+                    <X className="size-3" />
+                  </button>
+                </Badge>
+              ) : null}
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={handleClearAll}
+                className="h-6 gap-1 px-2 text-xs text-slate-500 hover:text-ocean-5"
+              >
+                Clear search
+              </Button>
+            </div>
+          ) : null}
+
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2 text-ocean-5">
               <Filter className="size-5" aria-hidden="true" />
               <span className="font-medium">{t("JOBS_FILTERS")}</span>
             </div>
 
-            <Select
-              value={search.locationFilter ?? "all"}
-              onValueChange={(v) => handleFilterChange("locationFilter", v)}
-            >
-              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
-                <SelectValue placeholder={t("JOBS_FILTER_LOCATION")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t("JOBS_FILTER_ALL")}</SelectItem>
-                {LOCATIONS.map((loc: Location) => (
-                  <SelectItem key={loc} value={loc}>
-                    {t(getLocationKey(loc))}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            {/* Location Filter */}
+            <div className="flex flex-col gap-1">
+              <span className="text-xs text-slate-500">Location</span>
+              <Select
+                value={search.locationFilter ?? "all"}
+                onValueChange={(v) => handleFilterChange("locationFilter", v)}
+              >
+                <SelectTrigger className="w-[160px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
+                  <SelectValue placeholder="All locations" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All locations</SelectItem>
+                  {LOCATIONS.map((loc: Location) => (
+                    <SelectItem key={loc} value={loc}>
+                      {t(getLocationKey(loc))}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
-            <Select
-              value={search.employmentType ?? "all"}
-              onValueChange={(v) => handleFilterChange("employmentType", v)}
-            >
-              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
-                <SelectValue placeholder={t("JOBS_FILTER_TYPE")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t("JOBS_FILTER_ALL")}</SelectItem>
-                {EMPLOYMENT_TYPES.map((type: EmploymentType) => (
-                  <SelectItem key={type} value={type}>
-                    {t(getEmploymentTypeKey(type))}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            {/* Employment Type Filter */}
+            <div className="flex flex-col gap-1">
+              <span className="text-xs text-slate-500">Job Type</span>
+              <Select
+                value={search.employmentType ?? "all"}
+                onValueChange={(v) => handleFilterChange("employmentType", v)}
+              >
+                <SelectTrigger className="w-[160px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
+                  <SelectValue placeholder="All types" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All types</SelectItem>
+                  {EMPLOYMENT_TYPES.map((type: EmploymentType) => (
+                    <SelectItem key={type} value={type}>
+                      {t(getEmploymentTypeKey(type))}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
-            <Select
-              value={search.industry ?? "all"}
-              onValueChange={(v) => handleFilterChange("industry", v)}
-            >
-              <SelectTrigger className="w-[180px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
-                <SelectValue placeholder={t("JOBS_FILTER_INDUSTRY")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t("JOBS_FILTER_ALL")}</SelectItem>
-                {INDUSTRIES.map((ind: Industry) => (
-                  <SelectItem key={ind} value={ind}>
-                    {t(getIndustryKey(ind))}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            {/* Industry Filter */}
+            <div className="flex flex-col gap-1">
+              <span className="text-xs text-slate-500">Industry</span>
+              <Select
+                value={search.industry ?? "all"}
+                onValueChange={(v) => handleFilterChange("industry", v)}
+              >
+                <SelectTrigger className="w-[160px] border-slate-200 bg-slate-50 focus:border-ocean-1 focus:ring-ocean-1">
+                  <SelectValue placeholder="All industries" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All industries</SelectItem>
+                  {INDUSTRIES.map((ind: Industry) => (
+                    <SelectItem key={ind} value={ind}>
+                      {t(getIndustryKey(ind))}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
             {hasFilters ? (
               <Button
                 type="button"
                 variant="ghost"
                 onClick={handleClearFilters}
-                className="gap-1 text-ocean-5 hover:bg-ocean-1/10 hover:text-ocean-5"
+                className="mt-4 gap-1 text-ocean-5 hover:bg-ocean-1/10 hover:text-ocean-5"
               >
                 <X className="size-4" aria-hidden="true" />
                 {t("JOBS_FILTER_CLEAR")}
@@ -267,7 +336,7 @@ function JobsPage() {
 
             {/* Results count */}
             {!isLoading && (
-              <span className="ml-auto text-sm text-slate-500">
+              <span className="mt-4 ml-auto text-sm text-slate-500">
                 {jobs.length} {jobs.length === 1 ? "position" : "positions"}{" "}
                 found
               </span>
