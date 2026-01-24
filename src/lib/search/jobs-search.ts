@@ -38,10 +38,25 @@ export async function searchJobs(
     conditions.push(eq(jobs.industry, industry));
   }
 
-  // Use BM25 search if query provided
+  // Use BM25 full-text search if query provided
   if (query) {
     const searchResults = await db.execute(sql`
-      SELECT j.*, paradedb.score(j.id) as rank
+      SELECT
+        j.id,
+        j.slug,
+        j.title,
+        j.description,
+        j.requirements,
+        j.benefits,
+        j.location,
+        j.employment_type as "employmentType",
+        j.industry,
+        j.salary_min as "salaryMin",
+        j.salary_max as "salaryMax",
+        j.is_active as "isActive",
+        j.created_at as "createdAt",
+        j.updated_at as "updatedAt",
+        paradedb.score(j.id) as rank
       FROM jobs j
       WHERE j.is_active = true
         ${location ? sql`AND j.location = ${location}` : sql``}

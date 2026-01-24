@@ -21,7 +21,7 @@ export async function hybridCvSearch(
   const queryEmbedding = await generateCvEmbedding(query);
   const embeddingStr = `[${queryEmbedding.join(",")}]`;
 
-  // Hybrid search with Reciprocal Rank Fusion
+  // Hybrid search with Reciprocal Rank Fusion (BM25 + Vector)
   const results = await db.execute(sql`
     WITH bm25_results AS (
       SELECT id, paradedb.score(id) as bm25_score
@@ -44,7 +44,17 @@ export async function hybridCvSearch(
       FROM vector_results
     )
     SELECT
-      c.*,
+      c.id,
+      c.candidate_id as "candidateId",
+      c.file_id as "fileId",
+      c.file_key as "fileKey",
+      c.cv_text as "cvText",
+      c.ai_score as "aiScore",
+      c.ai_analysis as "aiAnalysis",
+      c.processing_status as "processingStatus",
+      c.processing_error as "processingError",
+      c.processed_at as "processedAt",
+      c.created_at as "createdAt",
       cand.email as candidate_email,
       cand.full_name as candidate_name,
       cand.phone as candidate_phone,
@@ -74,8 +84,16 @@ export async function searchCandidates(
   query: string,
   limit = 20
 ) {
+  // BM25 full-text search on candidates
   const results = await db.execute(sql`
-    SELECT *, paradedb.score(id) as rank
+    SELECT
+      id,
+      email,
+      full_name as "fullName",
+      phone,
+      created_at as "createdAt",
+      updated_at as "updatedAt",
+      paradedb.score(id) as rank
     FROM candidates
     WHERE full_name @@@ ${query} OR email @@@ ${query}
     ORDER BY rank DESC
