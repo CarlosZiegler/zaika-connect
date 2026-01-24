@@ -2,7 +2,7 @@ import { type SVGProps, useId } from "react";
 
 export function Logo({
   className,
-  svgTitle = "Start Kit",
+  svgTitle = "Zaika Connect",
   ...props
 }: SVGProps<SVGSVGElement> & { svgTitle?: string }) {
   const gradientId = useId();

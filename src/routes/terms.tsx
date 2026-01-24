@@ -7,10 +7,10 @@ export const Route = createFileRoute("/terms")({
   head: () => {
     const { meta, links } = seo({
       title: `Terms of Service - ${DEFAULT_SITE_NAME}`,
-      description: "Terms and conditions for using Start Kit.",
+      description: "Terms and conditions for using Zaika Connect.",
       url: "/terms",
       canonicalUrl: "/terms",
-      image: "/images/landing/hero-bg.png",
+      image: "/images/landing/landingpage.png",
     });
 
     return { meta, links };

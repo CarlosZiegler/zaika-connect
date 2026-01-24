@@ -384,15 +384,15 @@ export default {
   TEMPLATE_FEATURE_TESTING_DESC:
     "Comprehensive testing suite with Vitest, React Testing Library, and coverage reporting.",
   TEMPLATE_FEATURE_TESTING_TITLE: "Testing",
-  TEMPLATE_HERO_BADGE: "Start Kit Boilerplate",
+  TEMPLATE_HERO_BADGE: "AI-Powered Recruiting",
   TEMPLATE_HERO_DESC:
-    "An open-source, production-ready template featuring Authentication, Payments, Database, i18n, and more. Built with Start Kit, React 19, and Tailwind v4.",
-  TEMPLATE_HERO_TITLE: "The Ultimate Start Kit Boilerplate",
+    "Connect with top companies and discover jobs that match your skills. Get instant AI feedback on your CV and find your next opportunity.",
+  TEMPLATE_HERO_TITLE: "Find Your Next Opportunity",
   TEMPLATE_HERO_SUBTITLE: "Build, scale, and ship faster than ever.",
   TEMPLATE_TECH_STACK_TITLE: "Modern Tech Stack",
-  TEMPLATE_DX_TITLE: "Designed for Developer Happiness",
+  TEMPLATE_DX_TITLE: "Designed for Career Success",
   TEMPLATE_DX_DESC:
-    "We've combined the power of Start Kit with a meticulously crafted developer experience. Focus on building your features while we handle the boilerplate, type-safety, and performance.",
+    "We've combined AI-powered matching with a streamlined application process. Focus on your career while we connect you with the right opportunities.",
   TEMPLATE_TECH_STACK_SUBTITLE: "Driven by the best tools in the ecosystem.",
   TEMPLATE_HOW_IT_WORKS_TITLE: "How it Works",
   TEMPLATE_HOW_IT_WORKS_STEP1_TITLE: "Clone & Configure",
@@ -413,7 +413,7 @@ export default {
     "Any S3-compatible provider including AWS, R2, MinIO, and Supabase Storage.",
   TEMPLATE_FAQ_Q3: "How is the performance?",
   TEMPLATE_FAQ_A3:
-    "Subsecond response times thanks to Bun's runtime and Start Kit's SSR capabilities.",
+    "Instant AI-powered CV analysis and job matching with real-time results.",
   TEMPLATE_SPOTLIGHT_AI_TITLE: "AI, Built In",
   TEMPLATE_SPOTLIGHT_AI_DESC:
     "Powered by TanStack AI + AI Elements for streaming chat UIs, tool calling, and agentic workflows.",

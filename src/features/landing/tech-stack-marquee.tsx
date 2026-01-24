@@ -28,7 +28,7 @@ function TechIcon({ item }: { item: TechStackItem }) {
         aria-hidden="true"
         className="h-6 w-6 shrink-0"
         focusable="false"
-        svgTitle="Start Kit"
+        svgTitle="Zaika Connect"
       />
     );
   }

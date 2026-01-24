@@ -7,10 +7,10 @@ export const Route = createFileRoute("/pricing")({
   head: () => {
     const { meta, links } = seo({
       title: `Pricing - ${DEFAULT_SITE_NAME}`,
-      description: "Simple, transparent pricing plans for Start Kit.",
+      description: "Simple, transparent pricing plans for Zaika Connect.",
       url: "/pricing",
       canonicalUrl: "/pricing",
-      image: "/images/landing/hero-bg.png",
+      image: "/images/landing/landingpage.png",
     });
 
     return { meta, links };

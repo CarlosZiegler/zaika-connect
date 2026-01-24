@@ -56,8 +56,8 @@ export const Route = createRootRouteWithContext<RootContext>()({
       ...seo({
         title: DEFAULT_SITE_NAME,
         description:
-          "An open-source, production-ready template featuring Authentication, Payments, Database, i18n, and more.",
-        image: "/images/landing/hero-bg.png",
+          "AI-powered recruiting platform connecting talent with opportunities. Get instant CV feedback and find your next job.",
+        image: "/images/landing/landingpage.png",
       }).meta,
     ],
     links: [
@@ -113,9 +113,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
+          forcedTheme="light"
           disableTransitionOnChange
-          enableSystem
         >
           <I18nextProvider defaultNS={"translation"} i18n={i18n}>
             {children}

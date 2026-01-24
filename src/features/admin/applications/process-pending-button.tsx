@@ -31,7 +31,8 @@ export function ProcessPendingButton() {
         }).queryKey,
       });
       queryClient.invalidateQueries({
-        queryKey: orpc.admin.applications.list.queryOptions({ input: {} }).queryKey,
+        queryKey: orpc.admin.applications.list.queryOptions({ input: {} })
+          .queryKey,
       });
     },
     onError: (error) => {

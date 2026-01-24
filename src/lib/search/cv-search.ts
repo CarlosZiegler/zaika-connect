@@ -1,6 +1,7 @@
+import type { PgDatabase } from "drizzle-orm/pg-core";
+
 // src/lib/search/cv-search.ts
 import { sql } from "drizzle-orm";
-import type { PgDatabase } from "drizzle-orm/pg-core";
 
 import { candidates, cvs } from "@/lib/db/schema";
 

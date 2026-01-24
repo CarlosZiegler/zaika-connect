@@ -8,12 +8,11 @@ export const cvExtractionSchema = z.object({
     .number()
     .nullable()
     .describe("Estimated years of professional experience"),
-  educationLevel: z
-    .string()
-    .nullable()
-    .describe("Highest education level"),
+  educationLevel: z.string().nullable().describe("Highest education level"),
   strengths: z.array(z.string()).describe("Key strengths (3-5 points)"),
-  improvements: z.array(z.string()).describe("Areas for improvement (3-5 points)"),
+  improvements: z
+    .array(z.string())
+    .describe("Areas for improvement (3-5 points)"),
   extractedSkills: z.array(z.string()).describe("All skills mentioned"),
 });
 

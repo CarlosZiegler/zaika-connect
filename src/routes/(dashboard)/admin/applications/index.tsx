@@ -193,7 +193,8 @@ function AdminApplicationsPage() {
     }),
   });
 
-  const applications = (data?.applications ?? []) as unknown as ApplicationListItem[];
+  const applications = (data?.applications ??
+    []) as unknown as ApplicationListItem[];
 
   // Update status mutation
   const updateStatusMutation = useMutation({

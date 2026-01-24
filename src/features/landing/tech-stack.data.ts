@@ -13,7 +13,7 @@ import {
 import type { TechStackItem } from "@/features/landing/tech-stack-marquee";
 
 export const TECH_STACK: TechStackItem[] = [
-  { label: "Start Kit", kind: "start-kit" },
+  { label: "Zaika Connect", kind: "start-kit" },
   { label: "React 19", kind: "simple-icon", simpleIcon: siReact },
   { label: "Tailwind v4", kind: "simple-icon", simpleIcon: siTailwindcss },
   { label: "shadcn/ui", kind: "simple-icon", simpleIcon: siShadcnui },

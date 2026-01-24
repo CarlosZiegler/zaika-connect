@@ -8,7 +8,6 @@ import {
 } from "@tanstack/react-router";
 
 import { AppSidebar } from "@/components/app-sidebar";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -86,8 +85,6 @@ function RouteComponent() {
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
-
-            <ThemeSwitcher className="mr-4 ml-auto" />
           </header>
         </ClientOnly>
         <div className="flex flex-col p-4">

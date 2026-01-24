@@ -5,7 +5,8 @@
 
 export const APP_CONFIG = {
   /** Application name - used in emails, auth, and UI */
-  name: "Start Kit",
+  name: "Zaika Connect",
   /** Application description */
-  description: "A modern SaaS starter template",
+  description:
+    "AI-powered recruiting platform connecting talent with opportunities",
 } as const;

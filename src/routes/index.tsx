@@ -468,11 +468,9 @@ function LandingPage() {
               </ul>
 
               <Button
-                asChild
+                render={<Link to="/jobs">{t("LANDING_ENTERPRISE_CTA")}</Link>}
                 className="rounded-xl bg-depth-5 px-8 py-3 font-bold text-white shadow-lg shadow-depth-5/20 transition hover:bg-depth-4"
-              >
-                <Link to="/jobs">{t("LANDING_ENTERPRISE_CTA")}</Link>
-              </Button>
+              />
             </div>
           </div>
         </div>

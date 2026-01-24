@@ -1,7 +1,7 @@
-export const SITE_URL = "https://www.start-kit.dev" as const;
+export const SITE_URL = "https://zaika-connect.vercel.app" as const;
 export const DEFAULT_OG_IMAGE_PATH = "/images/landing/hero-bg.png" as const;
-export const DEFAULT_TWITTER_HANDLE = "@startkitdev" as const;
-export const DEFAULT_SITE_NAME = "Start Kit" as const;
+export const DEFAULT_TWITTER_HANDLE = "@zaikaconnect" as const;
+export const DEFAULT_SITE_NAME = "Zaika Connect" as const;
 
 type SeoInput = {
   title: string;

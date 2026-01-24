@@ -9,14 +9,13 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ProcessPendingButton } from "@/features/admin/applications/process-pending-button";
 import {
   type Job,
   type JobFormData,
   JobFormDialog,
 } from "@/features/admin/job-form-dialog";
 import { client, orpc } from "@/orpc/orpc-client";
-
-import { ProcessPendingButton } from "@/features/admin/applications/process-pending-button";
 
 import { JobDetailApplications } from "./job-detail-applications";
 import { JobDetailOverview } from "./job-detail-overview";

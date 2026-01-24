@@ -31,10 +31,10 @@ export const Route = createFileRoute("/(auth)/sign-up")({
   head: () => {
     const { meta, links } = seo({
       title: `Sign Up - ${DEFAULT_SITE_NAME}`,
-      description: "Create your Start Kit account.",
+      description: "Create your Zaika Connect account.",
       url: "/sign-up",
       canonicalUrl: "/sign-up",
-      image: "/images/landing/hero-bg.png",
+      image: "/images/landing/landingpage.png",
     });
 
     return { meta, links };

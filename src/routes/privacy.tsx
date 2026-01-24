@@ -7,10 +7,10 @@ export const Route = createFileRoute("/privacy")({
   head: () => {
     const { meta, links } = seo({
       title: `Privacy Policy - ${DEFAULT_SITE_NAME}`,
-      description: "Learn how Start Kit handles and protects your data.",
+      description: "Learn how Zaika Connect handles and protects your data.",
       url: "/privacy",
       canonicalUrl: "/privacy",
-      image: "/images/landing/hero-bg.png",
+      image: "/images/landing/landingpage.png",
     });
 
     return { meta, links };

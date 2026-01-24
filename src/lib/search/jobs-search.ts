@@ -1,6 +1,7 @@
+import type { PgDatabase } from "drizzle-orm/pg-core";
+
 // src/lib/search/jobs-search.ts
 import { and, desc, eq, sql } from "drizzle-orm";
-import type { PgDatabase } from "drizzle-orm/pg-core";
 
 import { jobs } from "@/lib/db/schema";
 
@@ -81,7 +82,7 @@ export async function searchJobs(
     const total = Number(countResult.at(0)?.count ?? 0);
 
     return {
-      jobs: searchResults as typeof jobs.$inferSelect[],
+      jobs: searchResults as (typeof jobs.$inferSelect)[],
       total,
       hasMore: offset + searchResults.length < total,
     };
