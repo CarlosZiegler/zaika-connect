@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 import { Badge } from "@/components/ui/badge";
@@ -51,25 +51,40 @@ export function ApplicationKanban({
 }: ApplicationKanbanProps) {
   const queryClient = useQueryClient();
 
-  // Group applications by status
-  const initialColumns = useMemo(() => {
-    const columns: Record<string, Application[]> = {
+  // Create a stable fingerprint to detect when server data changes
+  const applicationsFingerprint = useMemo(
+    () =>
+      applications
+        .map((a) => `${a.id}:${a.status}`)
+        .sort()
+        .join(","),
+    [applications]
+  );
+
+  // Helper to group applications by status
+  const groupByStatus = (apps: Application[]) => {
+    const cols: Record<string, Application[]> = {
       new: [],
       reviewed: [],
       shortlisted: [],
       rejected: [],
     };
 
-    for (const app of applications) {
-      if (columns[app.status]) {
-        columns[app.status].push(app);
+    for (const app of apps) {
+      if (cols[app.status]) {
+        cols[app.status].push(app);
       }
     }
 
-    return columns;
-  }, [applications]);
+    return cols;
+  };
 
-  const [columns, setColumns] = useState(initialColumns);
+  const [columns, setColumns] = useState(() => groupByStatus(applications));
+
+  // Sync columns when server data changes (after mutation completes and query refetches)
+  useEffect(() => {
+    setColumns(groupByStatus(applications));
+  }, [applicationsFingerprint]);
 
   // Update status mutation
   const updateStatusMutation = useMutation({
@@ -89,8 +104,8 @@ export function ApplicationKanban({
     },
     onError: (error) => {
       toast.error(error.message);
-      // Revert on error
-      setColumns(initialColumns);
+      // Revert on error - rebuild from server data
+      setColumns(groupByStatus(applications));
     },
   });
 
