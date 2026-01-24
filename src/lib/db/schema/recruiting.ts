@@ -88,17 +88,33 @@ export const applications = pgTable("applications", {
   jobId: text("job_id")
     .references(() => jobs.id, { onDelete: "cascade" })
     .notNull(),
-  fullName: text("full_name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone"),
+  candidateId: text("candidate_id")
+    .references(() => candidates.id, { onDelete: "cascade" })
+    .notNull(),
+  cvId: text("cv_id")
+    .references(() => cvs.id)
+    .notNull(),
   message: text("message"),
-  cvFileId: text("cv_file_id").references(() => file.id),
-  cvFileKey: text("cv_file_key"),
-  aiScore: integer("ai_score"),
-  aiAnalysis: json("ai_analysis").$type<CVAnalysis>(),
   status: text("status").default("new").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+export const candidatesRelations = relations(candidates, ({ many }) => ({
+  cvs: many(cvs),
+  applications: many(applications),
+}));
+
+export const cvsRelations = relations(cvs, ({ one, many }) => ({
+  candidate: one(candidates, {
+    fields: [cvs.candidateId],
+    references: [candidates.id],
+  }),
+  file: one(file, {
+    fields: [cvs.fileId],
+    references: [file.id],
+  }),
+  applications: many(applications),
+}));
 
 export const jobsRelations = relations(jobs, ({ many }) => ({
   applications: many(applications),
@@ -109,8 +125,12 @@ export const applicationsRelations = relations(applications, ({ one }) => ({
     fields: [applications.jobId],
     references: [jobs.id],
   }),
-  cvFile: one(file, {
-    fields: [applications.cvFileId],
-    references: [file.id],
+  candidate: one(candidates, {
+    fields: [applications.candidateId],
+    references: [candidates.id],
+  }),
+  cv: one(cvs, {
+    fields: [applications.cvId],
+    references: [cvs.id],
   }),
 }));

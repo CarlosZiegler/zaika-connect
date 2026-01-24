@@ -43,6 +43,13 @@
       "when": 1769261059977,
       "tag": "0005_typical_unicorn",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1769261399228,
+      "tag": "0006_special_maddog",
+      "breakpoints": true
     }
   ]
 }
