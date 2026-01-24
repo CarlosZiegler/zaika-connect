@@ -108,7 +108,11 @@ function ApplyPage() {
         {/* Hero Content */}
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
-          <Link to="/jobs/$slug" params={{ slug: jobSlug }} className="mb-6 inline-block">
+          <Link
+            to="/jobs/$slug"
+            params={{ slug: jobSlug }}
+            className="mb-6 inline-block"
+          >
             <Button
               type="button"
               variant="ghost"

@@ -128,24 +128,31 @@ Action buttons:
 
 ```typescript
 type Request = {
-  action: "generate" | "improve" | "format" | "add-section" | "shorter" | "longer" | "chat"
-  description?: string      // current text
-  jobTitle?: string         // for generate
-  sectionType?: string      // for add-section
-  userMessage?: string      // for chat
-}
+  action:
+    | "generate"
+    | "improve"
+    | "format"
+    | "add-section"
+    | "shorter"
+    | "longer"
+    | "chat";
+  description?: string; // current text
+  jobTitle?: string; // for generate
+  sectionType?: string; // for add-section
+  userMessage?: string; // for chat
+};
 ```
 
 Returns streaming text response.
 
 ## AI Elements Reused
 
-| Need | Component |
-|------|-----------|
-| Preview markdown | `MessageResponse` |
-| Chat input | `PromptInput` |
-| Loading | `Loader` |
-| Quick suggestions | `Suggestion` |
+| Need              | Component         |
+| ----------------- | ----------------- |
+| Preview markdown  | `MessageResponse` |
+| Chat input        | `PromptInput`     |
+| Loading           | `Loader`          |
+| Quick suggestions | `Suggestion`      |
 
 ## Data Flow
 

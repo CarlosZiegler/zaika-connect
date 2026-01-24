@@ -13,6 +13,7 @@
 ## Task 1: Create Route File
 
 **Files:**
+
 - Create: `src/routes/(dashboard)/lab/job-editor/index.tsx`
 
 **Step 1: Create the route file**
@@ -56,6 +57,7 @@ git commit -m "feat(job-editor): add route file"
 ## Task 2: Create Job Editor Page Layout
 
 **Files:**
+
 - Create: `src/features/lab/job-editor/job-editor.page.tsx`
 
 **Step 1: Create the main page component**
@@ -149,9 +151,7 @@ export function JobEditorPage() {
             <RotateCcwIcon className="mr-2 size-4" />
             Reset
           </Button>
-          <Button disabled={!hasChanges || !selectedJobId}>
-            Save Job
-          </Button>
+          <Button disabled={!hasChanges || !selectedJobId}>Save Job</Button>
         </div>
       </div>
 
@@ -195,10 +195,7 @@ export function JobEditorPage() {
 
               {/* Preview Panel - 40% */}
               <div className="w-2/5 overflow-y-auto bg-slate-50 p-6">
-                <JobEditorPreview
-                  description={description}
-                  job={selectedJob}
-                />
+                <JobEditorPreview description={description} job={selectedJob} />
               </div>
             </div>
           )}
@@ -230,6 +227,7 @@ git commit -m "feat(job-editor): add main page layout"
 ## Task 3: Create Job Editor Form Component
 
 **Files:**
+
 - Create: `src/features/lab/job-editor/job-editor-form.tsx`
 
 **Step 1: Create the form component**
@@ -284,6 +282,7 @@ git commit -m "feat(job-editor): add form component"
 ## Task 4: Create Job Editor Preview Component
 
 **Files:**
+
 - Create: `src/features/lab/job-editor/job-editor-preview.tsx`
 
 **Step 1: Create the preview component**
@@ -355,6 +354,7 @@ git commit -m "feat(job-editor): add preview component with Streamdown"
 ## Task 5: Create AI Actions Component
 
 **Files:**
+
 - Create: `src/features/lab/job-editor/job-editor-actions.tsx`
 
 **Step 1: Create the actions component**
@@ -457,16 +457,24 @@ export function JobEditorActions({
           Add Section
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem onSelect={() => runAction("add-section", "requirements")}>
+          <DropdownMenuItem
+            onSelect={() => runAction("add-section", "requirements")}
+          >
             Requirements
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => runAction("add-section", "benefits")}>
+          <DropdownMenuItem
+            onSelect={() => runAction("add-section", "benefits")}
+          >
             Benefits
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => runAction("add-section", "about-company")}>
+          <DropdownMenuItem
+            onSelect={() => runAction("add-section", "about-company")}
+          >
             About Company
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => runAction("add-section", "responsibilities")}>
+          <DropdownMenuItem
+            onSelect={() => runAction("add-section", "responsibilities")}
+          >
             Responsibilities
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -499,7 +507,9 @@ export function JobEditorActions({
         size="sm"
         onClick={onChatToggle}
       >
-        <MessageSquareIcon className={cn("mr-2 size-4", chatOpen && "text-primary-foreground")} />
+        <MessageSquareIcon
+          className={cn("mr-2 size-4", chatOpen && "text-primary-foreground")}
+        />
         Chat
       </Button>
     </div>
@@ -519,6 +529,7 @@ git commit -m "feat(job-editor): add AI action buttons"
 ## Task 6: Create AI Hook
 
 **Files:**
+
 - Create: `src/features/lab/job-editor/use-job-editor-ai.ts`
 
 **Step 1: Create the AI hook**
@@ -637,6 +648,7 @@ git commit -m "feat(job-editor): add AI streaming hook"
 ## Task 7: Create Sliding Chat Panel
 
 **Files:**
+
 - Create: `src/features/lab/job-editor/sliding-chat-panel.tsx`
 
 **Step 1: Create the sliding chat panel**
@@ -831,7 +843,10 @@ export function SlidingChatPanel({
           </PromptInputBody>
           <PromptInputFooter>
             <PromptInputTools />
-            <PromptInputSubmit disabled={!text.trim() || isStreaming} status={status} />
+            <PromptInputSubmit
+              disabled={!text.trim() || isStreaming}
+              status={status}
+            />
           </PromptInputFooter>
         </PromptInput>
       </div>
@@ -852,6 +867,7 @@ git commit -m "feat(job-editor): add sliding chat panel"
 ## Task 8: Create AI API Endpoint
 
 **Files:**
+
 - Create: `src/routes/api/ai/job-description.ts`
 
 **Step 1: Create the API endpoint**
@@ -867,10 +883,17 @@ export const Route = createFileRoute("/api/ai/job-description")({
       POST: async ({ request }: { request: Request }) => {
         try {
           const body = await request.json();
-          const { action, description, jobTitle, sectionType, userMessage } = body;
+          const { action, description, jobTitle, sectionType, userMessage } =
+            body;
 
           const systemPrompt = getSystemPrompt(action, sectionType);
-          const userPrompt = getUserPrompt(action, description, jobTitle, sectionType, userMessage);
+          const userPrompt = getUserPrompt(
+            action,
+            description,
+            jobTitle,
+            sectionType,
+            userMessage
+          );
 
           const abortController = new AbortController();
 
@@ -882,7 +905,10 @@ export const Route = createFileRoute("/api/ai/job-description")({
             ],
           });
 
-          const sseStream = toServerSentEventsStream(baseStream, abortController);
+          const sseStream = toServerSentEventsStream(
+            baseStream,
+            abortController
+          );
 
           return new Response(sseStream, {
             headers: {
@@ -893,7 +919,8 @@ export const Route = createFileRoute("/api/ai/job-description")({
           });
         } catch (error: unknown) {
           console.error(error);
-          const message = error instanceof Error ? error.message : "An error occurred";
+          const message =
+            error instanceof Error ? error.message : "An error occurred";
           return new Response(JSON.stringify({ error: message }), {
             status: 500,
             headers: { "Content-Type": "application/json" },
@@ -975,6 +1002,7 @@ git commit -m "feat(job-editor): add AI API endpoint"
 ## Task 9: Add Save Functionality
 
 **Files:**
+
 - Modify: `src/features/lab/job-editor/job-editor.page.tsx`
 
 **Step 1: Add save mutation**
@@ -1023,7 +1051,7 @@ const handleSave = () => {
   ) : (
     "Save Job"
   )}
-</Button>
+</Button>;
 ```
 
 **Step 2: Commit**
@@ -1038,6 +1066,7 @@ git commit -m "feat(job-editor): add save functionality"
 ## Task 10: Create Index Export
 
 **Files:**
+
 - Create: `src/features/lab/job-editor/index.ts`
 
 **Step 1: Create the index file**
@@ -1050,6 +1079,7 @@ export { JobEditorPage } from "./job-editor.page";
 
 Run: `ls src/features/lab/job-editor/`
 Expected:
+
 ```
 index.ts
 job-editor-actions.tsx
@@ -1110,18 +1140,18 @@ git commit -m "feat(job-editor): complete implementation"
 
 ## Summary
 
-| Task | Description |
-|------|-------------|
-| 1 | Route file |
-| 2 | Main page layout |
-| 3 | Form component |
-| 4 | Preview component |
-| 5 | Actions component |
-| 6 | AI hook |
-| 7 | Sliding chat panel |
-| 8 | API endpoint |
-| 9 | Save functionality |
-| 10 | Index export + verification |
-| 11 | Manual testing |
+| Task | Description                 |
+| ---- | --------------------------- |
+| 1    | Route file                  |
+| 2    | Main page layout            |
+| 3    | Form component              |
+| 4    | Preview component           |
+| 5    | Actions component           |
+| 6    | AI hook                     |
+| 7    | Sliding chat panel          |
+| 8    | API endpoint                |
+| 9    | Save functionality          |
+| 10   | Index export + verification |
+| 11   | Manual testing              |
 
 Total: 11 tasks

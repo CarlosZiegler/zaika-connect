@@ -41,17 +41,37 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       url: "/overview",
       icon: Home,
     },
+    isAdmin
+      ? {
+          title: t("SIDEBAR_ADMIN"),
+          icon: ShieldCheck,
+          children: [
+            {
+              title: t("SIDEBAR_ADMIN_JOBS"),
+              url: "/admin/jobs",
+            },
+            {
+              title: t("SIDEBAR_ADMIN_APPLICATIONS"),
+              url: "/admin/applications",
+            },
+          ],
+        }
+      : null,
     {
       title: t("SIDEBAR_LAB"),
       icon: Beaker,
       children: [
+        // {
+        //   title: t("SIDEBAR_CHAT"),
+        //   url: "/lab/chat",
+        // },
+        // {
+        //   title: t("LAB_BLOCK_GENERATOR_NAV"),
+        //   url: "/lab/block-generator",
+        // },
         {
-          title: t("SIDEBAR_CHAT"),
-          url: "/lab/chat",
-        },
-        {
-          title: t("LAB_BLOCK_GENERATOR_NAV"),
-          url: "/lab/block-generator",
+          title: t("LAB_JOB_EDITOR_NAV"),
+          url: "/lab/job-editor",
         },
       ],
     },
@@ -69,22 +89,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         },
       ],
     },
-    isAdmin
-      ? {
-          title: t("SIDEBAR_ADMIN"),
-          icon: ShieldCheck,
-          children: [
-            {
-              title: t("SIDEBAR_ADMIN_JOBS"),
-              url: "/admin/jobs",
-            },
-            {
-              title: t("SIDEBAR_ADMIN_APPLICATIONS"),
-              url: "/admin/applications",
-            },
-          ],
-        }
-      : null,
+
     {
       title: t("SETTINGS"),
       icon: Settings,

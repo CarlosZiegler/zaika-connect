@@ -35,6 +35,7 @@ import { Route as ApiStorageSplatRouteImport } from './routes/api/storage/$'
 import { Route as ApiRpcSplatRouteImport } from './routes/api/rpc.$'
 import { Route as ApiChatResumeRouteImport } from './routes/api/chat/resume'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ApiAiJobDescriptionRouteImport } from './routes/api/ai/job-description'
 import { Route as ApiAiJobChatRouteImport } from './routes/api/ai/job-chat'
 import { Route as ApiAiCvReviewRouteImport } from './routes/api/ai/cv-review'
 import { Route as dashboardSettingsSecurityRouteImport } from './routes/(dashboard)/settings/security'
@@ -44,10 +45,12 @@ import { Route as authTwoFactorOtpRouteImport } from './routes/(auth)/two-factor
 import { Route as authAcceptInvitationInvitationIdRouteImport } from './routes/(auth)/accept-invitation/$invitationId'
 import { Route as ApiLabBlockGeneratorIndexRouteImport } from './routes/api/lab/block-generator/index'
 import { Route as dashboardOrganizationsInvitationsIndexRouteImport } from './routes/(dashboard)/organizations/invitations/index'
+import { Route as dashboardLabJobEditorIndexRouteImport } from './routes/(dashboard)/lab/job-editor/index'
 import { Route as dashboardLabChatIndexRouteImport } from './routes/(dashboard)/lab/chat/index'
 import { Route as dashboardLabBlockGeneratorIndexRouteImport } from './routes/(dashboard)/lab/block-generator/index'
 import { Route as dashboardAdminJobsIndexRouteImport } from './routes/(dashboard)/admin/jobs/index'
 import { Route as dashboardAdminApplicationsIndexRouteImport } from './routes/(dashboard)/admin/applications/index'
+import { Route as dashboardAdminJobsJobIdRouteImport } from './routes/(dashboard)/admin/jobs/$jobId'
 import { Route as dashboardAdminApplicationsIdRouteImport } from './routes/(dashboard)/admin/applications/$id'
 
 const TermsRoute = TermsRouteImport.update({
@@ -179,6 +182,11 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAiJobDescriptionRoute = ApiAiJobDescriptionRouteImport.update({
+  id: '/api/ai/job-description',
+  path: '/api/ai/job-description',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAiJobChatRoute = ApiAiJobChatRouteImport.update({
   id: '/api/ai/job-chat',
   path: '/api/ai/job-chat',
@@ -230,6 +238,12 @@ const dashboardOrganizationsInvitationsIndexRoute =
     path: '/organizations/invitations/',
     getParentRoute: () => dashboardLayoutRoute,
   } as any)
+const dashboardLabJobEditorIndexRoute =
+  dashboardLabJobEditorIndexRouteImport.update({
+    id: '/lab/job-editor/',
+    path: '/lab/job-editor/',
+    getParentRoute: () => dashboardLayoutRoute,
+  } as any)
 const dashboardLabChatIndexRoute = dashboardLabChatIndexRouteImport.update({
   id: '/lab/chat/',
   path: '/lab/chat/',
@@ -252,6 +266,11 @@ const dashboardAdminApplicationsIndexRoute =
     path: '/admin/applications/',
     getParentRoute: () => dashboardLayoutRoute,
   } as any)
+const dashboardAdminJobsJobIdRoute = dashboardAdminJobsJobIdRouteImport.update({
+  id: '/admin/jobs/$jobId',
+  path: '/admin/jobs/$jobId',
+  getParentRoute: () => dashboardLayoutRoute,
+} as any)
 const dashboardAdminApplicationsIdRoute =
   dashboardAdminApplicationsIdRouteImport.update({
     id: '/admin/applications/$id',
@@ -281,6 +300,7 @@ export interface FileRoutesByFullPath {
   '/settings/security': typeof dashboardSettingsSecurityRoute
   '/api/ai/cv-review': typeof ApiAiCvReviewRoute
   '/api/ai/job-chat': typeof ApiAiJobChatRoute
+  '/api/ai/job-description': typeof ApiAiJobDescriptionRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/chat/resume': typeof ApiChatResumeRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
@@ -292,10 +312,12 @@ export interface FileRoutesByFullPath {
   '/settings/': typeof dashboardSettingsIndexRoute
   '/api/chat/': typeof ApiChatIndexRoute
   '/admin/applications/$id': typeof dashboardAdminApplicationsIdRoute
+  '/admin/jobs/$jobId': typeof dashboardAdminJobsJobIdRoute
   '/admin/applications/': typeof dashboardAdminApplicationsIndexRoute
   '/admin/jobs/': typeof dashboardAdminJobsIndexRoute
   '/lab/block-generator/': typeof dashboardLabBlockGeneratorIndexRoute
   '/lab/chat/': typeof dashboardLabChatIndexRoute
+  '/lab/job-editor/': typeof dashboardLabJobEditorIndexRoute
   '/organizations/invitations/': typeof dashboardOrganizationsInvitationsIndexRoute
   '/api/lab/block-generator/': typeof ApiLabBlockGeneratorIndexRoute
 }
@@ -320,6 +342,7 @@ export interface FileRoutesByTo {
   '/settings/security': typeof dashboardSettingsSecurityRoute
   '/api/ai/cv-review': typeof ApiAiCvReviewRoute
   '/api/ai/job-chat': typeof ApiAiJobChatRoute
+  '/api/ai/job-description': typeof ApiAiJobDescriptionRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/chat/resume': typeof ApiChatResumeRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
@@ -331,10 +354,12 @@ export interface FileRoutesByTo {
   '/settings': typeof dashboardSettingsIndexRoute
   '/api/chat': typeof ApiChatIndexRoute
   '/admin/applications/$id': typeof dashboardAdminApplicationsIdRoute
+  '/admin/jobs/$jobId': typeof dashboardAdminJobsJobIdRoute
   '/admin/applications': typeof dashboardAdminApplicationsIndexRoute
   '/admin/jobs': typeof dashboardAdminJobsIndexRoute
   '/lab/block-generator': typeof dashboardLabBlockGeneratorIndexRoute
   '/lab/chat': typeof dashboardLabChatIndexRoute
+  '/lab/job-editor': typeof dashboardLabJobEditorIndexRoute
   '/organizations/invitations': typeof dashboardOrganizationsInvitationsIndexRoute
   '/api/lab/block-generator': typeof ApiLabBlockGeneratorIndexRoute
 }
@@ -363,6 +388,7 @@ export interface FileRoutesById {
   '/(dashboard)/settings/security': typeof dashboardSettingsSecurityRoute
   '/api/ai/cv-review': typeof ApiAiCvReviewRoute
   '/api/ai/job-chat': typeof ApiAiJobChatRoute
+  '/api/ai/job-description': typeof ApiAiJobDescriptionRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/chat/resume': typeof ApiChatResumeRoute
   '/api/rpc/$': typeof ApiRpcSplatRoute
@@ -374,10 +400,12 @@ export interface FileRoutesById {
   '/(dashboard)/settings/': typeof dashboardSettingsIndexRoute
   '/api/chat/': typeof ApiChatIndexRoute
   '/(dashboard)/admin/applications/$id': typeof dashboardAdminApplicationsIdRoute
+  '/(dashboard)/admin/jobs/$jobId': typeof dashboardAdminJobsJobIdRoute
   '/(dashboard)/admin/applications/': typeof dashboardAdminApplicationsIndexRoute
   '/(dashboard)/admin/jobs/': typeof dashboardAdminJobsIndexRoute
   '/(dashboard)/lab/block-generator/': typeof dashboardLabBlockGeneratorIndexRoute
   '/(dashboard)/lab/chat/': typeof dashboardLabChatIndexRoute
+  '/(dashboard)/lab/job-editor/': typeof dashboardLabJobEditorIndexRoute
   '/(dashboard)/organizations/invitations/': typeof dashboardOrganizationsInvitationsIndexRoute
   '/api/lab/block-generator/': typeof ApiLabBlockGeneratorIndexRoute
 }
@@ -405,6 +433,7 @@ export interface FileRouteTypes {
     | '/settings/security'
     | '/api/ai/cv-review'
     | '/api/ai/job-chat'
+    | '/api/ai/job-description'
     | '/api/auth/$'
     | '/api/chat/resume'
     | '/api/rpc/$'
@@ -416,10 +445,12 @@ export interface FileRouteTypes {
     | '/settings/'
     | '/api/chat/'
     | '/admin/applications/$id'
+    | '/admin/jobs/$jobId'
     | '/admin/applications/'
     | '/admin/jobs/'
     | '/lab/block-generator/'
     | '/lab/chat/'
+    | '/lab/job-editor/'
     | '/organizations/invitations/'
     | '/api/lab/block-generator/'
   fileRoutesByTo: FileRoutesByTo
@@ -444,6 +475,7 @@ export interface FileRouteTypes {
     | '/settings/security'
     | '/api/ai/cv-review'
     | '/api/ai/job-chat'
+    | '/api/ai/job-description'
     | '/api/auth/$'
     | '/api/chat/resume'
     | '/api/rpc/$'
@@ -455,10 +487,12 @@ export interface FileRouteTypes {
     | '/settings'
     | '/api/chat'
     | '/admin/applications/$id'
+    | '/admin/jobs/$jobId'
     | '/admin/applications'
     | '/admin/jobs'
     | '/lab/block-generator'
     | '/lab/chat'
+    | '/lab/job-editor'
     | '/organizations/invitations'
     | '/api/lab/block-generator'
   id:
@@ -486,6 +520,7 @@ export interface FileRouteTypes {
     | '/(dashboard)/settings/security'
     | '/api/ai/cv-review'
     | '/api/ai/job-chat'
+    | '/api/ai/job-description'
     | '/api/auth/$'
     | '/api/chat/resume'
     | '/api/rpc/$'
@@ -497,10 +532,12 @@ export interface FileRouteTypes {
     | '/(dashboard)/settings/'
     | '/api/chat/'
     | '/(dashboard)/admin/applications/$id'
+    | '/(dashboard)/admin/jobs/$jobId'
     | '/(dashboard)/admin/applications/'
     | '/(dashboard)/admin/jobs/'
     | '/(dashboard)/lab/block-generator/'
     | '/(dashboard)/lab/chat/'
+    | '/(dashboard)/lab/job-editor/'
     | '/(dashboard)/organizations/invitations/'
     | '/api/lab/block-generator/'
   fileRoutesById: FileRoutesById
@@ -518,6 +555,7 @@ export interface RootRouteChildren {
   JobsIndexRoute: typeof JobsIndexRoute
   ApiAiCvReviewRoute: typeof ApiAiCvReviewRoute
   ApiAiJobChatRoute: typeof ApiAiJobChatRoute
+  ApiAiJobDescriptionRoute: typeof ApiAiJobDescriptionRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiChatResumeRoute: typeof ApiChatResumeRoute
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute
@@ -710,6 +748,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/ai/job-description': {
+      id: '/api/ai/job-description'
+      path: '/api/ai/job-description'
+      fullPath: '/api/ai/job-description'
+      preLoaderRoute: typeof ApiAiJobDescriptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/ai/job-chat': {
       id: '/api/ai/job-chat'
       path: '/api/ai/job-chat'
@@ -773,6 +818,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof dashboardOrganizationsInvitationsIndexRouteImport
       parentRoute: typeof dashboardLayoutRoute
     }
+    '/(dashboard)/lab/job-editor/': {
+      id: '/(dashboard)/lab/job-editor/'
+      path: '/lab/job-editor'
+      fullPath: '/lab/job-editor/'
+      preLoaderRoute: typeof dashboardLabJobEditorIndexRouteImport
+      parentRoute: typeof dashboardLayoutRoute
+    }
     '/(dashboard)/lab/chat/': {
       id: '/(dashboard)/lab/chat/'
       path: '/lab/chat'
@@ -799,6 +851,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/applications'
       fullPath: '/admin/applications/'
       preLoaderRoute: typeof dashboardAdminApplicationsIndexRouteImport
+      parentRoute: typeof dashboardLayoutRoute
+    }
+    '/(dashboard)/admin/jobs/$jobId': {
+      id: '/(dashboard)/admin/jobs/$jobId'
+      path: '/admin/jobs/$jobId'
+      fullPath: '/admin/jobs/$jobId'
+      preLoaderRoute: typeof dashboardAdminJobsJobIdRouteImport
       parentRoute: typeof dashboardLayoutRoute
     }
     '/(dashboard)/admin/applications/$id': {
@@ -863,10 +922,12 @@ interface dashboardLayoutRouteChildren {
   dashboardOrganizationsIndexRoute: typeof dashboardOrganizationsIndexRoute
   dashboardOverviewIndexRoute: typeof dashboardOverviewIndexRoute
   dashboardAdminApplicationsIdRoute: typeof dashboardAdminApplicationsIdRoute
+  dashboardAdminJobsJobIdRoute: typeof dashboardAdminJobsJobIdRoute
   dashboardAdminApplicationsIndexRoute: typeof dashboardAdminApplicationsIndexRoute
   dashboardAdminJobsIndexRoute: typeof dashboardAdminJobsIndexRoute
   dashboardLabBlockGeneratorIndexRoute: typeof dashboardLabBlockGeneratorIndexRoute
   dashboardLabChatIndexRoute: typeof dashboardLabChatIndexRoute
+  dashboardLabJobEditorIndexRoute: typeof dashboardLabJobEditorIndexRoute
   dashboardOrganizationsInvitationsIndexRoute: typeof dashboardOrganizationsInvitationsIndexRoute
 }
 
@@ -876,10 +937,12 @@ const dashboardLayoutRouteChildren: dashboardLayoutRouteChildren = {
   dashboardOrganizationsIndexRoute: dashboardOrganizationsIndexRoute,
   dashboardOverviewIndexRoute: dashboardOverviewIndexRoute,
   dashboardAdminApplicationsIdRoute: dashboardAdminApplicationsIdRoute,
+  dashboardAdminJobsJobIdRoute: dashboardAdminJobsJobIdRoute,
   dashboardAdminApplicationsIndexRoute: dashboardAdminApplicationsIndexRoute,
   dashboardAdminJobsIndexRoute: dashboardAdminJobsIndexRoute,
   dashboardLabBlockGeneratorIndexRoute: dashboardLabBlockGeneratorIndexRoute,
   dashboardLabChatIndexRoute: dashboardLabChatIndexRoute,
+  dashboardLabJobEditorIndexRoute: dashboardLabJobEditorIndexRoute,
   dashboardOrganizationsInvitationsIndexRoute:
     dashboardOrganizationsInvitationsIndexRoute,
 }
@@ -901,6 +964,7 @@ const rootRouteChildren: RootRouteChildren = {
   JobsIndexRoute: JobsIndexRoute,
   ApiAiCvReviewRoute: ApiAiCvReviewRoute,
   ApiAiJobChatRoute: ApiAiJobChatRoute,
+  ApiAiJobDescriptionRoute: ApiAiJobDescriptionRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiChatResumeRoute: ApiChatResumeRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,

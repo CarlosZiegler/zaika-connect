@@ -4,6 +4,7 @@ import {
   Outlet,
   redirect,
 } from "@tanstack/react-router";
+import { Waves } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
@@ -42,9 +43,11 @@ function RouteComponent() {
       <header className="border-b">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link className="flex items-center space-x-2" to="/">
-              <Logo className="h-8 w-8" />
-              <span className="font-bold text-xl">Start Kit</span>
+            <Link to="/" className="flex items-center gap-2">
+              <Waves className="size-8 text-ocean-1" aria-hidden="true" />
+              <span className="text-xl font-semibold text-200">
+                ZaikaConnect
+              </span>
             </Link>
 
             <div className="flex items-center space-x-4">

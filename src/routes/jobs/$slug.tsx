@@ -98,9 +98,7 @@ function JobDetailPage() {
           <h2 className="text-2xl font-bold text-depth-1">
             {t("NOT_FOUND_TITLE")}
           </h2>
-          <p className="mt-2 text-slate-500">
-            {t("NOT_FOUND_DESC")}
-          </p>
+          <p className="mt-2 text-slate-500">{t("NOT_FOUND_DESC")}</p>
           <Link to="/jobs">
             <Button
               type="button"

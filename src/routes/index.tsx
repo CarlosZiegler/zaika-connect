@@ -257,9 +257,7 @@ function LandingPage() {
             </div>
           ) : featuredJobs.length === 0 ? (
             <div className="py-12 text-center">
-              <p className="text-slate-500">
-                {t("JOBS_EMPTY")}
-              </p>
+              <p className="text-slate-500">{t("JOBS_EMPTY")}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

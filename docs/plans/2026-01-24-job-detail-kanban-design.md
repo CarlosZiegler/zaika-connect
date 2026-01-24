@@ -31,6 +31,7 @@ New job detail page with tabbed layout showing job info/stats and applications i
 ## Overview Tab
 
 **Stats row (clickable, switches to Applications tab filtered):**
+
 - Total applications
 - New (blue)
 - Reviewed (purple)
@@ -39,6 +40,7 @@ New job detail page with tabbed layout showing job info/stats and applications i
 - Avg AI Score
 
 **Job details:**
+
 - Description rendered with Streamdown (markdown)
 - Quick Info card: Location, Type, Industry, Salary, Status, Created date
 - Requirements card (if exists)
@@ -47,12 +49,14 @@ New job detail page with tabbed layout showing job info/stats and applications i
 ## Applications Tab
 
 **View toggle:** Segmented control [Table | Kanban]
+
 - Default: Table view
 - No persistence (always starts with Table)
 
 ### Table View
 
 Reuse existing applications table filtered by jobId:
+
 - Columns: Candidate, Email, AI Score, Status, Date, Actions
 - Inline status dropdown
 
@@ -73,17 +77,20 @@ Reuse existing applications table filtered by jobId:
 ```
 
 **Card content:**
+
 - Candidate name (bold)
 - Email (truncated)
 - Applied date
 - AI Score badge (green ≥70, yellow ≥50, red <50)
 
 **Drag behavior:**
+
 - Drag to column → updateStatus mutation
 - Optimistic update, revert on error
 - Toast on status change
 
 **Context menu (right-click):**
+
 - View Details → `/admin/applications/$id`
 - Download CV → signed URL download
 - Copy Email → clipboard + toast
@@ -94,6 +101,7 @@ Reuse existing applications table filtered by jobId:
 **Title column:** Clickable link to detail page
 
 **Actions dropdown:**
+
 - View Details (new)
 - Edit
 - Delete
@@ -103,6 +111,7 @@ Reuse existing applications table filtered by jobId:
 ## File Structure
 
 **Create:**
+
 ```
 src/routes/(dashboard)/admin/jobs/$jobId.tsx
 src/features/admin/job-detail/
@@ -116,21 +125,24 @@ src/features/admin/job-detail/
 ```
 
 **Modify:**
+
 - `src/routes/(dashboard)/admin/jobs/index.tsx` - title link, View action, Apps column
 - `src/orpc/routes/admin/jobs.ts` - getWithStats endpoint, list with counts
 
 ## API Changes
 
 **New endpoint - getWithStats:**
+
 ```typescript
 getWithStats: adminProcedure
   .input(z.object({ id: z.string() }))
   .handler(async ({ input, context }) => {
     // Returns job + stats by status + avg AI score
-  })
+  });
 ```
 
 **Modify list endpoint:**
+
 ```typescript
 list: // Add applicationCount via LEFT JOIN + COUNT
 ```

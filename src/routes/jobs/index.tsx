@@ -289,9 +289,7 @@ function JobsPage() {
               <h3 className="mt-6 text-xl font-semibold text-depth-1">
                 {t("JOBS_EMPTY")}
               </h3>
-              <p className="mt-2 text-slate-500">
-                {t("JOBS_EMPTY_SUBTITLE")}
-              </p>
+              <p className="mt-2 text-slate-500">{t("JOBS_EMPTY_SUBTITLE")}</p>
               {hasFilters ? (
                 <Button
                   type="button"

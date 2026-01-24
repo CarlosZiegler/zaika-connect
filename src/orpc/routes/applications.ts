@@ -9,8 +9,6 @@ import { storage } from "@/lib/storage";
 
 import { orpc, publicProcedure } from "../orpc-server";
 
-const GUEST_USER_ID = "guest-application-uploads";
-
 export const applicationsRouter = orpc.router({
   create: publicProcedure
     .input(
@@ -62,7 +60,6 @@ export const applicationsRouter = orpc.router({
         size: buffer.length,
         mimeType: input.cvFileType,
         fileName: input.cvFileName,
-        userId: GUEST_USER_ID,
         purpose: "application_cv",
         metadata: { jobId: job.id, applicantEmail: input.email },
         createdAt: new Date(),

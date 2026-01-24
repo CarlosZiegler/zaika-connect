@@ -34,14 +34,21 @@ type ApplicationKanbanProps = {
   jobId: string;
 };
 
-const STATUS_COLUMNS: { id: ApplicationStatus; label: string; color: string }[] = [
+const STATUS_COLUMNS: {
+  id: ApplicationStatus;
+  label: string;
+  color: string;
+}[] = [
   { id: "new", label: "New", color: "bg-blue-500" },
   { id: "reviewed", label: "Reviewed", color: "bg-purple-500" },
   { id: "shortlisted", label: "Shortlisted", color: "bg-green-500" },
   { id: "rejected", label: "Rejected", color: "bg-red-500" },
 ];
 
-export function ApplicationKanban({ applications, jobId }: ApplicationKanbanProps) {
+export function ApplicationKanban({
+  applications,
+  jobId,
+}: ApplicationKanbanProps) {
   const queryClient = useQueryClient();
 
   // Group applications by status
@@ -117,7 +124,9 @@ export function ApplicationKanban({ applications, jobId }: ApplicationKanbanProp
         // Optimistic update
         setColumns({
           ...columns,
-          [currentColumn]: columns[currentColumn].filter((a) => a.id !== applicationId),
+          [currentColumn]: columns[currentColumn].filter(
+            (a) => a.id !== applicationId
+          ),
           rejected: [...columns.rejected, app],
         });
 

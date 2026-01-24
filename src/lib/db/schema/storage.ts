@@ -23,9 +23,7 @@ export const file = pgTable(
     size: bigint("size", { mode: "number" }).notNull(),
     mimeType: text("mime_type").notNull(),
     fileName: text("file_name").notNull(),
-    userId: text("user_id")
-      .references(() => user.id, { onDelete: "cascade" })
-      .notNull(),
+    userId: text("user_id").references(() => user.id, { onDelete: "cascade" }),
     organizationId: text("organization_id").references(() => organization.id, {
       onDelete: "cascade",
     }),

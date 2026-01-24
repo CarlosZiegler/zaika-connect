@@ -551,6 +551,7 @@ export default {
   LAB_BLOCK_GENERATOR_TITLE: "Block Generator",
   LAB_BLOCK_GENERATOR_NAV: "Block Generator",
   LAB_BLOCK_GENERATOR_DESC: "Generate UI components from natural language",
+  LAB_JOB_EDITOR_NAV: "Job Editor",
   LAB_BLOCK_GENERATOR_LONG_DESC:
     "Describe what you want to build and let AI generate the UI structure using ShadCN components.",
   LAB_BLOCK_GENERATOR_PLACEHOLDER: "Describe the UI you want to create...",
@@ -579,8 +580,7 @@ export default {
   LANDING_ENTERPRISE_TITLE: "Build Teams of Excellence",
   LANDING_FEATURED_SUBTITLE: "Highly selective roles from top employers.",
   LANDING_FEATURED_TITLE: "Curated Opportunities",
-  LANDING_HERO_DESC:
-    `ZaikaConnect isn't just a job board; it's a precision-engineered
+  LANDING_HERO_DESC: `ZaikaConnect isn't just a job board; it's a precision-engineered
             ecosystem designed for the world's most ambitious professionals. By
             leveraging deep-industry data and behavioral analytics, we map your
             unique trajectory to organizations that don't just hire, but

@@ -74,7 +74,9 @@ export function JobDetailApplications({
 }: JobDetailApplicationsProps) {
   const queryClient = useQueryClient();
   const [viewMode, setViewMode] = useState<"table" | "kanban">("table");
-  const [statusFilter, setStatusFilter] = useState<string>(initialStatus ?? "all");
+  const [statusFilter, setStatusFilter] = useState<string>(
+    initialStatus ?? "all"
+  );
 
   // Fetch applications for this job
   const { data } = useQuery({
@@ -209,9 +211,13 @@ export function JobDetailApplications({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <ToggleGroup
-            type="single"
-            value={viewMode}
-            onValueChange={(value) => value && setViewMode(value as "table" | "kanban")}
+            value={[viewMode]}
+            onValueChange={(values) => {
+              if (values.length > 0) {
+                setViewMode(values[0] as "table" | "kanban");
+              }
+            }}
+            variant="outline"
           >
             <ToggleGroupItem value="table" aria-label="Table view">
               <TableIcon className="size-4" />
@@ -222,7 +228,10 @@ export function JobDetailApplications({
           </ToggleGroup>
 
           {viewMode === "table" && (
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <Select
+              value={statusFilter}
+              onValueChange={(value) => setStatusFilter(value ?? "all")}
+            >
               <SelectTrigger className="w-40">
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>

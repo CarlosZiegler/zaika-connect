@@ -3,6 +3,7 @@ import type { RouterClient } from "@orpc/server";
 import { orpc } from "./orpc-server";
 import { adminApplicationsRouter } from "./routes/admin/applications";
 import { adminCheckRouter } from "./routes/admin/check";
+import { adminDashboardRouter } from "./routes/admin/dashboard";
 import { adminJobsRouter } from "./routes/admin/jobs";
 import { applicationsRouter } from "./routes/applications";
 import { dashboardRouter } from "./routes/dashboard";
@@ -20,6 +21,7 @@ export const router = orpc.router({
   applications: applicationsRouter,
   admin: orpc.router({
     check: adminCheckRouter,
+    dashboard: adminDashboardRouter,
     jobs: adminJobsRouter,
     applications: adminApplicationsRouter,
   }),

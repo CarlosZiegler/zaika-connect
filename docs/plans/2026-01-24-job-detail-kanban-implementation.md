@@ -13,6 +13,7 @@
 ## Task 1: Add ORPC Endpoint for Job with Stats
 
 **Files:**
+
 - Modify: `src/orpc/routes/admin/jobs.ts`
 
 **Step 1: Add getWithStats endpoint**
@@ -99,6 +100,7 @@ git commit -m "feat(orpc): add getWithStats endpoint for job detail"
 ## Task 2: Modify Jobs List to Include Application Count
 
 **Files:**
+
 - Modify: `src/orpc/routes/admin/jobs.ts`
 
 **Step 1: Update list endpoint**
@@ -146,6 +148,7 @@ git commit -m "feat(orpc): add applicationCount to jobs list"
 ## Task 3: Update Jobs List Page with Links and Count Column
 
 **Files:**
+
 - Modify: `src/routes/(dashboard)/admin/jobs/index.tsx`
 
 **Step 1: Add Link import**
@@ -289,6 +292,7 @@ git commit -m "feat(admin): add job title links and apps count column"
 ## Task 4: Create Job Detail Route File
 
 **Files:**
+
 - Create: `src/routes/(dashboard)/admin/jobs/$jobId.tsx`
 
 **Step 1: Create the route file**
@@ -327,6 +331,7 @@ git commit -m "feat(job-detail): add route file"
 ## Task 5: Create Job Detail Stats Component
 
 **Files:**
+
 - Create: `src/features/admin/job-detail/job-detail-stats.tsx`
 
 **Step 1: Create the stats component**
@@ -456,6 +461,7 @@ git commit -m "feat(job-detail): add stats component"
 ## Task 6: Create Job Detail Overview Component
 
 **Files:**
+
 - Create: `src/features/admin/job-detail/job-detail-overview.tsx`
 
 **Step 1: Create the overview component**
@@ -632,6 +638,7 @@ git commit -m "feat(job-detail): add overview component"
 ## Task 7: Create Application Kanban Card Component
 
 **Files:**
+
 - Create: `src/features/admin/job-detail/application-kanban-card.tsx`
 
 **Step 1: Create the card component**
@@ -769,6 +776,7 @@ git commit -m "feat(job-detail): add kanban card with context menu"
 ## Task 8: Create Application Kanban Board Component
 
 **Files:**
+
 - Create: `src/features/admin/job-detail/application-kanban.tsx`
 
 **Step 1: Create the kanban board component**
@@ -964,6 +972,7 @@ git commit -m "feat(job-detail): add kanban board component"
 ## Task 9: Create Job Detail Applications Tab Component
 
 **Files:**
+
 - Create: `src/features/admin/job-detail/job-detail-applications.tsx`
 
 **Step 1: Create the applications tab component**
@@ -1248,6 +1257,7 @@ git commit -m "feat(job-detail): add applications tab with table/kanban toggle"
 ## Task 10: Create Job Detail Main Page Component
 
 **Files:**
+
 - Create: `src/features/admin/job-detail/job-detail.page.tsx`
 
 **Step 1: Create the main page component**
@@ -1389,6 +1399,7 @@ git commit -m "feat(job-detail): add main page with tabs"
 ## Task 11: Create Index Export
 
 **Files:**
+
 - Create: `src/features/admin/job-detail/index.ts`
 
 **Step 1: Create the index file**
@@ -1414,6 +1425,7 @@ git commit -m "feat(job-detail): add index exports"
 ## Task 12: Add Edit Mutation to Job Detail Page
 
 **Files:**
+
 - Modify: `src/features/admin/job-detail/job-detail.page.tsx`
 
 **Step 1: Add mutation imports and logic**
@@ -1517,20 +1529,20 @@ git commit -m "feat(job-detail): complete implementation with kanban"
 
 ## Summary
 
-| Task | Description |
-|------|-------------|
-| 1 | ORPC getWithStats endpoint |
-| 2 | ORPC list with application count |
-| 3 | Jobs list page - links + count column |
-| 4 | Route file |
-| 5 | Stats component |
-| 6 | Overview component |
-| 7 | Kanban card component |
-| 8 | Kanban board component |
-| 9 | Applications tab component |
-| 10 | Main page component |
-| 11 | Index exports |
-| 12 | Edit mutation |
-| 13 | Verification and testing |
+| Task | Description                           |
+| ---- | ------------------------------------- |
+| 1    | ORPC getWithStats endpoint            |
+| 2    | ORPC list with application count      |
+| 3    | Jobs list page - links + count column |
+| 4    | Route file                            |
+| 5    | Stats component                       |
+| 6    | Overview component                    |
+| 7    | Kanban card component                 |
+| 8    | Kanban board component                |
+| 9    | Applications tab component            |
+| 10   | Main page component                   |
+| 11   | Index exports                         |
+| 12   | Edit mutation                         |
+| 13   | Verification and testing              |
 
 Total: 13 tasks

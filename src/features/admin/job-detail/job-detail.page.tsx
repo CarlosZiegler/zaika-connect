@@ -36,8 +36,9 @@ export function JobDetailPage() {
 
   // Update job mutation
   const updateMutation = useMutation({
-    mutationFn: (data: { id: string } & Partial<Omit<JobFormData, "autoSlug">>) =>
-      client.admin.jobs.update(data),
+    mutationFn: (
+      data: { id: string } & Partial<Omit<JobFormData, "autoSlug">>
+    ) => client.admin.jobs.update(data),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: orpc.admin.jobs.getWithStats.queryOptions({
@@ -124,10 +125,7 @@ export function JobDetailPage() {
           <JobDetailOverview job={job} />
         </TabsContent>
         <TabsContent value="applications" className="mt-6">
-          <JobDetailApplications
-            jobId={jobId}
-            initialStatus={statusFilter}
-          />
+          <JobDetailApplications jobId={jobId} initialStatus={statusFilter} />
         </TabsContent>
       </Tabs>
 
