@@ -26,6 +26,18 @@ export type CVAnalysis = {
   interviewQuestions: string[] | null;
 };
 
+export const candidates = pgTable("candidates", {
+  id: text("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  fullName: text("full_name").notNull(),
+  phone: text("phone"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .$onUpdate(() => new Date())
+    .notNull(),
+});
+
 export const jobs = pgTable("jobs", {
   id: text("id").primaryKey(),
   slug: text("slug").notNull().unique(),
