@@ -1,13 +1,15 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import {
   BriefcaseIcon,
+  EyeIcon,
   MapPinIcon,
   PencilIcon,
   PlusIcon,
   TrashIcon,
+  UsersIcon,
 } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -105,6 +107,7 @@ type JobListItem = {
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
+  applicationCount: number;
 };
 
 function JobActionsDropdown({
@@ -120,6 +123,16 @@ function JobActionsDropdown({
 
   return (
     <TableActionsDropdown ariaLabel={t("ACTIONS")}>
+      <DropdownMenuItem>
+        <Link
+          className="flex w-full items-center"
+          to="/admin/jobs/$jobId"
+          params={{ jobId: job.id }}
+        >
+          <EyeIcon className="mr-2 size-4" />
+          View Details
+        </Link>
+      </DropdownMenuItem>
       <DropdownMenuItem onClick={() => onEdit(job)}>
         <PencilIcon className="mr-2 size-4" />
         {t("EDIT")}
@@ -248,7 +261,13 @@ function AdminJobsPage() {
       cell: ({ row }) => (
         <div className="flex items-center gap-2">
           <BriefcaseIcon className="size-4 text-muted-foreground" />
-          <span className="font-medium">{row.original.title}</span>
+          <Link
+            to="/admin/jobs/$jobId"
+            params={{ jobId: row.original.id }}
+            className="font-medium text-primary hover:underline"
+          >
+            {row.original.title}
+          </Link>
         </div>
       ),
     },
@@ -278,6 +297,16 @@ function AdminJobsPage() {
         <Badge variant="outline">
           {t(getIndustryKey(row.original.industry))}
         </Badge>
+      ),
+    },
+    {
+      accessorKey: "applicationCount",
+      header: "Apps",
+      cell: ({ row }) => (
+        <div className="flex items-center gap-2">
+          <UsersIcon className="size-4 text-muted-foreground" />
+          <span>{row.original.applicationCount}</span>
+        </div>
       ),
     },
     {

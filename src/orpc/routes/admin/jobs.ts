@@ -1,9 +1,9 @@
 import { ORPCError } from "@orpc/server";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
 import { isAdminEmail } from "@/lib/auth/admin-check";
-import { jobs } from "@/lib/db/schema";
+import { applications, jobs } from "@/lib/db/schema";
 
 import { orpc, protectedProcedure } from "../../orpc-server";
 
@@ -32,8 +32,26 @@ const jobInput = z.object({
 export const adminJobsRouter = orpc.router({
   list: adminProcedure.handler(async ({ context }) => {
     const jobsList = await context.db
-      .select()
+      .select({
+        id: jobs.id,
+        slug: jobs.slug,
+        title: jobs.title,
+        description: jobs.description,
+        requirements: jobs.requirements,
+        benefits: jobs.benefits,
+        location: jobs.location,
+        employmentType: jobs.employmentType,
+        industry: jobs.industry,
+        salaryMin: jobs.salaryMin,
+        salaryMax: jobs.salaryMax,
+        isActive: jobs.isActive,
+        createdAt: jobs.createdAt,
+        updatedAt: jobs.updatedAt,
+        applicationCount: sql<number>`cast(count(${applications.id}) as int)`,
+      })
       .from(jobs)
+      .leftJoin(applications, eq(jobs.id, applications.jobId))
+      .groupBy(jobs.id)
       .orderBy(desc(jobs.createdAt));
 
     return { jobs: jobsList };
@@ -55,6 +73,58 @@ export const adminJobsRouter = orpc.router({
       }
 
       return job;
+    }),
+
+  getWithStats: adminProcedure
+    .input(z.object({ id: z.string() }))
+    .handler(async ({ input, context }) => {
+      const jobResult = await context.db
+        .select()
+        .from(jobs)
+        .where(eq(jobs.id, input.id))
+        .limit(1);
+
+      const job = jobResult.at(0);
+
+      if (!job) {
+        throw new ORPCError("NOT_FOUND", { message: "Job not found" });
+      }
+
+      const statsResult = await context.db
+        .select({
+          status: applications.status,
+          count: sql<number>`cast(count(*) as int)`,
+          avgScore: sql<number>`cast(avg(${applications.aiScore}) as int)`,
+        })
+        .from(applications)
+        .where(eq(applications.jobId, input.id))
+        .groupBy(applications.status);
+
+      const stats = {
+        total: 0,
+        new: 0,
+        reviewed: 0,
+        shortlisted: 0,
+        rejected: 0,
+        avgScore: 0,
+      };
+
+      let totalScore = 0;
+      let scoreCount = 0;
+
+      for (const row of statsResult) {
+        const count = Number(row.count);
+        stats.total += count;
+        stats[row.status as keyof typeof stats] = count;
+        if (row.avgScore) {
+          totalScore += row.avgScore * count;
+          scoreCount += count;
+        }
+      }
+
+      stats.avgScore = scoreCount > 0 ? Math.round(totalScore / scoreCount) : 0;
+
+      return { job, stats };
     }),
 
   create: adminProcedure.input(jobInput).handler(async ({ input, context }) => {
