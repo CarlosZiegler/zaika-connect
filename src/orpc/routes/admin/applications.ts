@@ -1,8 +1,9 @@
 import { ORPCError } from "@orpc/server";
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 
 import { isAdminEmail } from "@/lib/auth/admin-check";
+import { getJobRequirementsForCv, processCv } from "@/lib/cv/cv-processor";
 import { applications, candidates, cvs, file, jobs } from "@/lib/db/schema";
 import { storage } from "@/lib/storage";
 
@@ -135,5 +136,72 @@ export const adminApplicationsRouter = orpc.router({
       }
 
       return application;
+    }),
+
+  getPendingCount: adminProcedure.handler(async ({ context }) => {
+    const result = await context.db
+      .select({ count: sql<number>`cast(count(*) as int)` })
+      .from(cvs)
+      .where(eq(cvs.processingStatus, "pending"));
+
+    return { count: result.at(0)?.count ?? 0 };
+  }),
+
+  processPending: adminProcedure
+    .input(
+      z.object({
+        limit: z.number().default(10),
+      })
+    )
+    .handler(async ({ input, context }) => {
+      // Get pending CVs with job info
+      const pending = await context.db
+        .select({
+          cv: cvs,
+          jobRequirements: jobs.requirements,
+        })
+        .from(cvs)
+        .innerJoin(applications, eq(cvs.id, applications.cvId))
+        .innerJoin(jobs, eq(applications.jobId, jobs.id))
+        .where(eq(cvs.processingStatus, "pending"))
+        .limit(input.limit);
+
+      let processed = 0;
+      let failed = 0;
+
+      for (const row of pending) {
+        const result = await processCv(
+          context.db,
+          row.cv.id,
+          row.jobRequirements
+        );
+
+        if (result.success) {
+          processed++;
+        } else {
+          failed++;
+        }
+      }
+
+      return { processed, failed, total: pending.length };
+    }),
+
+  reprocessCv: adminProcedure
+    .input(z.object({ cvId: z.string() }))
+    .handler(async ({ input, context }) => {
+      const requirements = await getJobRequirementsForCv(
+        context.db,
+        input.cvId
+      );
+
+      const result = await processCv(context.db, input.cvId, requirements);
+
+      if (!result.success) {
+        throw new ORPCError("INTERNAL_SERVER_ERROR", {
+          message: result.error ?? "Processing failed",
+        });
+      }
+
+      return { success: true };
     }),
 });
