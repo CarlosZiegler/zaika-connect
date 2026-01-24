@@ -5,13 +5,11 @@ import {
   ClipboardCopyIcon,
   DownloadIcon,
   EyeIcon,
-  GripVerticalIcon,
   XCircleIcon,
 } from "lucide-react";
 import { toast } from "sonner";
 
 import { AIScoreBadge } from "@/components/ai-score-badge";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -61,31 +59,32 @@ export function ApplicationKanbanCard({
     }
   };
 
+  const cardContent = (
+    <div className="rounded-md border bg-card p-3 shadow-sm">
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center justify-between gap-2">
+          <span className="line-clamp-1 font-medium text-sm">
+            {application.fullName}
+          </span>
+          <AIScoreBadge score={application.aiScore} size="sm" />
+        </div>
+        <p className="line-clamp-1 text-muted-foreground text-xs">
+          {application.email}
+        </p>
+        <div className="flex items-center justify-between text-muted-foreground text-xs">
+          <span className="text-[10px] tabular-nums">
+            {new Date(application.createdAt).toLocaleDateString()}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <KanbanItem value={application.id}>
       <ContextMenu>
         <ContextMenuTrigger>
-          <Card className="cursor-grab transition-shadow hover:shadow-md active:cursor-grabbing">
-            <CardContent className="p-3">
-              <div className="flex items-start gap-2">
-                <KanbanItemHandle>
-                  <GripVerticalIcon className="size-4 text-muted-foreground" />
-                </KanbanItemHandle>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-medium">{application.fullName}</p>
-                  <p className="truncate text-muted-foreground text-sm">
-                    {application.email}
-                  </p>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="text-muted-foreground text-xs">
-                      {new Date(application.createdAt).toLocaleDateString()}
-                    </span>
-                    <AIScoreBadge score={application.aiScore} size="sm" />
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <KanbanItemHandle>{cardContent}</KanbanItemHandle>
         </ContextMenuTrigger>
         <ContextMenuContent>
           <ContextMenuItem onClick={handleViewDetails}>

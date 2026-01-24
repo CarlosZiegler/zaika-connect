@@ -158,19 +158,23 @@ export function ApplicationKanban({
       getItemValue={(item) => item.id}
       onMove={handleMove}
     >
-      <KanbanBoard className="grid-cols-4">
+      <KanbanBoard className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {STATUS_COLUMNS.map((column) => (
-          <KanbanColumn key={column.id} value={column.id}>
+          <KanbanColumn
+            key={column.id}
+            value={column.id}
+            className="rounded-lg border bg-card p-3 shadow-sm"
+          >
             <div className="mb-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className={`size-3 rounded-full ${column.color}`} />
-                <span className="font-medium">{column.label}</span>
+                <span className="font-semibold text-sm">{column.label}</span>
               </div>
               <Badge variant="secondary">{columns[column.id].length}</Badge>
             </div>
             <KanbanColumnContent
               value={column.id}
-              className="min-h-[200px] rounded-lg bg-muted/50 p-2"
+              className="flex min-h-[150px] flex-col gap-2 rounded-md bg-muted/30 p-2"
             >
               {columns[column.id].map((app) => (
                 <ApplicationKanbanCard
