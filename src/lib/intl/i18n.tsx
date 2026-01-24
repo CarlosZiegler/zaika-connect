@@ -18,7 +18,7 @@ const i18nCookieName = "i18nextLng";
 export const setSSRLanguage = createIsomorphicFn().server(async () => {
   const language = getCookie(i18nCookieName);
   if (language !== i18n.language) {
-    await i18n.changeLanguage(language || "en");
+    await i18n.changeLanguage(language || "de");
   }
 });
 
@@ -40,7 +40,7 @@ i18n
       caches: ["cookie"],
       cookieMinutes: 60 * 24 * 365,
     },
-    fallbackLng: "en",
+    fallbackLng: "de",
     debug: false,
     preload: runsOnServerSide ? languages : [],
   });

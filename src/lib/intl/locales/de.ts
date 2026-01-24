@@ -610,6 +610,12 @@ export default {
   LOCATION_HYBRID: "Hybrid",
 
   // Public Pages - Navigation/Header
+  PUBLIC_NAV_HOME: "Startseite",
+  PUBLIC_NAV_SERVICES: "Leistungen",
+  PUBLIC_NAV_FOR_COMPANIES: "Für Unternehmen",
+  PUBLIC_NAV_FOR_TALENTS: "Für Talente",
+  PUBLIC_NAV_JOBS: "Jobs",
+  PUBLIC_NAV_CONTACT: "Kontakt",
   PUBLIC_NAV_CV_REVIEW: "Lebenslauf-Check",
   PUBLIC_NAV_FIND_JOBS: "Jobs finden",
   PUBLIC_NAV_LOGIN: "Anmelden",
@@ -627,4 +633,366 @@ export default {
   PUBLIC_FOOTER_TAGLINE:
     "Elite-Talente mit visionären Organisationen verbinden.",
   PUBLIC_FOOTER_TERMS: "AGB",
+
+  // Landing - Core Services Section
+  LANDING_SERVICES_LABEL: "Unsere Leistungen",
+  LANDING_SERVICES_TITLE: "Umfassende Recruiting-Lösungen",
+  LANDING_SERVICES_SUBTITLE:
+    "Full-Service Talentakquise, maßgeschneidert auf Ihre Bedürfnisse",
+  LANDING_SERVICE_PERMANENT_TITLE: "Festanstellung",
+  LANDING_SERVICE_PERMANENT_DESC:
+    "Aufbau Ihres Kernteams mit Kandidaten, die kulturell passen und langfristig bleiben. Gründliches Screening für nahtlose Integration.",
+  LANDING_SERVICE_EXECUTIVE_TITLE: "Executive Search",
+  LANDING_SERVICE_EXECUTIVE_DESC:
+    "Vertrauliche C-Level und Führungskräfte-Suche. Wir identifizieren Leader, die Komplexität meistern und Wachstum vorantreiben.",
+  LANDING_SERVICE_INTERIM_TITLE: "Interim & Projektarbeit",
+  LANDING_SERVICE_INTERIM_DESC:
+    "Flexible Spezialisten für Projektbedarf. Schnelle Verfügbarkeit geprüfter Fachkräfte, wenn Sie Expertise brauchen.",
+  LANDING_SERVICE_CONSULTING_TITLE: "HR-Beratung",
+  LANDING_SERVICE_CONSULTING_DESC:
+    "Organisationsdesign, Vergütungsanalyse und Prozessoptimierung. Datengestützte Insights für Ihre HR-Strategie.",
+  LANDING_SERVICE_REC2REC_TITLE: "Rec2Rec",
+  LANDING_SERVICE_REC2REC_DESC:
+    "Recruiting für Recruiter. Wir sind spezialisiert auf die Vermittlung von Talent Acquisition Professionals in HR, Sales und Beratung.",
+  LANDING_SERVICE_RPO_TITLE: "RPO-Lösungen",
+  LANDING_SERVICE_RPO_DESC:
+    "Vollständiges Recruitment Process Outsourcing. Wir werden Ihr Hiring-Team - End-to-End Talentakquise im großen Maßstab.",
+  LANDING_SERVICES_CTA: "Beratungsgespräch buchen",
+
+  // Landing - For Companies Section
+  LANDING_COMPANIES_LABEL: "Für Unternehmen",
+  LANDING_COMPANIES_TITLE_NEW: "Schnelle & Qualitative Talentakquise",
+  LANDING_COMPANIES_SUBTITLE_NEW:
+    "Unsere Partnerschaft basiert auf Transparenz, Vertrauen und klarer Kommunikation. Wir arbeiten eng zusammen, um Ihren Recruiting-Prozess effizient und zielorientiert zu gestalten.",
+  LANDING_COMPANIES_STEP1_TITLE: "Bedarfsanalyse",
+  LANDING_COMPANIES_STEP1_DESC:
+    "Wir analysieren Ihre spezifischen Anforderungen, um den Recruiting-Prozess auf die Bedürfnisse Ihres Unternehmens abzustimmen.",
+  LANDING_COMPANIES_STEP2_TITLE: "Kandidatensuche",
+  LANDING_COMPANIES_STEP2_DESC:
+    "Mit unserem Netzwerk von über 10.000 Kandidaten identifizieren wir schnell die besten Talente für Ihre offenen Positionen.",
+  LANDING_COMPANIES_STEP3_TITLE: "Prozessmanagement",
+  LANDING_COMPANIES_STEP3_DESC:
+    "Wir übernehmen Screening, Koordination und Kommunikation - für einen reibungslosen Ablauf vom Erstkontakt bis zum Angebot.",
+  LANDING_COMPANIES_STEP4_TITLE: "After Placement Care",
+  LANDING_COMPANIES_STEP4_DESC:
+    "Unsere Unterstützung endet nicht mit der Einstellung. Wir sorgen für erfolgreiches Onboarding und langfristige Integration.",
+  LANDING_COMPANIES_CTA: "Beratungstermin vereinbaren",
+
+  // Landing - For Candidates Section
+  LANDING_TALENTS_LABEL: "Für Talente",
+  LANDING_TALENTS_TITLE: "Auf der Suche nach Ihrer nächsten Herausforderung?",
+  LANDING_TALENTS_SUBTITLE:
+    "Wir begleiten Sie zu Ihrem nächsten Karriereschritt - ob mehr Verantwortung, neue Wachstumsmöglichkeiten oder bessere Vergütung.",
+  LANDING_TALENTS_STEP1_TITLE: "Erstgespräch",
+  LANDING_TALENTS_STEP1_DESC:
+    "Wir besprechen Ihre Erfahrung, Ziele und Karrierewünsche - gemeinsam finden wir die perfekte Position für Sie.",
+  LANDING_TALENTS_STEP2_TITLE: "Unternehmensvorstellung",
+  LANDING_TALENTS_STEP2_DESC:
+    "Wenn Ihr Profil passt, stellen wir Sie dem Unternehmen mit allen relevanten Infos vor und bereiten Sie auf das Interview vor.",
+  LANDING_TALENTS_STEP3_TITLE: "Interviews & Feedback",
+  LANDING_TALENTS_STEP3_DESC:
+    "Während des gesamten Interviewprozesses sind wir an Ihrer Seite. Nach jeder Runde erhalten Sie wertvolles Feedback.",
+  LANDING_TALENTS_STEP4_TITLE: "Angebot & Start",
+  LANDING_TALENTS_STEP4_DESC:
+    "Geschafft! Wir unterstützen Sie bei den finalen Verhandlungen und begleiten Sie zu einem perfekten Start in Ihrer neuen Rolle.",
+  LANDING_TALENTS_CTA: "Starten Sie Ihre Reise",
+  LANDING_TALENTS_POOL_LABEL: "Kein passender Job dabei?",
+  LANDING_TALENTS_POOL_TITLE: "Treten Sie unserem Talentpool bei",
+  LANDING_TALENTS_POOL_DESC:
+    "Reichen Sie Ihr Profil in unserem Talentpool ein - wenn eine Position passt, öffnen wir Türen zu Top-Unternehmen.",
+  LANDING_TALENTS_POOL_CTA: "Talentpool beitreten",
+
+  // Landing - Why Partner With Us Section
+  LANDING_PARTNER_TITLE: "Warum mit uns zusammenarbeiten?",
+  LANDING_PARTNER_SUBTITLE:
+    "Wir besetzen nicht nur Stellen. Wir bauen das Fundament für den zukünftigen Erfolg Ihres Unternehmens.",
+  LANDING_PARTNER_EXPERTISE_TITLE: "Lokale Marktexpertise",
+  LANDING_PARTNER_EXPERTISE_DESC:
+    "Tiefe Verwurzelung im deutschen Talentmarkt mit globaler Perspektive. Wir wissen, wo Top-Talente sind und wie wir sie erreichen.",
+  LANDING_PARTNER_DATA_TITLE: "Datengestützte Auswahl",
+  LANDING_PARTNER_DATA_DESC:
+    "Fortschrittliche Analytik und Verhaltensassessments zur Vorhersage von Kandidatenerfolg und langfristiger Passung.",
+  LANDING_PARTNER_RETENTION_TITLE: "95% Bindungsrate",
+  LANDING_PARTNER_RETENTION_DESC:
+    "Unsere Erfolgsbilanz spricht für sich. Von uns vermittelte Kandidaten bleiben länger und tragen mehr zu Ihrem Erfolg bei.",
+  LANDING_PARTNER_SPEED_TITLE: "30 Tage durchschnittliche Besetzungszeit",
+  LANDING_PARTNER_SPEED_DESC:
+    "Schnelligkeit ohne Kompromisse. Unser optimierter Prozess liefert Qualitätseinstellungen schneller als der Branchendurchschnitt.",
+
+  // Landing - Final CTA Section
+  LANDING_FINAL_CTA_TITLE: "Bereit, Ihr Dreamteam aufzubauen?",
+  LANDING_FINAL_CTA_SUBTITLE:
+    "Vereinbaren Sie ein kostenloses Beratungsgespräch mit unseren Senior Recruiting-Strategen und erfahren Sie, wie wir Ihnen helfen können, die perfekten Talente zu finden.",
+  LANDING_FINAL_CTA_BUTTON: "Beratungsgespräch buchen",
+  LANDING_FINAL_CTA_CALENDAR: "Termin über Kalender",
+
+  // Contact Page
+  CONTACT_TITLE: "Kontakt aufnehmen",
+  CONTACT_SUBTITLE:
+    "Haben Sie Fragen oder möchten Sie loslegen? Wir freuen uns von Ihnen zu hören.",
+  CONTACT_FORM_NAME: "Vollständiger Name",
+  CONTACT_FORM_NAME_PLACEHOLDER: "Max Mustermann",
+  CONTACT_FORM_EMAIL: "E-Mail-Adresse",
+  CONTACT_FORM_EMAIL_PLACEHOLDER: "max@beispiel.de",
+  CONTACT_FORM_COMPANY: "Unternehmen (Optional)",
+  CONTACT_FORM_COMPANY_PLACEHOLDER: "Ihr Unternehmensname",
+  CONTACT_FORM_PHONE: "Telefon (Optional)",
+  CONTACT_FORM_PHONE_PLACEHOLDER: "+49 123 456 789",
+  CONTACT_FORM_INQUIRY_TYPE: "Art der Anfrage",
+  CONTACT_FORM_INQUIRY_HIRING: "Mitarbeiter für mein Unternehmen suchen",
+  CONTACT_FORM_INQUIRY_JOB: "Auf Jobsuche",
+  CONTACT_FORM_INQUIRY_PARTNERSHIP: "Partnerschaftsmöglichkeit",
+  CONTACT_FORM_INQUIRY_OTHER: "Sonstiges",
+  CONTACT_FORM_MESSAGE: "Nachricht",
+  CONTACT_FORM_MESSAGE_PLACEHOLDER:
+    "Erzählen Sie uns, wie wir Ihnen helfen können...",
+  CONTACT_FORM_SUBMIT: "Nachricht senden",
+  CONTACT_FORM_SUBMITTING: "Wird gesendet...",
+  CONTACT_SUCCESS_TITLE: "Nachricht gesendet!",
+  CONTACT_SUCCESS_DESC:
+    "Vielen Dank für Ihre Kontaktaufnahme. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+  CONTACT_CALENDAR_NOTE: "Lieber direkt buchen?",
+  CONTACT_CALENDAR_LINK: "Termin über Kalender",
+  CONTACT_BACK_HOME: "Zurück zur Startseite",
+
+  // Command Palette
+  COMMAND_PALETTE_GROUP_NAVIGATION: "Navigation",
+  COMMAND_PALETTE_NO_RESULTS: "Keine Ergebnisse gefunden.",
+  COMMAND_PALETTE_PLACEHOLDER: "Befehl eingeben oder suchen...",
+  COMMAND_PALETTE_SEARCH: "Suchen...",
+  COMMAND_PALETTE_TITLE: "Befehlspalette",
+
+  // Admin Jobs Form
+  ADMIN_JOBS_CREATE_SUCCESS: "Stelle erfolgreich erstellt",
+  ADMIN_JOBS_UPDATE_SUCCESS: "Stelle erfolgreich aktualisiert",
+  ADMIN_JOBS_DELETE_SUCCESS: "Stelle erfolgreich gelöscht",
+  ADMIN_JOBS_STATUS_UPDATED: "Stellenstatus aktualisiert",
+  ADMIN_JOBS_FORM_TITLE: "Titel",
+  ADMIN_JOBS_FORM_TITLE_PLACEHOLDER: "Senior Software Engineer",
+  ADMIN_JOBS_FORM_SLUG: "URL-Slug",
+  ADMIN_JOBS_FORM_SLUG_PLACEHOLDER: "senior-software-engineer",
+  ADMIN_JOBS_FORM_SLUG_AUTO: "Automatisch aus Titel generieren",
+  ADMIN_JOBS_FORM_DESCRIPTION: "Beschreibung",
+  ADMIN_JOBS_FORM_DESCRIPTION_PLACEHOLDER:
+    "Beschreiben Sie die Rolle und Verantwortlichkeiten...",
+  ADMIN_JOBS_FORM_LOCATION: "Standort",
+  ADMIN_JOBS_FORM_EMPLOYMENT_TYPE: "Beschäftigungsart",
+  ADMIN_JOBS_FORM_INDUSTRY: "Branche",
+  ADMIN_JOBS_FORM_SALARY_MIN: "Mindestgehalt",
+  ADMIN_JOBS_FORM_SALARY_MAX: "Maximalgehalt",
+  ADMIN_JOBS_FORM_REQUIREMENTS: "Anforderungen",
+  ADMIN_JOBS_FORM_REQUIREMENTS_PLACEHOLDER:
+    "Listen Sie die Anforderungen für diese Stelle auf...",
+  ADMIN_JOBS_FORM_BENEFITS: "Benefits",
+  ADMIN_JOBS_FORM_BENEFITS_PLACEHOLDER:
+    "Listen Sie die Benefits und Vorteile auf...",
+  ADMIN_JOBS_FORM_IS_ACTIVE: "Aktiv",
+  ADMIN_JOBS_FORM_SAVE: "Stelle speichern",
+  ADMIN_JOBS_FORM_SAVING: "Wird gespeichert...",
+  ADMIN_JOBS_TABLE_TITLE: "Titel",
+  ADMIN_JOBS_TABLE_LOCATION: "Standort",
+  ADMIN_JOBS_TABLE_TYPE: "Art",
+  ADMIN_JOBS_TABLE_INDUSTRY: "Branche",
+  ADMIN_JOBS_TABLE_STATUS: "Status",
+  ADMIN_JOBS_STATUS_ACTIVE: "Aktiv",
+  ADMIN_JOBS_STATUS_INACTIVE: "Inaktiv",
+
+  // Application Errors
+  APPLICATION_CV_FORMAT_ERROR: "Bitte laden Sie eine PDF- oder DOCX-Datei hoch",
+  APPLICATION_CV_SIZE_ERROR: "Dateigröße muss unter 10MB sein",
+  APPLICATION_EMAIL_ERROR: "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+  APPLICATION_NAME_ERROR:
+    "Bitte geben Sie Ihren vollständigen Namen ein (mindestens 2 Zeichen)",
+
+  // CV Review Extended
+  CV_REVIEW_ANALYZE_BUTTON: "Lebenslauf analysieren",
+  CV_REVIEW_EDUCATION: "Ausbildung",
+  CV_REVIEW_EXPERIENCE: "Erfahrung",
+  CV_REVIEW_IMPROVEMENTS_DESC:
+    "Umsetzbare Vorschläge zur Verbesserung Ihres Lebenslaufs",
+  CV_REVIEW_MISSING_DESC:
+    "Wichtige Abschnitte oder Informationen zum Hinzufügen",
+  CV_REVIEW_PRIVACY_DESC:
+    "Ihr Lebenslauf wird sicher analysiert und nicht auf unseren Servern gespeichert. Dateien werden sofort nach der Analyse gelöscht.",
+  CV_REVIEW_PRIVACY_TITLE: "Ihre Privatsphäre ist geschützt",
+  CV_REVIEW_PROFILE: "Profilzusammenfassung",
+  CV_REVIEW_SCORE_AVERAGE: "Durchschnittlich",
+  CV_REVIEW_SCORE_EXCELLENT: "Ausgezeichnet",
+  CV_REVIEW_SCORE_GOOD: "Gut",
+  CV_REVIEW_SCORE_NEEDS_WORK: "Verbesserungsbedarf",
+  CV_REVIEW_SKILLS_DESC: "Aus Ihrem Lebenslauf identifizierte Fähigkeiten",
+  CV_REVIEW_SKILLS: "Erkannte Fähigkeiten",
+  CV_REVIEW_STRENGTHS_DESC: "Was Ihren Lebenslauf hervorhebt",
+  CV_REVIEW_UPLOAD_ACTION: "Klicken zum Hochladen oder per Drag & Drop",
+  CV_REVIEW_YEARS_PLURAL: "{{count}} Jahre",
+  CV_REVIEW_YEARS_SINGULAR: "{{count}} Jahr",
+
+  // Job Chatbot Extended
+  JOB_CHATBOT_ERROR:
+    "Entschuldigung, ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+  JOB_CHATBOT_OPEN: "Chat öffnen",
+  JOB_CHATBOT_SEND: "Nachricht senden",
+  JOB_CHATBOT_SUGGESTION_APPLY: "Wie kann ich mich bewerben?",
+  JOB_CHATBOT_SUGGESTION_BENEFITS: "Welche Benefits werden angeboten?",
+  JOB_CHATBOT_SUGGESTION_SALARY: "Wie ist die Gehaltsspanne?",
+  JOB_CHATBOT_SUGGESTION_SKILLS: "Welche Fähigkeiten werden benötigt?",
+  JOB_CHATBOT_SUGGESTIONS_LABEL: "Vorgeschlagene Fragen:",
+
+  // Lab
+  LAB_BLOCK_GENERATOR_DESC: "UI-Komponenten aus natürlicher Sprache generieren",
+  LAB_BLOCK_GENERATOR_LONG_DESC:
+    "Beschreiben Sie, was Sie erstellen möchten, und lassen Sie die KI die UI-Struktur mit ShadCN-Komponenten generieren.",
+  LAB_BLOCK_GENERATOR_NAV: "Block Generator",
+  LAB_BLOCK_GENERATOR_PLACEHOLDER:
+    "Beschreiben Sie die UI, die Sie erstellen möchten...",
+  LAB_BLOCK_GENERATOR_TITLE: "Block Generator",
+  LAB_DESC: "Experimentelle Funktionen und KI-gestützte Tools",
+  LAB_GENERATE: "Generieren",
+  LAB_GENERATING: "Wird generiert...",
+  LAB_JOB_EDITOR_NAV: "Job Editor",
+  LAB_PREVIEW_EMPTY_DESC:
+    "Geben Sie einen Prompt ein und klicken Sie auf Generieren, um Ihre UI zu sehen",
+  LAB_PREVIEW_EMPTY_TITLE: "Noch keine Vorschau",
+  LAB_PREVIEW: "Vorschau",
+  LAB_SUGGESTIONS: "Probieren Sie:",
+  LAB_TITLE: "Labor",
+  LAB_TRY_IT: "Ausprobieren",
+
+  // Organization Extended
+  ORG_ACTIVE: "Aktiv",
+  ORG_MY_ORGANIZATIONS_DESC:
+    "Alle Organisationen anzeigen und verwalten, denen Sie angehören.",
+  ORG_MY_ORGANIZATIONS: "Meine Organisationen",
+  ORG_NO_ORGANIZATIONS: "Keine Organisationen gefunden.",
+  ORG_SEARCH_ORGANIZATIONS: "Organisationen suchen...",
+  ORG_SET_ACTIVE: "Als aktiv setzen",
+
+  // Pricing
+  PRICING_ANNUAL: "Jährlich",
+  PRICING_BILLED_ANNUALLY: "Jährlich abgerechnet ({{amount}}€/Jahr)",
+  PRICING_CONTACT_US: "Kontaktieren Sie uns",
+  PRICING_CURRENT_PLAN: "Aktueller Plan",
+  PRICING_CUSTOM_PLAN: "Benötigen Sie einen individuellen Plan?",
+  PRICING_DESCRIPTION:
+    "Wählen Sie den Plan, der am besten zu Ihren Bedürfnissen passt. Alle Pläne beinhalten eine 14-tägige kostenlose Testphase bei Pro.",
+  PRICING_FOOTER_INFO:
+    "Alle Pläne beinhalten SSL-Sicherheit, 99,9% Verfügbarkeits-SLA und 24/7 Überwachung.",
+  PRICING_FREE_PLAN_INFO:
+    "Sie sind bereits im kostenlosen Plan. Keine Zahlung erforderlich.",
+  PRICING_FREE_TRIAL_DAYS: "{{days}}-tägige kostenlose Testphase",
+  PRICING_GET_PLAN: "{{plan}} wählen",
+  PRICING_GET_STARTED: "Loslegen",
+  PRICING_MONTHLY: "Monatlich",
+  PRICING_MOST_POPULAR: "Beliebteste",
+  PRICING_PER_MONTH: "/Monat",
+  PRICING_PROCESSING: "Wird verarbeitet...",
+  PRICING_SAVE_PERCENT: "20% sparen",
+  PRICING_SIGN_IN_REQUIRED: "Bitte melden Sie sich an, um zu abonnieren",
+  PRICING_SIGN_IN_TO_SUBSCRIBE: "Anmelden zum Abonnieren",
+  PRICING_SIGN_UP_FREE: "Kostenlos registrieren",
+  PRICING_STRIPE_NOT_ENABLED: "Abonnements sind derzeit nicht verfügbar",
+  PRICING_TITLE: "Einfache, transparente Preise",
+
+  // Plans
+  PLAN_ENTERPRISE_DESC:
+    "Für große Organisationen mit individuellen Anforderungen",
+  PLAN_ENTERPRISE: "Enterprise",
+  PLAN_FEATURE_ADVANCED_ANALYTICS: "Erweiterte Analysen",
+  PLAN_FEATURE_API_CALLS_UNLIMITED: "Unbegrenzte API-Aufrufe",
+  PLAN_FEATURE_API_CALLS: "{{count}} API-Aufrufe/Monat",
+  PLAN_FEATURE_BASIC_ANALYTICS: "Basis-Analysen",
+  PLAN_FEATURE_COMMUNITY_SUPPORT: "Community-Support",
+  PLAN_FEATURE_CUSTOM_ANALYTICS: "Individuelle Analysen",
+  PLAN_FEATURE_CUSTOM_CONTRACTS: "Individuelle Verträge",
+  PLAN_FEATURE_CUSTOM_INTEGRATIONS: "Individuelle Integrationen",
+  PLAN_FEATURE_DEDICATED_SUPPORT: "24/7 dedizierter Support",
+  PLAN_FEATURE_EMAIL_SUPPORT: "E-Mail-Support",
+  PLAN_FEATURE_PRIORITY_SUPPORT: "Prioritäts-Support",
+  PLAN_FEATURE_PROJECTS_PLURAL: "Bis zu {{count}} Projekte",
+  PLAN_FEATURE_PROJECTS_UNLIMITED: "Unbegrenzte Projekte",
+  PLAN_FEATURE_PROJECTS: "{{count}} Projekt",
+  PLAN_FEATURE_SLA: "SLA-Garantie",
+  PLAN_FEATURE_SSO_SAML: "SSO & SAML",
+  PLAN_FEATURE_STORAGE_UNLIMITED: "Unbegrenzter Speicher",
+  PLAN_FEATURE_STORAGE: "{{count}} GB Speicher",
+  PLAN_FEATURE_TEAM_COLLABORATION: "Team-Zusammenarbeit",
+  PLAN_FREE_DESC: "Starten Sie mit den Grundlagen",
+  PLAN_FREE: "Kostenlos",
+  PLAN_PRO_DESC: "Für wachsende Teams und Unternehmen",
+  PLAN_PRO: "Pro",
+  PLAN_STARTER_DESC: "Perfekt für Einzelpersonen und kleine Projekte",
+  PLAN_STARTER: "Starter",
+
+  // Subscription
+  SUBSCRIPTION_BILLING_PORTAL_FAILED:
+    "Fehler beim Öffnen des Abrechnungsportals",
+  SUBSCRIPTION_CANCEL_FAILED: "Fehler beim Kündigen des Abonnements",
+  SUBSCRIPTION_CANCEL: "Abonnement kündigen",
+  SUBSCRIPTION_CANCELED: "Abonnement gekündigt",
+  SUBSCRIPTION_CHANGE_PLAN: "Plan ändern",
+  SUBSCRIPTION_CURRENT_PERIOD: "Aktueller Zeitraum",
+  SUBSCRIPTION_DESCRIPTION:
+    "Verwalten Sie Ihr Abonnement und Ihre Abrechnungseinstellungen",
+  SUBSCRIPTION_ENDING_DESC:
+    "Ihr Abonnement wird am Ende des aktuellen Abrechnungszeitraums gekündigt.",
+  SUBSCRIPTION_ENDING: "Abonnement endet",
+  SUBSCRIPTION_FETCH_FAILED: "Fehler beim Abrufen der Abonnements",
+  SUBSCRIPTION_MANAGE_BILLING: "Abrechnung verwalten",
+  SUBSCRIPTION_NO_ACTIVE_DESC:
+    "Upgraden Sie auf einen bezahlten Plan, um Premium-Funktionen freizuschalten.",
+  SUBSCRIPTION_NO_ACTIVE: "Kein aktives Abonnement",
+  SUBSCRIPTION_RESTORE_FAILED: "Fehler beim Wiederherstellen des Abonnements",
+  SUBSCRIPTION_RESTORE: "Abonnement wiederherstellen",
+  SUBSCRIPTION_RESTORED: "Abonnement wiederhergestellt",
+  SUBSCRIPTION_STATUS_ACTIVE: "Aktiv",
+  SUBSCRIPTION_STATUS_CANCELED: "Gekündigt",
+  SUBSCRIPTION_STATUS_INCOMPLETE: "Unvollständig",
+  SUBSCRIPTION_STATUS_PAST_DUE: "Überfällig",
+  SUBSCRIPTION_STATUS_TRIALING: "Testphase",
+  SUBSCRIPTION_STATUS_UNPAID: "Unbezahlt",
+  SUBSCRIPTION_TITLE: "Abonnement",
+  SUBSCRIPTION_TRIAL_ENDS: "Testphase endet",
+  SUBSCRIPTION_UPGRADE_FAILED: "Upgrade fehlgeschlagen",
+  SUBSCRIPTION_VIEW_PLANS: "Pläne anzeigen",
+
+  // Settings Extended
+  SETTINGS_BILLING_DESC:
+    "Verwalten Sie Ihr Abonnement und Ihre Zahlungsmethoden.",
+  SETTINGS_BILLING_TITLE: "Abrechnung",
+
+  // Sidebar Extended
+  SIDEBAR_LAB: "Labor",
+  SIDEBAR_STORAGE_DEBUG: "Storage Debug",
+
+  // Template Strings
+  TEMPLATE_CTA_PRIMARY: "Loslegen",
+  TEMPLATE_CTA_SECONDARY: "Auf GitHub ansehen",
+  TEMPLATE_DX_DESC:
+    "Wir haben KI-gestütztes Matching mit einem optimierten Bewerbungsprozess kombiniert. Konzentrieren Sie sich auf Ihre Karriere, während wir Sie mit den richtigen Möglichkeiten verbinden.",
+  TEMPLATE_DX_TITLE: "Für Karriereerfolg konzipiert",
+  TEMPLATE_FAQ_TITLE: "Häufig gestellte Fragen",
+  TEMPLATE_FEATURE_AUTH_DESC:
+    "Sichere Authentifizierung mit Better Auth, einschließlich Social Logins und 2FA.",
+  TEMPLATE_FEATURE_AUTH_TITLE: "Authentifizierung",
+  TEMPLATE_FEATURE_DB_DESC:
+    "Postgres-Datenbank mit Drizzle ORM für typsichere Abfragen.",
+  TEMPLATE_FEATURE_DB_TITLE: "Datenbank",
+  TEMPLATE_FEATURE_PAYMENTS_DESC:
+    "Flexible Zahlungen mit Stripe, einschließlich Einmalzahlungen und Abonnements.",
+  TEMPLATE_FEATURE_PAYMENTS_TITLE: "Zahlungen",
+  TEMPLATE_FEATURE_STORAGE_DESC:
+    "S3-kompatibler Object Storage mit Multi-Provider-Unterstützung (AWS, R2, MinIO).",
+  TEMPLATE_FEATURE_STORAGE_TITLE: "Speicher",
+  TEMPLATE_FEATURE_TESTING_DESC:
+    "Umfassende Test-Suite mit Vitest, React Testing Library und Coverage-Reporting.",
+  TEMPLATE_FEATURE_TESTING_TITLE: "Testing",
+  TEMPLATE_HERO_BADGE: "KI-gestütztes Recruiting",
+  TEMPLATE_HERO_DESC:
+    "Verbinden Sie sich mit Top-Unternehmen und entdecken Sie Jobs, die zu Ihren Fähigkeiten passen. Erhalten Sie sofortiges KI-Feedback zu Ihrem Lebenslauf und finden Sie Ihre nächste Chance.",
+  TEMPLATE_HERO_SUBTITLE: "Build, scale, and ship faster than ever.",
+  TEMPLATE_HERO_TITLE: "Finden Sie Ihre nächste Chance",
+  TEMPLATE_HOW_IT_WORKS_TITLE: "So funktioniert es",
+  TEMPLATE_TECH_STACK_SUBTITLE:
+    "Angetrieben von den besten Tools im Ökosystem.",
+  TEMPLATE_TECH_STACK_TITLE: "Moderner Tech Stack",
 };
