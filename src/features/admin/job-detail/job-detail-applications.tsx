@@ -44,7 +44,8 @@ type ApplicationListItem = {
   aiScore: number | null;
   aiAnalysis: CVAnalysis | null;
   status: string;
-  processingStatus?: string;
+  processingStatus: "pending" | "processing" | "completed" | "failed";
+  processingError?: string | null;
   createdAt: Date;
   cvUrl?: string | null;
 };

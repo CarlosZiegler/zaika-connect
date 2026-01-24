@@ -26,7 +26,7 @@ export function ReprocessButton({
     onSuccess: () => {
       toast.success("CV reprocessing started");
       queryClient.invalidateQueries({
-        queryKey: orpc.admin.applications.list.queryOptions.baseKey,
+        queryKey: orpc.admin.applications.list.queryOptions({ input: {} }).queryKey,
       });
       onSuccess?.();
     },

@@ -86,6 +86,8 @@ type ApplicationListItem = {
   aiScore: number | null;
   aiAnalysis: CVAnalysis | null;
   status: string;
+  processingStatus: string;
+  processingError: string | null;
   createdAt: Date;
   job: {
     id: string;
@@ -191,7 +193,7 @@ function AdminApplicationsPage() {
     }),
   });
 
-  const applications = (data?.applications ?? []) as ApplicationListItem[];
+  const applications = (data?.applications ?? []) as unknown as ApplicationListItem[];
 
   // Update status mutation
   const updateStatusMutation = useMutation({

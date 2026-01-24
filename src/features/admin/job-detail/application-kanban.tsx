@@ -27,6 +27,8 @@ type Application = {
   status: string;
   createdAt: Date;
   cvUrl?: string | null;
+  processingStatus: "pending" | "processing" | "completed" | "failed";
+  processingError?: string | null;
 };
 
 type ApplicationKanbanProps = {
