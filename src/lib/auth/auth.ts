@@ -176,7 +176,6 @@ function createStripePlugin() {
           await sendEmailSafely({
             to: user.email,
             subject: "Subscription Confirmed",
-            text: "Your subscription has been confirmed",
             template: SubscriptionConfirmationEmail({
               username: user.name || user.email,
               planName: planDetails?.name || plan?.name || "Unknown",
@@ -204,7 +203,6 @@ function createStripePlugin() {
           await sendEmailSafely({
             to: user.email,
             subject: "Subscription Updated",
-            text: "Your subscription has been updated",
             template: SubscriptionUpgradeEmail({
               username: user.name || user.email,
               previousPlan: "Previous Plan",
@@ -238,7 +236,6 @@ function createStripePlugin() {
           await sendEmailSafely({
             to: user.email,
             subject: "Subscription Canceled",
-            text: "Your subscription has been canceled",
             template: SubscriptionCancellationEmail({
               username: user.name || user.email,
               planName: planDetails?.name || subscription.plan,
@@ -325,7 +322,6 @@ const getAuthConfig = createServerOnlyFn(() =>
             await sendEmailSafely({
               to: user.email,
               subject: `Welcome to ${APP_CONFIG.name}`,
-              text: `Welcome to ${APP_CONFIG.name}`,
               template: WelcomeEmail({ username: user.name || user.email }),
               errorContext: "welcome email",
             });
@@ -364,7 +360,6 @@ const getAuthConfig = createServerOnlyFn(() =>
         await sendEmailSafely({
           to: user.email,
           subject: "Reset your password",
-          text: "Reset your password",
           template: ResetPasswordEmail({
             resetLink: url,
             username: user.email,
@@ -384,7 +379,6 @@ const getAuthConfig = createServerOnlyFn(() =>
         await sendEmailSafely({
           to: user.email,
           subject: "Verify your email",
-          text: "Verify your email",
           template: VerifyEmail({ url, username: user.email }),
           errorContext: "verification email",
         });
@@ -427,7 +421,6 @@ const getAuthConfig = createServerOnlyFn(() =>
           await sendEmailSafely({
             to: email,
             subject: config.subject,
-            text: config.text,
             template: SendVerificationOtp({ username: email, otp }),
             errorContext: "verification OTP",
           });
@@ -438,7 +431,6 @@ const getAuthConfig = createServerOnlyFn(() =>
           await sendEmailSafely({
             to: email,
             subject: "Magic Link",
-            text: "Magic Link",
             template: SendMagicLinkEmail({ username: email, url, token }),
             errorContext: "magic link",
           });

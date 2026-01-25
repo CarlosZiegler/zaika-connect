@@ -8,8 +8,11 @@ config();
 export const env = createEnv({
   server: {
     DATABASE_URL: z.url(),
-    RESEND_API_KEY: z.string(),
-    RESEND_FROM_EMAIL: z.string().optional(),
+    SMTP_HOST: z.string(),
+    SMTP_PORT: z.coerce.number(),
+    SMTP_USER: z.string(),
+    SMTP_PASS: z.string(),
+    SMTP_FROM: z.string().optional(),
     BETTER_AUTH_SECRET: z.string(),
     BETTER_AUTH_BASE_URL: z.url().default("http://localhost:3000"),
     OPENAI_API_KEY: z.string().optional(),

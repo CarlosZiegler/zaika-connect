@@ -1,6 +1,6 @@
 import { ApplicationConfirmationEmail } from "@/components/emails/application-confirmation-email";
 import { APP_CONFIG } from "@/lib/config/app.config";
-import { sendEmail } from "@/lib/resend";
+import { sendEmail } from "@/lib/mail";
 
 type SendApplicationConfirmationParams = {
   candidateEmail: string;
@@ -21,7 +21,6 @@ export async function sendApplicationConfirmation({
         from: DEFAULT_FROM,
         to: candidateEmail,
         subject: `Application Received - ${jobTitle}`,
-        text: `Thank you for applying for the ${jobTitle} position. We've received your application and will review it shortly.`,
       },
       template: ApplicationConfirmationEmail({ candidateName, jobTitle }),
     });

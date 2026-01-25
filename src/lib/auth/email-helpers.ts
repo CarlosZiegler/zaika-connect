@@ -1,11 +1,10 @@
 import type { ReactElement, ReactNode } from "react";
 
-import { sendEmail } from "@/lib/resend";
+import { sendEmail } from "@/lib/mail";
 
 type SendEmailSafelyParams = {
   to: string;
   subject: string;
-  text: string;
   template: ReactElement | ReactNode;
   from?: string;
   errorContext?: string;
@@ -14,7 +13,6 @@ type SendEmailSafelyParams = {
 async function sendEmailSafely({
   to,
   subject,
-  text,
   template,
   from = "noreply@example.com",
   errorContext = "email",
@@ -23,7 +21,6 @@ async function sendEmailSafely({
     await sendEmail({
       payload: {
         subject,
-        text,
         to,
         from,
       },
