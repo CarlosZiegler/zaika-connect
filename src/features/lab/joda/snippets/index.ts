@@ -24,6 +24,10 @@ export function getSnippetById(id: string): Snippet | undefined {
   return allSnippets.find((s) => s.id === id);
 }
 
+export function getAllSnippets(): Snippet[] {
+  return allSnippets;
+}
+
 export {
   arithmeticSnippets,
   comparisonSnippets,

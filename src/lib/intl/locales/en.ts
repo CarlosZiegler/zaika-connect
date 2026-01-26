@@ -552,6 +552,7 @@ export default {
   LAB_BLOCK_GENERATOR_NAV: "Block Generator",
   LAB_BLOCK_GENERATOR_DESC: "Generate UI components from natural language",
   LAB_JOB_EDITOR_NAV: "Job Editor",
+  LAB_JODA_PLAYGROUND_NAV: "Joda Playground",
   LAB_BLOCK_GENERATOR_LONG_DESC:
     "Describe what you want to build and let AI generate the UI structure using ShadCN components.",
   LAB_BLOCK_GENERATOR_PLACEHOLDER: "Describe the UI you want to create...",

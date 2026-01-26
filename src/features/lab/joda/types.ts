@@ -1,4 +1,4 @@
-import type { Locale } from "@js-joda/locale";
+import type { Locale } from "@js-joda/locale_en";
 
 export type ParameterType = "text" | "date" | "number" | "enum";
 

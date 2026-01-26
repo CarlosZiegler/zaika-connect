@@ -853,6 +853,7 @@ export default {
   LAB_GENERATE: "Generieren",
   LAB_GENERATING: "Wird generiert...",
   LAB_JOB_EDITOR_NAV: "Job Editor",
+  LAB_JODA_PLAYGROUND_NAV: "Joda Playground",
   LAB_PREVIEW_EMPTY_DESC:
     "Geben Sie einen Prompt ein und klicken Sie auf Generieren, um Ihre UI zu sehen",
   LAB_PREVIEW_EMPTY_TITLE: "Noch keine Vorschau",

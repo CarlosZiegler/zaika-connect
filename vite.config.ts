@@ -43,6 +43,12 @@ function reflectPolyfillPlugin(): Plugin {
 }
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      // Polyfill assert for @js-joda/locale browser support
+      assert: "browser-assert",
+    },
+  },
   optimizeDeps: {
     entries: ["src/**/*.{js,jsx,ts,tsx}"],
     exclude: ["bun"],

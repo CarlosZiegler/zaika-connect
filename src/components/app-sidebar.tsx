@@ -73,6 +73,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           title: t("LAB_JOB_EDITOR_NAV"),
           url: "/lab/job-editor",
         },
+        {
+          title: t("LAB_JODA_PLAYGROUND_NAV"),
+          url: "/lab/joda",
+        },
       ],
     },
     {
