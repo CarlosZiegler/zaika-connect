@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Beaker, Blocks } from "lucide-react";
+import { Beaker, Blocks, CalendarClock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
@@ -45,6 +45,29 @@ function LabPage() {
           </CardContent>
           <CardFooter>
             <Link to="/lab/block-generator">
+              <Button type="button">{t("LAB_TRY_IT")}</Button>
+            </Link>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <CalendarClock className="size-5" />
+              js-joda Playground
+            </CardTitle>
+            <CardDescription>
+              Test js-joda date/time operations with locale switching
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Explore js-joda API with pre-built snippets. Switch between German
+              and English locales to see formatting differences.
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Link to="/lab/joda">
               <Button type="button">{t("LAB_TRY_IT")}</Button>
             </Link>
           </CardFooter>

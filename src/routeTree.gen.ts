@@ -46,6 +46,7 @@ import { Route as authTwoFactorOtpRouteImport } from './routes/(auth)/two-factor
 import { Route as authAcceptInvitationInvitationIdRouteImport } from './routes/(auth)/accept-invitation/$invitationId'
 import { Route as ApiLabBlockGeneratorIndexRouteImport } from './routes/api/lab/block-generator/index'
 import { Route as dashboardOrganizationsInvitationsIndexRouteImport } from './routes/(dashboard)/organizations/invitations/index'
+import { Route as dashboardLabJodaIndexRouteImport } from './routes/(dashboard)/lab/joda/index'
 import { Route as dashboardLabJobEditorIndexRouteImport } from './routes/(dashboard)/lab/job-editor/index'
 import { Route as dashboardLabChatIndexRouteImport } from './routes/(dashboard)/lab/chat/index'
 import { Route as dashboardLabBlockGeneratorIndexRouteImport } from './routes/(dashboard)/lab/block-generator/index'
@@ -244,6 +245,11 @@ const dashboardOrganizationsInvitationsIndexRoute =
     path: '/organizations/invitations/',
     getParentRoute: () => dashboardLayoutRoute,
   } as any)
+const dashboardLabJodaIndexRoute = dashboardLabJodaIndexRouteImport.update({
+  id: '/lab/joda/',
+  path: '/lab/joda/',
+  getParentRoute: () => dashboardLayoutRoute,
+} as any)
 const dashboardLabJobEditorIndexRoute =
   dashboardLabJobEditorIndexRouteImport.update({
     id: '/lab/job-editor/',
@@ -325,6 +331,7 @@ export interface FileRoutesByFullPath {
   '/lab/block-generator/': typeof dashboardLabBlockGeneratorIndexRoute
   '/lab/chat/': typeof dashboardLabChatIndexRoute
   '/lab/job-editor/': typeof dashboardLabJobEditorIndexRoute
+  '/lab/joda/': typeof dashboardLabJodaIndexRoute
   '/organizations/invitations/': typeof dashboardOrganizationsInvitationsIndexRoute
   '/api/lab/block-generator/': typeof ApiLabBlockGeneratorIndexRoute
 }
@@ -368,6 +375,7 @@ export interface FileRoutesByTo {
   '/lab/block-generator': typeof dashboardLabBlockGeneratorIndexRoute
   '/lab/chat': typeof dashboardLabChatIndexRoute
   '/lab/job-editor': typeof dashboardLabJobEditorIndexRoute
+  '/lab/joda': typeof dashboardLabJodaIndexRoute
   '/organizations/invitations': typeof dashboardOrganizationsInvitationsIndexRoute
   '/api/lab/block-generator': typeof ApiLabBlockGeneratorIndexRoute
 }
@@ -415,6 +423,7 @@ export interface FileRoutesById {
   '/(dashboard)/lab/block-generator/': typeof dashboardLabBlockGeneratorIndexRoute
   '/(dashboard)/lab/chat/': typeof dashboardLabChatIndexRoute
   '/(dashboard)/lab/job-editor/': typeof dashboardLabJobEditorIndexRoute
+  '/(dashboard)/lab/joda/': typeof dashboardLabJodaIndexRoute
   '/(dashboard)/organizations/invitations/': typeof dashboardOrganizationsInvitationsIndexRoute
   '/api/lab/block-generator/': typeof ApiLabBlockGeneratorIndexRoute
 }
@@ -461,6 +470,7 @@ export interface FileRouteTypes {
     | '/lab/block-generator/'
     | '/lab/chat/'
     | '/lab/job-editor/'
+    | '/lab/joda/'
     | '/organizations/invitations/'
     | '/api/lab/block-generator/'
   fileRoutesByTo: FileRoutesByTo
@@ -504,6 +514,7 @@ export interface FileRouteTypes {
     | '/lab/block-generator'
     | '/lab/chat'
     | '/lab/job-editor'
+    | '/lab/joda'
     | '/organizations/invitations'
     | '/api/lab/block-generator'
   id:
@@ -550,6 +561,7 @@ export interface FileRouteTypes {
     | '/(dashboard)/lab/block-generator/'
     | '/(dashboard)/lab/chat/'
     | '/(dashboard)/lab/job-editor/'
+    | '/(dashboard)/lab/joda/'
     | '/(dashboard)/organizations/invitations/'
     | '/api/lab/block-generator/'
   fileRoutesById: FileRoutesById
@@ -838,6 +850,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof dashboardOrganizationsInvitationsIndexRouteImport
       parentRoute: typeof dashboardLayoutRoute
     }
+    '/(dashboard)/lab/joda/': {
+      id: '/(dashboard)/lab/joda/'
+      path: '/lab/joda'
+      fullPath: '/lab/joda/'
+      preLoaderRoute: typeof dashboardLabJodaIndexRouteImport
+      parentRoute: typeof dashboardLayoutRoute
+    }
     '/(dashboard)/lab/job-editor/': {
       id: '/(dashboard)/lab/job-editor/'
       path: '/lab/job-editor'
@@ -948,6 +967,7 @@ interface dashboardLayoutRouteChildren {
   dashboardLabBlockGeneratorIndexRoute: typeof dashboardLabBlockGeneratorIndexRoute
   dashboardLabChatIndexRoute: typeof dashboardLabChatIndexRoute
   dashboardLabJobEditorIndexRoute: typeof dashboardLabJobEditorIndexRoute
+  dashboardLabJodaIndexRoute: typeof dashboardLabJodaIndexRoute
   dashboardOrganizationsInvitationsIndexRoute: typeof dashboardOrganizationsInvitationsIndexRoute
 }
 
@@ -963,6 +983,7 @@ const dashboardLayoutRouteChildren: dashboardLayoutRouteChildren = {
   dashboardLabBlockGeneratorIndexRoute: dashboardLabBlockGeneratorIndexRoute,
   dashboardLabChatIndexRoute: dashboardLabChatIndexRoute,
   dashboardLabJobEditorIndexRoute: dashboardLabJobEditorIndexRoute,
+  dashboardLabJodaIndexRoute: dashboardLabJodaIndexRoute,
   dashboardOrganizationsInvitationsIndexRoute:
     dashboardOrganizationsInvitationsIndexRoute,
 }
