@@ -39,9 +39,16 @@ export async function searchJobs(
     conditions.push(eq(jobs.industry, industry));
   }
 
-  // Use BM25 full-text search if query provided
+  // Use BM25 full-text search with fuzzy matching if query provided
   if (query) {
-    const searchResults = await db.execute(sql`
+    // Sanitize query and build fuzzy search across title and description
+    const sanitizedQuery = query.trim().replace(/'/g, "''");
+    const fuzzyQuery = `paradedb.boolean(should => ARRAY[
+      paradedb.match('title', '${sanitizedQuery}', distance => 1),
+      paradedb.match('description', '${sanitizedQuery}', distance => 1)
+    ])`;
+
+    const searchResults = await db.execute(sql.raw(`
       SELECT
         j.id,
         j.slug,
@@ -60,24 +67,24 @@ export async function searchJobs(
         paradedb.score(j.id) as rank
       FROM jobs j
       WHERE j.is_active = true
-        ${location ? sql`AND j.location = ${location}` : sql``}
-        ${employmentType ? sql`AND j.employment_type = ${employmentType}` : sql``}
-        ${industry ? sql`AND j.industry = ${industry}` : sql``}
-        AND (j.title @@@ ${query} OR j.description @@@ ${query})
+        ${location ? `AND j.location = '${location.replace(/'/g, "''")}'` : ""}
+        ${employmentType ? `AND j.employment_type = '${employmentType.replace(/'/g, "''")}'` : ""}
+        ${industry ? `AND j.industry = '${industry.replace(/'/g, "''")}'` : ""}
+        AND j.id @@@ ${fuzzyQuery}
       ORDER BY rank DESC
       LIMIT ${limit}
       OFFSET ${offset}
-    `);
+    `));
 
-    const countResult = await db.execute(sql`
+    const countResult = await db.execute(sql.raw(`
       SELECT count(*) as count
       FROM jobs j
       WHERE j.is_active = true
-        ${location ? sql`AND j.location = ${location}` : sql``}
-        ${employmentType ? sql`AND j.employment_type = ${employmentType}` : sql``}
-        ${industry ? sql`AND j.industry = ${industry}` : sql``}
-        AND (j.title @@@ ${query} OR j.description @@@ ${query})
-    `);
+        ${location ? `AND j.location = '${location.replace(/'/g, "''")}'` : ""}
+        ${employmentType ? `AND j.employment_type = '${employmentType.replace(/'/g, "''")}'` : ""}
+        ${industry ? `AND j.industry = '${industry.replace(/'/g, "''")}'` : ""}
+        AND j.id @@@ ${fuzzyQuery}
+    `));
 
     const total = Number(countResult.at(0)?.count ?? 0);
 

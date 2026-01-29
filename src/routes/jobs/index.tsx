@@ -111,10 +111,11 @@ function JobsPage() {
     industry: search.industry,
   };
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     ...orpc.jobs.list.queryOptions({
       input: filters,
     }),
+    placeholderData: (prev) => prev, // Keep previous data while fetching
   });
 
   const handleFilterChange = (key: string, value: string | null) => {
@@ -325,7 +326,8 @@ function JobsPage() {
 
             {/* Results count */}
             {!isLoading && (
-              <span className="ml-auto text-xs text-slate-500">
+              <span className="ml-auto flex items-center gap-2 text-xs text-slate-500">
+                {isFetching && <Spinner className="size-3" />}
                 {jobs.length} {jobs.length === 1 ? "position" : "positions"}{" "}
                 found
               </span>

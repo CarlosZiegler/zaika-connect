@@ -18,6 +18,7 @@
     "db:setup-vector": "bun --env-file=.env run ./scripts/setup-vector-extension.ts",
     "db:pg-search": "bun --env-file=.env run scripts/setup-pg-search.ts",
     "db:bm25-indexes": "bun --env-file=.env run scripts/setup-bm25-indexes.ts",
+    "db:paradedb": "bun --env-file=.env run scripts/setup-paradedb.ts",
     "auth:generate": "bunx --bun @better-auth/cli generate --config ./src/lib/auth/auth.ts --output ./src/lib/db/schema/auth.ts",
     "add-ui-components": "bunx --bun shadcn@latest add",
     "shadcn-mcp": "bunx shadcn mcp init ",
@@ -34,7 +35,10 @@
     "redis:stop": "bash scripts/redis.sh stop",
     "redis:status": "bash scripts/redis.sh status",
     "redis:logs": "bash scripts/redis.sh logs",
-    "test:db": "vitest run src/lib/db/rls.test.ts"
+    "test:db": "vitest run src/lib/db/rls.test.ts",
+    "test:benchmark": "BENCHMARK_SIZE=medium vitest run src/lib/search/__tests__/search-benchmark.test.ts",
+    "test:benchmark:small": "BENCHMARK_SIZE=small vitest run src/lib/search/__tests__/search-benchmark.test.ts",
+    "test:benchmark:large": "BENCHMARK_SIZE=large vitest run src/lib/search/__tests__/search-benchmark.test.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.18",
