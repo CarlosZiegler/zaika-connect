@@ -1,11 +1,14 @@
 import { QueryCache, QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
 import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
+import { isDefinedError } from "@orpc/client";
 import { toast } from "sonner";
 
 import { DefaultCatchBoundary } from "./components/error-boundary";
 import { NotFound } from "./components/not-found";
 import { authQueryOptions } from "./lib/auth/queries";
+import i18n from "./lib/intl/i18n";
+import { getORPCErrorMessageKey } from "./orpc/error-message";
 import { orpc } from "./orpc/orpc-client";
 import { routeTree } from "./routeTree.gen";
 
@@ -19,19 +22,14 @@ export function getRouter() {
     },
     queryCache: new QueryCache({
       onError: (error) => {
-        if (
-          error.cause &&
-          // @ts-expect-error - cause is not typed
-          "status" in error.cause &&
-          error.cause.status === 401
-        ) {
+        if (isDefinedError(error) && error.status === 401) {
           queryClient.setQueryData(authQueryOptions().queryKey, null);
           window.location.href = "/sign-in";
           return;
         }
-        toast.error(`Error: ${error.message}`, {
+        toast.error(i18n.t(getORPCErrorMessageKey(error)), {
           action: {
-            label: "retry",
+            label: i18n.t("AI_RETRY"),
             onClick: () => {
               queryClient.invalidateQueries();
             },

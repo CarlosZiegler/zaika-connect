@@ -4,6 +4,16 @@ import type { DB } from "@/lib/db";
 
 import { analyzeCV } from "@/lib/ai/cv-parser";
 import { applications, cvs, jobs } from "@/lib/db/schema";
+import {
+  classifyORPCErrorKind,
+  getORPCErrorMetadataForKind,
+  getUserSafeMessageForORPCKind,
+  logInternalORPCError,
+} from "@/orpc/error-normalization";
+import {
+  ORPC_ERROR_MESSAGE_KEY_BY_KIND,
+  type ORPCErrorKind,
+} from "@/orpc/error-shared";
 import { storage } from "@/lib/storage";
 
 import { generateCvEmbedding } from "./cv-embeddings";
@@ -12,6 +22,7 @@ import { extractCvText } from "./cv-extractor";
 type ProcessResult = {
   success: boolean;
   error?: string;
+  errorKind?: ORPCErrorKind;
 };
 
 export async function processCv(
@@ -60,16 +71,27 @@ export async function processCv(
 
     return { success: true };
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
+    const kind = classifyORPCErrorKind(error);
+    const mapped = getORPCErrorMetadataForKind(kind);
+    const errorMessage = getUserSafeMessageForORPCKind(kind);
+    const errorMessageKey = ORPC_ERROR_MESSAGE_KEY_BY_KIND[kind];
+
+    logInternalORPCError({
+      error,
+      procedure: "cv.processCv",
+      kind,
+      mappedCode: mapped.code,
+      mappedStatus: mapped.status,
+    });
+
     await db
       .update(cvs)
       .set({
         processingStatus: "failed",
-        processingError: errorMessage,
+        processingError: errorMessageKey,
       })
       .where(eq(cvs.id, cvId));
-    return { success: false, error: errorMessage };
+    return { success: false, error: errorMessage, errorKind: kind };
   }
 }
 

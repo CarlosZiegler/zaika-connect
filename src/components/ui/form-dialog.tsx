@@ -21,6 +21,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Spinner } from "@/components/ui/spinner";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 export type FormDialogProps<T extends z.ZodType<any, any, any>> = {
   open: boolean;
@@ -58,6 +59,7 @@ export function FormDialog<T extends z.ZodType<any, any, any>>({
   children,
 }: FormDialogProps<T>) {
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
 
   const form = useForm<z.infer<T>>({
     resolver: zodResolver(schema),
@@ -78,7 +80,7 @@ export function FormDialog<T extends z.ZodType<any, any, any>>({
       mutationOptions.onSuccess?.(...args);
     },
     onError: (error) => {
-      toast.error(errorMessage || error.message);
+      toast.error(errorMessage || getMessage(error));
       mutationOptions.onError?.(error);
     },
   });

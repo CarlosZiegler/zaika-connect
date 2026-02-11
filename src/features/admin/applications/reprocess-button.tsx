@@ -6,6 +6,7 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { client, orpc } from "@/orpc/orpc-client";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 type ReprocessButtonProps = {
   cvId: string;
@@ -19,6 +20,7 @@ export function ReprocessButton({
   onSuccess,
 }: ReprocessButtonProps) {
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
 
   const reprocessMutation = useMutation({
     mutationFn: (data: { cvId: string }) =>
@@ -32,7 +34,7 @@ export function ReprocessButton({
       onSuccess?.();
     },
     onError: (error) => {
-      toast.error(`Reprocessing failed: ${error.message}`);
+      toast.error(getMessage(error));
     },
   });
 

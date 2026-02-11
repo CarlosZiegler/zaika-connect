@@ -14,6 +14,7 @@ import {
   type KanbanMoveEvent,
 } from "@/components/ui/kanban";
 import { client, orpc } from "@/orpc/orpc-client";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 import { ApplicationKanbanCard } from "./application-kanban-card";
 
@@ -52,6 +53,7 @@ export function ApplicationKanban({
   jobId,
 }: ApplicationKanbanProps) {
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
 
   // Create a stable fingerprint to detect when server data changes
   const applicationsFingerprint = useMemo(
@@ -105,7 +107,7 @@ export function ApplicationKanban({
       });
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
       // Revert on error - rebuild from server data
       setColumns(groupByStatus(applications));
     },

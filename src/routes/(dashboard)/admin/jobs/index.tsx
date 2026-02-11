@@ -44,6 +44,7 @@ import {
 import { useConfirmationDialog } from "@/hooks/use-confirmation-dialog";
 import { getUserWithAdmin } from "@/lib/auth/auth-server-fn";
 import { client, orpc } from "@/orpc/orpc-client";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 export const Route = createFileRoute("/(dashboard)/admin/jobs/")({
   component: AdminJobsPage,
@@ -152,6 +153,7 @@ function JobActionsDropdown({
 function AdminJobsPage() {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
 
   const [isFormDialogOpen, setIsFormDialogOpen] = useState(false);
   const [editingJob, setEditingJob] = useState<JobListItem | null>(null);
@@ -180,7 +182,7 @@ function AdminJobsPage() {
       setIsFormDialogOpen(false);
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
     },
   });
 
@@ -198,7 +200,7 @@ function AdminJobsPage() {
       setEditingJob(null);
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
     },
   });
 
@@ -213,7 +215,7 @@ function AdminJobsPage() {
       deleteDialog.close();
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
     },
   });
 
@@ -228,7 +230,7 @@ function AdminJobsPage() {
       toast.success(t("ADMIN_JOBS_STATUS_UPDATED"));
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
     },
   });
 

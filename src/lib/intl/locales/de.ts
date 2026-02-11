@@ -48,6 +48,19 @@ export default {
   ERROR_COPY_FAILED: "Kopieren fehlgeschlagen",
   ERROR_DETAILS: "Details",
   ERROR_DETAILS_COPIED: "Fehlerdetails kopiert",
+  ORPC_ERROR_AI_UNAVAILABLE:
+    "Der KI-Dienst ist gerade nicht verfugbar. Bitte versuche es in kurzer Zeit erneut.",
+  ORPC_ERROR_FILE_TOO_LARGE:
+    "Die Datei ist zu gross. Bitte lade eine kleinere Datei hoch.",
+  ORPC_ERROR_GENERIC: "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+  ORPC_ERROR_INVALID_FILE_FORMAT:
+    "Ungultiges Dateiformat. Bitte nutze ein unterstutztes Format.",
+  ORPC_ERROR_NETWORK:
+    "Verbindungsproblem. Bitte prufe deine Verbindung und versuche es erneut.",
+  ORPC_ERROR_TIMEOUT:
+    "Die Anfrage hat zu lange gedauert. Bitte versuche es erneut.",
+  ORPC_ERROR_VALIDATION:
+    "Einige Eingaben sind ungultig. Bitte uberprufe deine Angaben.",
   ERROR_SOMETHING_WRONG: "Etwas ist schiefgelaufen",
   ERROR_TRY_AGAIN: "Erneut versuchen",
   ERROR_UNEXPECTED:

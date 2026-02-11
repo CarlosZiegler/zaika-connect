@@ -6,9 +6,11 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { client, orpc } from "@/orpc/orpc-client";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 export function ProcessPendingButton() {
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
 
   const pendingQuery = useQuery({
     ...orpc.admin.applications.getPendingCount.queryOptions({ input: {} }),
@@ -36,7 +38,7 @@ export function ProcessPendingButton() {
       });
     },
     onError: (error) => {
-      toast.error(`Processing failed: ${error.message}`);
+      toast.error(getMessage(error));
     },
   });
 

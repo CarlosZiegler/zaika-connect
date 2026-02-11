@@ -28,6 +28,7 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { getUserWithAdmin } from "@/lib/auth/auth-server-fn";
 import { client, orpc } from "@/orpc/orpc-client";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 export const Route = createFileRoute("/(dashboard)/admin/applications/$id")({
   component: AdminApplicationDetailPage,
@@ -76,6 +77,7 @@ function AdminApplicationDetailPage() {
   const { t } = useTranslation();
   const { id } = Route.useParams();
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
 
   const {
     data: application,
@@ -100,7 +102,7 @@ function AdminApplicationDetailPage() {
       toast.success("Status updated successfully");
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
     },
   });
 

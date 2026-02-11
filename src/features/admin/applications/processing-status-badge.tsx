@@ -1,9 +1,12 @@
+"use client";
+
 import {
   IconAlertCircle,
   IconCheck,
   IconClock,
   IconLoader2,
 } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -44,15 +47,18 @@ export function ProcessingStatusBadge({
   error,
   className,
 }: ProcessingStatusBadgeProps) {
+  const { t } = useTranslation();
   const config =
     statusConfig[status as ProcessingStatus] ?? statusConfig.pending;
   const { Icon, label, variant } = config;
+  const errorLabel =
+    typeof error === "string" && error.startsWith("ORPC_ERROR_") ? t(error) : error;
 
   return (
     <Badge
       variant={variant}
       className={cn("gap-1", className)}
-      title={error ?? undefined}
+      title={errorLabel ?? undefined}
     >
       <Icon
         className={cn("size-3", status === "processing" && "animate-spin")}

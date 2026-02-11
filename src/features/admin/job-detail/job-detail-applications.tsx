@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/select";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { client, orpc } from "@/orpc/orpc-client";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 import { ApplicationKanban } from "./application-kanban";
 
@@ -75,6 +76,7 @@ export function JobDetailApplications({
   initialStatus,
 }: JobDetailApplicationsProps) {
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
   const [viewMode, setViewMode] = useState<"table" | "kanban">("table");
   const [statusFilter, setStatusFilter] = useState<string>(
     initialStatus ?? "all"
@@ -122,7 +124,7 @@ export function JobDetailApplications({
       toast.success("Status updated");
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
     },
   });
 
