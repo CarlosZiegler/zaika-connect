@@ -61,35 +61,29 @@ export function SearchHero({
     <div className="mx-auto mt-10 max-w-4xl">
       {/* Search Bar */}
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white p-2 shadow-2xl md:flex-row justify-center items-center">
+        <div className="flex flex-col items-stretch gap-2 rounded-2xl border border-slate-100 bg-white p-2 shadow-2xl md:flex-row md:items-center md:justify-center">
           {/* Keywords Input */}
-          <div className="relative flex flex-grow items-center">
-            <Search
-              className="absolute left-4 size-5 text-slate-400"
-              aria-hidden="true"
-            />
+          <div className="flex flex-grow items-center gap-3 rounded-xl px-4">
+            <Search className="size-5 shrink-0 text-slate-400" aria-hidden="true" />
             <input
               type="text"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
               placeholder={t("LANDING_SEARCH_KEYWORDS_PLACEHOLDER")}
-              className="w-full rounded-xl border-none bg-transparent py-4 pr-4 pl-12 text-slate-900 placeholder-slate-400 focus:ring-0"
+              className="w-full border-none bg-transparent py-4 text-slate-900 placeholder-slate-400 focus:ring-0"
               aria-label={t("LANDING_SEARCH_KEYWORDS_PLACEHOLDER")}
             />
           </div>
 
           {/* Location Input */}
-          <div className="relative flex flex-grow items-center border-slate-200 md:border-l">
-            <MapPin
-              className="absolute left-4 size-5 text-slate-400"
-              aria-hidden="true"
-            />
+          <div className="flex flex-grow items-center gap-3 rounded-xl border-slate-200 px-4 md:border-l">
+            <MapPin className="size-5 shrink-0 text-slate-400" aria-hidden="true" />
             <input
               type="text"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               placeholder={t("LANDING_SEARCH_LOCATION_PLACEHOLDER")}
-              className="w-full rounded-xl border-none bg-transparent py-4 pr-4 pl-12 text-slate-900 placeholder-slate-400 focus:ring-0"
+              className="w-full border-none bg-transparent py-4 text-slate-900 placeholder-slate-400 focus:ring-0"
               aria-label={t("LANDING_SEARCH_LOCATION_PLACEHOLDER")}
             />
           </div>
