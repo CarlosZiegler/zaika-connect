@@ -48,6 +48,18 @@ export default {
   ERROR_COPY_FAILED: "Falha ao copiar",
   ERROR_DETAILS: "Detalhes",
   ERROR_DETAILS_COPIED: "Detalhes do erro copiados",
+  ORPC_ERROR_AI_UNAVAILABLE:
+    "O serviço de IA está indisponível no momento. Tente novamente em instantes.",
+  ORPC_ERROR_FILE_TOO_LARGE:
+    "O arquivo é grande demais. Envie um arquivo menor.",
+  ORPC_ERROR_GENERIC: "Algo deu errado. Tente novamente.",
+  ORPC_ERROR_INVALID_FILE_FORMAT:
+    "Formato de arquivo inválido. Envie um formato suportado.",
+  ORPC_ERROR_NETWORK:
+    "Problema de conexão. Verifique sua rede e tente novamente.",
+  ORPC_ERROR_TIMEOUT: "A requisição demorou demais. Tente novamente.",
+  ORPC_ERROR_VALIDATION:
+    "Alguns campos são inválidos. Revise os dados e tente novamente.",
   ERROR_SOMETHING_WRONG: "Algo deu errado",
   ERROR_TRY_AGAIN: "Tentar Novamente",
   ERROR_UNEXPECTED:

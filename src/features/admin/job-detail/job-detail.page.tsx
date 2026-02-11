@@ -16,6 +16,7 @@ import {
   JobFormDialog,
 } from "@/features/admin/job-form-dialog";
 import { client, orpc } from "@/orpc/orpc-client";
+import { useORPCErrorMessage } from "@/orpc/use-orpc-error-message";
 
 import { JobDetailApplications } from "./job-detail-applications";
 import { JobDetailOverview } from "./job-detail-overview";
@@ -27,6 +28,7 @@ export function JobDetailPage() {
   const [statusFilter, setStatusFilter] = useState<string | null>(null);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const queryClient = useQueryClient();
+  const { getMessage } = useORPCErrorMessage();
 
   // Fetch job with stats
   const { data, isLoading, error } = useQuery({
@@ -50,7 +52,7 @@ export function JobDetailPage() {
       setIsEditDialogOpen(false);
     },
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(getMessage(error));
     },
   });
 

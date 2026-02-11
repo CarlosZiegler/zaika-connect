@@ -1,6 +1,6 @@
 import type { RouterClient } from "@orpc/server";
 
-import { createORPCClient, onError } from "@orpc/client";
+import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
 import { createRouterClient } from "@orpc/server";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
@@ -28,13 +28,6 @@ const getOrpcClient = createIsomorphicFn()
           credentials: "include",
         });
       },
-      interceptors: [
-        onError((error) => {
-          if (error instanceof Error && error.name !== "AbortError") {
-            console.error(error);
-          }
-        }),
-      ],
     });
 
     return createORPCClient(link);

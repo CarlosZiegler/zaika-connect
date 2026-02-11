@@ -5,6 +5,8 @@ import { z } from "zod";
 import { isAdminEmail } from "@/lib/auth/admin-check";
 import { getJobRequirementsForCv, processCv } from "@/lib/cv/cv-processor";
 import { applications, candidates, cvs, file, jobs } from "@/lib/db/schema";
+import { getORPCErrorMetadataForKind } from "@/orpc/error-normalization";
+import { ORPC_ERROR_KINDS } from "@/orpc/error-shared";
 import { storage } from "@/lib/storage";
 
 import { orpc, protectedProcedure } from "../../orpc-server";
@@ -201,8 +203,16 @@ export const adminApplicationsRouter = orpc.router({
       const result = await processCv(context.db, input.cvId, requirements);
 
       if (!result.success) {
-        throw new ORPCError("INTERNAL_SERVER_ERROR", {
-          message: result.error ?? "Processing failed",
+        const kind = result.errorKind ?? ORPC_ERROR_KINDS.UNEXPECTED;
+        const mapped = getORPCErrorMetadataForKind(kind);
+
+        throw new ORPCError(mapped.code, {
+          status: mapped.status,
+          message: mapped.message,
+          data: {
+            kind,
+            procedure: "admin.applications.reprocessCv",
+          },
         });
       }
 

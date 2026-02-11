@@ -1,4 +1,3 @@
-import { onError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
 import { CORSPlugin } from "@orpc/server/plugins";
 import { createFileRoute } from "@tanstack/react-router";
@@ -13,11 +12,6 @@ const handler = new RPCHandler(router, {
       origin: "*",
       allowMethods: ["GET", "HEAD", "PUT", "POST", "DELETE", "PATCH"],
       credentials: true,
-    }),
-  ],
-  interceptors: [
-    onError((error) => {
-      console.error(error);
     }),
   ],
 });

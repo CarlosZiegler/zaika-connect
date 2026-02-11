@@ -4,6 +4,16 @@ import type { DB } from "@/lib/db";
 
 import { analyzeCV } from "@/lib/ai/cv-parser";
 import { applications, cvs, jobs } from "@/lib/db/schema";
+import {
+  classifyORPCErrorKind,
+  getORPCErrorMetadataForKind,
+  getUserSafeMessageForORPCKind,
+  logInternalORPCError,
+} from "@/orpc/error-normalization";
+import {
+  ORPC_ERROR_MESSAGE_KEY_BY_KIND,
+  type ORPCErrorKind,
+} from "@/orpc/error-shared";
 import { storage } from "@/lib/storage";
 
 import { generateCvEmbedding } from "./cv-embeddings";
@@ -12,6 +22,7 @@ import { extractCvText } from "./cv-extractor";
 type ProcessResult = {
   success: boolean;
   error?: string;
+  errorKind?: ORPCErrorKind;
 };
 
 export async function processCv(
@@ -60,16 +71,39 @@ export async function processCv(
 
     return { success: true };
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error";
-    await db
-      .update(cvs)
-      .set({
-        processingStatus: "failed",
-        processingError: errorMessage,
-      })
-      .where(eq(cvs.id, cvId));
-    return { success: false, error: errorMessage };
+    const kind = classifyORPCErrorKind(error);
+    const mapped = getORPCErrorMetadataForKind(kind);
+    const errorMessage = getUserSafeMessageForORPCKind(kind);
+    const errorMessageKey = ORPC_ERROR_MESSAGE_KEY_BY_KIND[kind];
+
+    logInternalORPCError({
+      error,
+      procedure: "cv.processCv",
+      kind,
+      mappedCode: mapped.code,
+      mappedStatus: mapped.status,
+    });
+
+    try {
+      await db
+        .update(cvs)
+        .set({
+          processingStatus: "failed",
+          processingError: errorMessageKey,
+        })
+        .where(eq(cvs.id, cvId));
+    } catch (updateError) {
+      // Best-effort: never mask the original failure with a secondary DB error.
+      logInternalORPCError({
+        error: updateError,
+        procedure: "cv.processCv update failure",
+        kind,
+        mappedCode: mapped.code,
+        mappedStatus: mapped.status,
+      });
+    }
+
+    return { success: false, error: errorMessage, errorKind: kind };
   }
 }
 

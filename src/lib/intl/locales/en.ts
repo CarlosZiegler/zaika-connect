@@ -52,6 +52,18 @@ export default {
   ERROR_COPY_FAILED: "Failed to copy",
   ERROR_DETAILS: "Details",
   ERROR_DETAILS_COPIED: "Error details copied",
+  ORPC_ERROR_AI_UNAVAILABLE:
+    "The AI service is currently unavailable. Please try again shortly.",
+  ORPC_ERROR_FILE_TOO_LARGE:
+    "The file is too large. Please upload a smaller file.",
+  ORPC_ERROR_GENERIC: "Something went wrong. Please try again.",
+  ORPC_ERROR_INVALID_FILE_FORMAT:
+    "Invalid file format. Please upload a supported file type.",
+  ORPC_ERROR_NETWORK:
+    "Connection issue. Please check your network and try again.",
+  ORPC_ERROR_TIMEOUT: "The request took too long. Please try again.",
+  ORPC_ERROR_VALIDATION:
+    "Some inputs are invalid. Please review and try again.",
   ERROR_SOMETHING_WRONG: "Something went wrong",
   ERROR_TRY_AGAIN: "Try Again",
   ERROR_UNEXPECTED:
