@@ -8,10 +8,10 @@ import {
   type ORPCErrorMessageKey,
 } from "./error-shared";
 
-const FILE_TOO_LARGE_PATTERN =
-  /(file size exceeds|payload too large|max(?:imum)? allowed size|too large)/iu;
-const INVALID_FILE_FORMAT_PATTERN =
-  /(invalid file format|unsupported media type|file type .* is not allowed|mime type)/iu;
+import {
+  FILE_TOO_LARGE_PATTERN,
+  INVALID_FILE_FORMAT_PATTERN,
+} from "./error-patterns";
 
 type ORPCErrorLike = {
   code: string;
@@ -24,8 +24,11 @@ function getKindFromData(data: unknown): ORPCErrorKind | undefined {
     return undefined;
   }
 
-  const kindValue = data as { kind?: unknown };
-  const maybeKind = kindValue.kind;
+  if (!("kind" in data)) {
+    return undefined;
+  }
+
+  const maybeKind = (data as Record<string, unknown>).kind;
 
   if (typeof maybeKind !== "string") {
     return undefined;

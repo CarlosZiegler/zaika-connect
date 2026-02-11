@@ -49,18 +49,18 @@ export default {
   ERROR_DETAILS: "Details",
   ERROR_DETAILS_COPIED: "Fehlerdetails kopiert",
   ORPC_ERROR_AI_UNAVAILABLE:
-    "Der KI-Dienst ist gerade nicht verfugbar. Bitte versuche es in kurzer Zeit erneut.",
+    "Der KI-Dienst ist gerade nicht verfügbar. Bitte versuche es in kurzer Zeit erneut.",
   ORPC_ERROR_FILE_TOO_LARGE:
-    "Die Datei ist zu gross. Bitte lade eine kleinere Datei hoch.",
+    "Die Datei ist zu groß. Bitte lade eine kleinere Datei hoch.",
   ORPC_ERROR_GENERIC: "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
   ORPC_ERROR_INVALID_FILE_FORMAT:
-    "Ungultiges Dateiformat. Bitte nutze ein unterstutztes Format.",
+    "Ungültiges Dateiformat. Bitte nutze ein unterstütztes Format.",
   ORPC_ERROR_NETWORK:
-    "Verbindungsproblem. Bitte prufe deine Verbindung und versuche es erneut.",
+    "Verbindungsproblem. Bitte prüfe deine Verbindung und versuche es erneut.",
   ORPC_ERROR_TIMEOUT:
     "Die Anfrage hat zu lange gedauert. Bitte versuche es erneut.",
   ORPC_ERROR_VALIDATION:
-    "Einige Eingaben sind ungultig. Bitte uberprufe deine Angaben.",
+    "Einige Eingaben sind ungültig. Bitte überprüfe deine Angaben.",
   ERROR_SOMETHING_WRONG: "Etwas ist schiefgelaufen",
   ERROR_TRY_AGAIN: "Erneut versuchen",
   ERROR_UNEXPECTED:

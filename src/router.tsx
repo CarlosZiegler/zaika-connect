@@ -29,7 +29,7 @@ export function getRouter() {
         }
         toast.error(i18n.t(getORPCErrorMessageKey(error)), {
           action: {
-            label: i18n.t("AI_RETRY"),
+            label: i18n.t("ERROR_TRY_AGAIN"),
             onClick: () => {
               queryClient.invalidateQueries();
             },

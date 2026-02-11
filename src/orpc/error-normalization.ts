@@ -1,7 +1,16 @@
 import { ORPCError, ValidationError } from "@orpc/server";
-import * as z from "zod";
+import { ZodError, prettifyError, type core } from "zod";
 
-import { ORPC_ERROR_KINDS, type ORPCErrorKind, type ORPCSafeErrorData } from "./error-shared";
+import {
+  ORPC_ERROR_KINDS,
+  type ORPCErrorKind,
+  type ORPCSafeErrorData,
+} from "./error-shared";
+
+import {
+  FILE_TOO_LARGE_PATTERN,
+  INVALID_FILE_FORMAT_PATTERN,
+} from "./error-patterns";
 
 const MAX_LOG_DEPTH = 6;
 const SECRET_KEY_PATTERN =
@@ -27,10 +36,6 @@ const TIMEOUT_PATTERN =
   /(timeout|timed out|request timed out|gateway timeout|etimedout|aborterror)/iu;
 const NETWORK_PATTERN =
   /(network|fetch failed|econnreset|econnrefused|enotfound|socket hang up|tls)/iu;
-const FILE_TOO_LARGE_PATTERN =
-  /(file size exceeds|payload too large|max(?:imum)? allowed size|too large)/iu;
-const INVALID_FILE_FORMAT_PATTERN =
-  /(invalid file format|unsupported media type|file type .* is not allowed|mime type)/iu;
 
 const ORPC_KIND_TO_CODE: Record<
   ORPCErrorKind,
@@ -216,12 +221,31 @@ function collectErrorCandidates(error: unknown): string[] {
 }
 
 export function classifyORPCErrorKind(error: unknown): ORPCErrorKind {
-  if (
-    error instanceof ORPCError &&
-    error.code === "BAD_REQUEST" &&
-    error.cause instanceof ValidationError
-  ) {
-    return ORPC_ERROR_KINDS.VALIDATION;
+  if (error instanceof ORPCError) {
+    // Prefer explicit oRPC codes when available.
+    switch (error.code) {
+      case "PAYLOAD_TOO_LARGE":
+        return ORPC_ERROR_KINDS.FILE_TOO_LARGE;
+      case "UNSUPPORTED_MEDIA_TYPE":
+        return ORPC_ERROR_KINDS.INVALID_FILE_FORMAT;
+      case "UNPROCESSABLE_CONTENT":
+      case "BAD_REQUEST":
+        // BAD_REQUEST may contain safe validation guidance.
+        if (error.cause instanceof ValidationError) {
+          return ORPC_ERROR_KINDS.VALIDATION;
+        }
+        return ORPC_ERROR_KINDS.VALIDATION;
+      case "TOO_MANY_REQUESTS":
+        return ORPC_ERROR_KINDS.PROVIDER_QUOTA;
+      case "TIMEOUT":
+      case "GATEWAY_TIMEOUT":
+        return ORPC_ERROR_KINDS.TIMEOUT;
+      case "BAD_GATEWAY":
+      case "SERVICE_UNAVAILABLE":
+        return ORPC_ERROR_KINDS.NETWORK;
+      default:
+        break;
+    }
   }
 
   if (error instanceof ValidationError) {
@@ -295,7 +319,22 @@ export function toUserSafeORPCError(
   options: { procedure: string; headers?: Headers }
 ): ORPCError<string, ORPCSafeErrorData> {
   if (error instanceof ORPCError && isSafeORPCError(error)) {
-    return error as ORPCError<string, ORPCSafeErrorData>;
+    const nextData: ORPCSafeErrorData = {
+      ...(typeof error.data === "object" && error.data !== null
+        ? (error.data as Record<string, unknown>)
+        : {}),
+      // Ensure required fields exist for client-side mapping.
+      kind: classifyORPCErrorKind(error),
+      procedure: options.procedure,
+    } as ORPCSafeErrorData;
+
+    return new ORPCError(error.code, {
+      status: error.status,
+      message: error.message,
+      data: nextData,
+      headers: error.headers,
+      cause: error.cause,
+    });
   }
 
   if (
@@ -303,11 +342,11 @@ export function toUserSafeORPCError(
     error.code === "BAD_REQUEST" &&
     error.cause instanceof ValidationError
   ) {
-    const zodError = new z.ZodError(error.cause.issues as z.core.$ZodIssue[]);
+    const zodError = new ZodError(error.cause.issues as core.$ZodIssue[]);
 
     return new ORPCError("UNPROCESSABLE_CONTENT", {
       status: 422,
-      message: z.prettifyError(zodError),
+      message: prettifyError(zodError),
       data: {
         kind: ORPC_ERROR_KINDS.VALIDATION,
         procedure: options.procedure,

@@ -35,7 +35,7 @@ describe("classifyORPCErrorKind", () => {
 });
 
 describe("toUserSafeORPCError", () => {
-  it("keeps known safe ORPC errors unchanged", () => {
+  it("enriches known safe ORPC errors with kind/procedure", () => {
     const original = new ORPCError("BAD_REQUEST", {
       message: "Known safe validation guidance",
     });
@@ -44,7 +44,12 @@ describe("toUserSafeORPCError", () => {
       procedure: "admin.applications.reprocessCv",
     });
 
-    expect(normalized).toBe(original);
+    expect(normalized).not.toBe(original);
+    expect(normalized.code).toBe("BAD_REQUEST");
+    expect(normalized.data).toMatchObject({
+      kind: "VALIDATION",
+      procedure: "admin.applications.reprocessCv",
+    });
   });
 
   it("maps internal provider quota errors to user-safe errors", () => {
@@ -62,5 +67,21 @@ describe("toUserSafeORPCError", () => {
       kind: "PROVIDER_QUOTA",
       procedure: "admin.applications.reprocessCv",
     });
+  });
+
+  it("does not pass through safe-code errors that match provider quota pattern", () => {
+    const original = new ORPCError("TOO_MANY_REQUESTS", {
+      message: "You exceeded your current quota",
+    });
+
+    const normalized = toUserSafeORPCError(original, {
+      procedure: "test.procedure",
+    });
+
+    expect(normalized).not.toBe(original);
+    expect(normalized.code).toBe("TOO_MANY_REQUESTS");
+    expect(normalized.data.kind).toBe("PROVIDER_QUOTA");
+    expect(normalized.message).toBe("AI service is currently unavailable.");
+    expect(String(normalized.message)).not.toContain("quota");
   });
 });

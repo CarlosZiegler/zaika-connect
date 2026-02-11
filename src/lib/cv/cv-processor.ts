@@ -84,13 +84,25 @@ export async function processCv(
       mappedStatus: mapped.status,
     });
 
-    await db
-      .update(cvs)
-      .set({
-        processingStatus: "failed",
-        processingError: errorMessageKey,
-      })
-      .where(eq(cvs.id, cvId));
+    try {
+      await db
+        .update(cvs)
+        .set({
+          processingStatus: "failed",
+          processingError: errorMessageKey,
+        })
+        .where(eq(cvs.id, cvId));
+    } catch (updateError) {
+      // Best-effort: never mask the original failure with a secondary DB error.
+      logInternalORPCError({
+        error: updateError,
+        procedure: "cv.processCv update failure",
+        kind,
+        mappedCode: mapped.code,
+        mappedStatus: mapped.status,
+      });
+    }
+
     return { success: false, error: errorMessage, errorKind: kind };
   }
 }
